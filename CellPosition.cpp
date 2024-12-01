@@ -7,7 +7,6 @@ CellPosition::CellPosition ()
 	vCell = -1; 
 	hCell = -1; 
 }
-
 CellPosition::CellPosition (int v, int h)
 { 
 	// (-1) indicating an invalid cell (uninitialized by the user)
