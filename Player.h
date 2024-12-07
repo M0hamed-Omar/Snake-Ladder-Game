@@ -31,6 +31,7 @@ public:
 
 	int GetTurnCount() const;		// A getter for the turnCount
 
+	int GetJustRolledDiceNum() const; // A getter for the JustRollDice  ==>> added by Medhat
 	///TODO: You can add setters and getters for data members here (if needed)
 
 	// ====== Drawing Functions ======

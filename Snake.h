@@ -2,7 +2,7 @@
 
 #include "GameObject.h"
 
-class Snake: public GameObject
+class Snake:public GameObject
 {
 	// Note: the "position" data member inherited from the GameObject class is used as the ladder's "Start Cell Position"
 

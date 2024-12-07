@@ -3,6 +3,7 @@
 #include "Cell.h"
 #include "GameObject.h"
 #include "Ladder.h"
+#include "Snake.h"
 #include "Card.h"
 #include "Player.h"
 
@@ -130,13 +131,14 @@ Player * Grid::GetCurrentPlayer() const
 Ladder * Grid::GetNextLadder(const CellPosition & position)
 {
 	
-	int startH = position.HCell(); // represents the start hCell in the current row to search for the ladder in
+	int startH = position.HCell();// represents the start hCell in the current row to search for the ladder in
+	Cell* ptr = NULL;
 	for (int i = position.VCell(); i >= 0; i--) // searching from position.vCell and ABOVE
 	{
 		for (int j = startH; j < NumHorizontalCells; j++) // searching from startH and RIGHT
 		{
 
-			Cell* ptr = CellList[i][j];
+			ptr = CellList[i][j];
 			ptr->HasLadder();
 			///TODO: Check if CellList[i][j] has a ladder, if yes return it
 			if (ptr)
@@ -150,10 +152,11 @@ Ladder * Grid::GetNextLadder(const CellPosition & position)
 	return NULL; // not found
 }
 
-Snake* Grid::GetNextSnake(const CellPosition& position) // ==>> all this is added by Medhat ** I don't know if that is right or even allowed 
+Snake * Grid::GetNextSnake(const CellPosition& position) 
 {
 
 	int startH = position.HCell(); // represents the start hCell in the current row to search for the snake in
+	Cell* ptr = NULL;
 	for (int i = position.VCell(); i >= 0; i--) // searching from position.vCell and ABOVE
 	{
 		for (int j = startH; j < NumHorizontalCells; j++) // searching from startH and RIGHT
@@ -161,11 +164,12 @@ Snake* Grid::GetNextSnake(const CellPosition& position) // ==>> all this is adde
 
 
 			///TODO: Check if CellList[i][j] has a Snake, if yes return it
-			Cell* ptr = CellList[i][j];
+			 ptr = CellList[i][j];
 			ptr->HasSnake();
 			if (ptr)
 			{
-				return (Snake*)(ptr->GetGameObject());
+				return(Snake*)(ptr->GetGameObject());
+				
 			}
 
 		}

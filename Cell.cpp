@@ -6,6 +6,7 @@
 #include "Snake.h"
 #include "Card.h"
 #include "Player.h"
+#include"Output.h"
 
 Cell::Cell(const CellPosition & pos) : position(pos)
 {
