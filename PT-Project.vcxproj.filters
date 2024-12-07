@@ -184,6 +184,12 @@
     <ClCompile Include="Output.cpp">
       <Filter>GUIClasses</Filter>
     </ClCompile>
+    <ClCompile Include="Card3.cpp" />
+    <ClCompile Include="Card4.cpp" />
+    <ClCompile Include="Snake.cpp" />
+    <ClCompile Include="CopyCardAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -295,5 +301,11 @@
       <Filter>GUIClasses</Filter>
     </ClInclude>
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="Card3.h" />
+    <ClInclude Include="Card4.h" />
+    <ClInclude Include="Snake.h" />
+    <ClInclude Include="CopyCardAction.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
