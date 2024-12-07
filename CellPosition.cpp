@@ -30,7 +30,7 @@ CellPosition::CellPosition(int cellNum)
 bool CellPosition::SetVCell(int v)  // done by md7t
 {
 	///TODO: Implement this function as described in the .h file (don't forget the validation)
-	if (v < 0 || v > 8)
+	if (v < 0 || v > NumVerticalCells - 1)
 	{
 		vCell = -1;
 		return false;
@@ -45,7 +45,7 @@ bool CellPosition::SetVCell(int v)  // done by md7t
 bool CellPosition::SetHCell(int h)  // done by md7t
 {
 	///TODO: Implement this function as described in the .h file (don't forget the validation)
-	if (h < 0 || h > 10)
+	if (h < 0 || h > NumHorizontalCells - 1)
 	{
 		hCell = -1;
 		return false;
@@ -70,7 +70,7 @@ int CellPosition::HCell() const
 bool CellPosition::IsValidCell() const
 {
 	///TODO: Implement this function as described in the .h file
-	if ((vCell >= 0 && vCell < 9) && (hCell >= 0 && hCell < 11))
+	if ((vCell >= 0 && vCell < NumVerticalCells) && (hCell >= 0 && hCell < NumHorizontalCells))
 		return true;
 	else
 		return false; // this line sould be changed with your implementation
@@ -87,11 +87,11 @@ int CellPosition::GetCellNumFromPosition(const CellPosition& cellPosition)
 	// Note:
 	// this is a static function (do NOT need a calling object so CANNOT use the data members of the calling object, vCell&hCell)
 	// just define an integer that represents cell number and calculate it using the passed cellPosition then return it
-	if (cellPosition.VCell() == -1 || cellPosition.HCell() == -1)
+	if (!IsValidCell)
 		return -1;
 
 	///TODO: Implement this function as described in the .h file
-	int cellNum = (8 - cellPosition.VCell()) * 11 + cellPosition.HCell() + 1;
+	int cellNum = ((NumVerticalCells - 1) - cellPosition.VCell()) * NumHorizontalCells + cellPosition.HCell() + 1;
 
 	return cellNum; // this line should be changed with your implementation
 }
@@ -103,8 +103,8 @@ CellPosition CellPosition::GetCellPositionFromNum(int cellNum)
 	CellPosition position;
 
 	/// TODO: Implement this function as described in the .h file
-	position.SetVCell(8 - (cellNum - 1) / 11);
-	position.SetHCell(cellNum - 1 - (8 - position.VCell()) * 11);
+	position.SetVCell((NumVerticalCells - 1) - (cellNum - 1) / NumHorizontalCells);
+	position.SetHCell(cellNum - 1 - ((NumVerticalCells - 1) - position.VCell()) * NumHorizontalCells);
 
 	// Note: use the passed cellNum to set the vCell and hCell of the "position" variable declared inside the function
 	//       I mean: position.SetVCell(...) and position.SetHCell(...) then return it
