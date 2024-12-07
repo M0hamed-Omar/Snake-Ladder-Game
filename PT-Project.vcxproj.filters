@@ -184,14 +184,11 @@
     <ClCompile Include="Output.cpp">
       <Filter>GUIClasses</Filter>
     </ClCompile>
-    <ClCompile Include="Card3.cpp">
-      <Filter>GameObjects\Cards</Filter>
-    </ClCompile>
-    <ClCompile Include="Card4.cpp">
-      <Filter>GameObjects\Cards</Filter>
-    </ClCompile>
-    <ClCompile Include="Snake.cpp">
-      <Filter>GameObjects</Filter>
+    <ClCompile Include="Card3.cpp" />
+    <ClCompile Include="Card4.cpp" />
+    <ClCompile Include="Snake.cpp" />
+    <ClCompile Include="CopyCardAction.cpp">
+      <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="Card5.cpp">
       <Filter>GameObjects\Cards</Filter>
@@ -307,14 +304,11 @@
       <Filter>GUIClasses</Filter>
     </ClInclude>
     <ClInclude Include="DEFS.h" />
-    <ClInclude Include="Card3.h">
-      <Filter>GameObjects\Cards</Filter>
-    </ClInclude>
-    <ClInclude Include="Card4.h">
-      <Filter>GameObjects\Cards</Filter>
-    </ClInclude>
-    <ClInclude Include="Snake.h">
-      <Filter>GameObjects</Filter>
+    <ClInclude Include="Card3.h" />
+    <ClInclude Include="Card4.h" />
+    <ClInclude Include="Snake.h" />
+    <ClInclude Include="CopyCardAction.h">
+      <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Card5.h">
       <Filter>GameObjects\Cards</Filter>

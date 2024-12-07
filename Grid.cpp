@@ -84,6 +84,8 @@ void Grid::UpdatePlayerCell(Player * player, const CellPosition & newPosition)
 // ========= Setters and Getters Functions =========
 
 
+
+
 Input * Grid::GetInput() const
 {
 	return pIn;
@@ -122,6 +124,35 @@ void Grid::AdvanceCurrentPlayer()
 
 // ========= Other Getters =========
 
+
+GameObject* Grid:: GetGameObjectFromCell(const CellPosition& cell) const
+{
+	/*
+	first we check if the cell is a valid  : 
+	1-if invalid --> return null
+	2- if valid   :
+	      - check if the cell has an object :
+		  i-if no --> return NULL 
+		  ii- if yes --> return a pointer of the object 
+		     *****(we will use dynamic cast to convert from game object to snake or ladder or card)****
+	*/
+	if (cell.IsValidCell())
+	{
+		/* 
+		* we need a function that returns a game object
+		* this funcion is already exist in the Cell class , but we need an object from cell class to call this function
+		* the cell list is a array of pointers to the cell class and returns a pointer of object -if exist - or null if empty cell
+		*/
+		Cell*CellPtr= CellList[cell.VCell()][cell.HCell()];
+		if (CellPtr)
+		{
+			return CellPtr->GetGameObject();
+		}
+
+	}
+
+	return NULL;
+}
 
 Player * Grid::GetCurrentPlayer() const
 {
