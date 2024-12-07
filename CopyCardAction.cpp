@@ -18,7 +18,7 @@ CopyCardAction ::CopyCardAction( ApplicationManager* ptr) : Action(ptr)
 	 Grid* pGrid = pManager->GetGrid();
 	 Output* pOut = pGrid->GetOutput();
 	 Input* pIn = pGrid->GetInput();
-	 //=================================
+	 //==================================
 
 	 //get the source card 
 	 pOut->PrintMessage("click on the source cell");//print the message 
