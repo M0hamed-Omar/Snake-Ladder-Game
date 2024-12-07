@@ -68,8 +68,6 @@ public:
 	GameObject* GetGameObjectFromCell(const CellPosition& cell) const;// done by M.O
 	Player * GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
 	Ladder * GetNextLadder(const CellPosition & position);  // Gets a Pointer to the first Ladder after the passed "position"
-	 Snake * GetNextSnake(const CellPosition& position); // Gets a Pointer to the first ladder after the passed "position" //==>> added by Medhat
-	Ladder * GetNextLadder(const CellPosition & position); // Gets a Pointer to the first Ladder after the passed "position"
 	Snake* GetNextSnake(const CellPosition& position); // Gets a Pointer to the first snake after the passed "position" ==>> added by Medhat
 	// ========= User Interface Functions =========
 
