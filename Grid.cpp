@@ -136,9 +136,13 @@ Ladder * Grid::GetNextLadder(const CellPosition & position)
 		for (int j = startH; j < NumHorizontalCells; j++) // searching from startH and RIGHT
 		{
 
-
+			Cell* ptr = CellList[i][j];
+			ptr->HasLadder();
 			///TODO: Check if CellList[i][j] has a ladder, if yes return it
-			
+			if (ptr)
+			{
+				return (Ladder*)(ptr->GetGameObject());
+			}
 
 		}
 		startH = 0; // because in the next above rows, we will search from the first left cell (hCell = 0) to the right
@@ -146,7 +150,29 @@ Ladder * Grid::GetNextLadder(const CellPosition & position)
 	return NULL; // not found
 }
 
+Snake* Grid::GetNextSnake(const CellPosition& position) // ==>> all this is added by Medhat ** I don't know if that is right or even allowed 
+{
 
+	int startH = position.HCell(); // represents the start hCell in the current row to search for the snake in
+	for (int i = position.VCell(); i >= 0; i--) // searching from position.vCell and ABOVE
+	{
+		for (int j = startH; j < NumHorizontalCells; j++) // searching from startH and RIGHT
+		{
+
+
+			///TODO: Check if CellList[i][j] has a Snake, if yes return it
+			Cell* ptr = CellList[i][j];
+			ptr->HasSnake();
+			if (ptr)
+			{
+				return (Snake*)(ptr->GetGameObject());
+			}
+
+		}
+		startH = 0; // because in the next above rows, we will search from the first left cell (hCell = 0) to the right
+	}
+	return NULL; // not found
+}
 // ========= User Interface Functions =========
 
 
