@@ -152,7 +152,7 @@ ActionType Input::GetUserAction() const
 			case ITM_INPUT_DICE_VALUE: return INPUT_DICE_VALUE;
 			case ITM_NEW_GAME: return NEW_GAME;
 			case ITM_SWITCH_TO_DESIGN_MODE: return TO_DESIGN_MODE;
-			case ITM_EXIT_2: return EXIT_2;
+			case ITM_EXIT_2: return EXIT;
 
 				// more to be added later
 			default: return EMPTY;

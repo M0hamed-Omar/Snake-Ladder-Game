@@ -10,9 +10,11 @@ void Card5::Apply(Grid* pGrid, Player* pPlayer)
 	
 	
 	int RollDiceNum = pPlayer->GetJustRolledDiceNum();
-	/*pPlayer->Move(pGrid, RollDiceNum);
-	if (((Cell*)pGrid)->Cell::HasLadder() || ((Cell*)pGrid)->Cell::HasSnake())
+	pPlayer->Move(pGrid, RollDiceNum);
+	Cell* ptr = pPlayer->GetCell();
+	if (ptr->HasLadder() || ptr->HasSnake())
 	{
-		
-	}*/
+		ptr->GetGameObject()->Apply(pGrid,pPlayer);
+	}
+
 }
