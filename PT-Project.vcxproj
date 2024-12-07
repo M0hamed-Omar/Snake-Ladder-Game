@@ -180,6 +180,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="RollDiceAction.cpp" />
+    <ClCompile Include="CopyCardAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Action.h" />
@@ -213,6 +214,7 @@
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Grid.h" />
+    <ClInclude Include="CopyCardAction.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Ladder.h" />
     <ClInclude Include="Output.h" />
