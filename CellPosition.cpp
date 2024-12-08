@@ -87,7 +87,7 @@ int CellPosition::GetCellNumFromPosition(const CellPosition& cellPosition)
 	// Note:
 	// this is a static function (do NOT need a calling object so CANNOT use the data members of the calling object, vCell&hCell)
 	// just define an integer that represents cell number and calculate it using the passed cellPosition then return it
-	if (!IsValidCell)
+	if (!cellPosition.IsValidCell())
 		return -1;
 
 	///TODO: Implement this function as described in the .h file
