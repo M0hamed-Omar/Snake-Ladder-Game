@@ -50,7 +50,7 @@ int Input::GetInteger(Output* pO) const
 	///TODO: implement the GetInteger function as described in Input.h file 
 	//       using function GetString() defined above and function stoi()
 	int num;
-	while (1)
+	while (1) // This while loop isn't doing much atm .. only helps for adding the ability to reprompt the user instead of returning -1
 	{
 		string s = GetSrting(pO);
 
@@ -60,7 +60,7 @@ int Input::GetInteger(Output* pO) const
 			break;
 		}
 		catch (...) {
-			return -1;
+			return -1; //would remove that if you were to reprompt 
 		}
 	}
 	if (num < 0)

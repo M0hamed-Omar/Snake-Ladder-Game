@@ -37,7 +37,7 @@ public:
 	bool SetHCell(int h); // The setter of hCell (the setter here sets only if the "h" is in grid range) // Done
 	// It returns true, if the parameter is valid and the setting is applied, 
 	// Otherwise, return false with no setting
-
+	
 	int VCell() const; // The getter of vCell
 	int HCell() const; // The getter of hCell
 
