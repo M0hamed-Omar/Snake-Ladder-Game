@@ -4,6 +4,7 @@
 #include "AddLadderAction.h"
 #include "AddCardAction.h"
 #include "RollDiceAction.h"
+#include "deleteGameObj.h"
 
 ///TODO: Add #include for all action types
 
@@ -64,6 +65,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		// create an object of AddCardAction here
 		pAct = new AddCardAction(this);
 		break;
+
+
+	case DELETE_GAME_OBJECT:
+		pAct = new deleteGameObj(this);
+		break;
+
 
 	case EXIT:
 		break;

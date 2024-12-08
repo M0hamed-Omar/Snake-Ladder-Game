@@ -170,11 +170,11 @@ Ladder * Grid::GetNextLadder(const CellPosition & position)
 		{
 
 			Cell* ptr = CellList[i][j];
-			ptr->HasLadder();
+			Ladder * l = ptr->HasLadder();
 			///TODO: Check if CellList[i][j] has a ladder, if yes return it
-			if (ptr)
+			if (l)
 			{
-				return (Ladder*)(ptr->GetGameObject());
+				return ((Ladder*)(ptr->GetGameObject()));
 			}
 
 		}
@@ -196,8 +196,8 @@ Snake * Grid::GetNextSnake(const CellPosition& position)
 
 			///TODO: Check if CellList[i][j] has a Snake, if yes return it
 			Cell* ptr = CellList[i][j];
-			ptr->HasSnake();
-			if (ptr)
+			Snake* s = ptr->HasSnake();
+			if (s)
 			{
 				return(Snake*)(ptr->GetGameObject());
 				
