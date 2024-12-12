@@ -9,7 +9,7 @@ Snake::Snake(const CellPosition& startCellPos, const CellPosition& endCellPos) :
 
 void Snake::Draw(Output* pOut) const
 {
-	pOut->DrawLadder(position, endCellPos);
+	pOut->DrawSnake(position, endCellPos);
 }
 
 void Snake::Apply(Grid* pGrid, Player* pPlayer)

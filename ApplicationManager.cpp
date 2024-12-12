@@ -2,9 +2,11 @@
 
 #include "Grid.h"
 #include "AddLadderAction.h"
+#include "AddSnakeAction.h"
 #include "AddCardAction.h"
 #include "RollDiceAction.h"
 #include "deleteGameObj.h"
+#include "CopyCardAction.h"
 
 ///TODO: Add #include for all action types
 
@@ -61,6 +63,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new AddLadderAction(this);
 		break;
 
+	case ADD_SNAKE:
+		pAct = new AddSnakeAction(this);
+		break;
+
 	case ADD_CARD:
 		// create an object of AddCardAction here
 		pAct = new AddCardAction(this);
@@ -70,8 +76,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case DELETE_GAME_OBJECT:
 		pAct = new deleteGameObj(this);
 		break;
+	
+	case COPY_CARD:
+		pAct = new CopyCardAction(this);
+		break;
 
-
+		
 	case EXIT:
 		break;
 

@@ -5,15 +5,14 @@
 class deleteGameObj:public Action
 {
 	CellPosition StartObjCell;
-	
 public:
 
 	deleteGameObj(ApplicationManager* pApp); // A Constructor
 
-	virtual void ReadActionParameters(); // Reads AddCardAction action parameters 
+	 void ReadActionParameters(); // Reads AddCardAction action parameters 
 
-	virtual void Execute(); // delete Object on  the cell position
+	 void Execute(); // delete Object on  the cell position
 	
-	virtual ~deleteGameObj(); // A Virtual Destructor
+	 ~deleteGameObj(); // A Virtual Destructor
 };
 

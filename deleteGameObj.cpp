@@ -23,12 +23,12 @@ void deleteGameObj::ReadActionParameters()
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
-
+	
 	pOut->PrintMessage("Delete Game Object: Click on its Start Cell ...");
 	StartObjCell = pIn->GetCellClicked();
 	
-	
 
+		
 	pOut->ClearStatusBar();
 }
 
@@ -37,19 +37,18 @@ void deleteGameObj::ReadActionParameters()
 
 
 void deleteGameObj::Execute()
-{
-
-	ReadActionParameters();
-
-	pManager->GetGrid()->RemoveObjectFromCell(StartObjCell);
+{		
+	    this->ReadActionParameters();
+		Grid* ptr = pManager->GetGrid();
+		ptr->RemoveObjectFromCell(StartObjCell);
+		
+		ptr->UpdateInterface();
 	
 	
+
 }
-
-
 //======================================
 
-deleteGameObj:: ~deleteGameObj()
+deleteGameObj::~deleteGameObj()
 {
-	
 }

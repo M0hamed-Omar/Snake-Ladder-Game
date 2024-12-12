@@ -47,6 +47,7 @@ void CopyCardAction::ReadActionParameters()
 // just store the card to the clipboard
 void CopyCardAction::Execute()
 {
+	ReadActionParameters();
 	Grid* pGrid = pManager->GetGrid();
 	pGrid->SetClipboard(CardPtr);
 }
