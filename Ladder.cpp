@@ -2,9 +2,11 @@
 
 Ladder::Ladder(const CellPosition & startCellPos, const CellPosition & endCellPos) : GameObject(startCellPos)
 {
+	if(startCellPos.GetCellNum()<endCellPos.GetCellNum())
 	this->endCellPos = endCellPos;
 
 	///TODO: Do the needed validation
+	// ============done by M.Omar=============
 }
 
 void Ladder::Draw(Output* pOut) const

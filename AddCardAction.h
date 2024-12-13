@@ -5,8 +5,8 @@
 class AddCardAction : public Action
 {
 	// [Action Parameters]
-	int cardNumber;            // 1- the card number
-	CellPosition cardPosition; // 2- cell position of the card
+	int CardNumber;            // 1- the card number
+	CellPosition CardPosition; // 2- cell position of the card
 
 	// Note: These parameters should be read in ReadActionParameters()
 	
