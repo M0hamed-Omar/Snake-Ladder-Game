@@ -10,7 +10,6 @@
 #include "Card7.h"
 #include "Card8.h"
 
-
 AddCardAction::AddCardAction(ApplicationManager* pApp) : Action(pApp)
 {
 	// Initializes the pManager pointer of Action with the passed pointer
@@ -22,10 +21,7 @@ AddCardAction::~AddCardAction()
 
 void AddCardAction::ReadActionParameters()
 {
-
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
-
-
 	// == Here are some guideline steps (numbered below) to implement this function ==
 
 	// 1- Get a Pointer to the Input / Output Interfaces
@@ -52,8 +48,7 @@ void AddCardAction::ReadActionParameters()
 
 	//the needed validations are :
 	// 1- is valid cell
-	// 3-the cell clicked does not have any game object
-
+	// 2-the cell clicked does not have any game object
 
 	//======= first validation  ==========
 	if (!CardPosition.IsValidCell())
@@ -62,7 +57,6 @@ void AddCardAction::ReadActionParameters()
 		return;
 	}
 	//=======second validation========
-
 	if (pGrid->GetGameObjectFromCell(CardPosition))
 	{
 		pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
@@ -139,11 +133,18 @@ void AddCardAction::Execute()
 		// C- Add the card object to the GameObject of its Cell:
 		bool Added = pGrid->AddObjectToCell(pCard);
 		// D- if the GameObject cannot be added in the Cell, Print the appropriate error message on statusbar
-		if(!Added)
+		if (!Added)
 		{
 			pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
 		}
 	}
+	else
+	{
+		Grid* pGrid = pManager->GetGrid();
+		Output* pOut = pGrid->GetOutput();
+		pOut->PrintMessage("no");
+	}
+		
 
 	// Here, the card is created and added to the GameObject of its Cell, so we finished executing the AddCardAction
 
