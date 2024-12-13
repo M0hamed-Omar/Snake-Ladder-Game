@@ -21,7 +21,8 @@ int Card::GetCardNumber()
 void Card::Draw(Output* pOut) const
 {
 	///TODO: call the appropriate Ouput function that draws a cell containing the "cardNumber" in "position"
-	pOut->DrawCell(this->cardNumber);//done by omar 
+	pOut->DrawCell(position,this->cardNumber);//done by omar 
+	//the position is come from the base class "GameObject"
 
 }
 
