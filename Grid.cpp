@@ -62,7 +62,7 @@ void Grid::RemoveObjectFromCell(const CellPosition & pos)
 	if (pos.IsValidCell()) // Check if valid position
 	{
 		// Note: you can deallocate the object here before setting the pointer to null if it is needed
-		// I think I should add line here 
+
 		CellList[pos.VCell()][pos.HCell()]->SetGameObject(NULL);
 		CellList[pos.VCell()][pos.HCell()]->DrawCellOrCard(pOut);
 	}

@@ -39,11 +39,8 @@ void deleteGameObj::ReadActionParameters()
 void deleteGameObj::Execute()
 {		
 	this->ReadActionParameters();
-		Grid* ptr = pManager->GetGrid();
-		ptr->RemoveObjectFromCell(StartObjCell);
-		
-	
-
+	Grid* ptr = pManager->GetGrid();
+	ptr->RemoveObjectFromCell(StartObjCell);
 }
 //======================================
 

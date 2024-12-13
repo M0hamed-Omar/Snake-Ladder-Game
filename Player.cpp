@@ -104,7 +104,7 @@ void Player::Move(Grid * pGrid, int diceNumber)
 			gameobj->Apply(pGrid,this);
 		}
 		
-		bool checkEnd = (this->GetCell()->GetCellPosition().GetCellNum() == 99);
+		bool checkEnd = (this->GetCell()->GetCellPosition().GetCellNum() >= 99);
 		pGrid->SetEndGame(checkEnd);
 		
 	}
