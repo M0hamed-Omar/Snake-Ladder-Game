@@ -3,11 +3,13 @@
 
 Card3::Card3(const CellPosition& pos):Card(pos)
 {
-
+	cardNumber = 3;
 }
 
 void Card3::Apply(Grid* pGrid, Player* pPlayer)
 {
+	Card::Apply( pGrid,  pPlayer);
+
 	Cell *x = pPlayer->GetCell(); // to get the cell which player at
 	const CellPosition cellposition = x->GetCellPosition();
 	Card::Apply(pGrid, pPlayer); // like given card 1
