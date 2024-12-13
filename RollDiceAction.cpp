@@ -36,7 +36,7 @@ void RollDiceAction::Execute()
 
 	// 5- Advance the current player number of pGrid
 
-
+	//------------->>>>>>>>>>>>>>>>>>>>>>>>>>>> CHECK FIRST IS THAT CARD 8 OR NOT <<<<<<<<<<<<---------------------
 	// NOTE: the above guidelines are the main ones but not a complete set (You may need to add more steps).
 
 }

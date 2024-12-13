@@ -30,10 +30,10 @@ public:
 	int GetWallet() const;			// a getter for the wallet
 
 	int GetTurnCount() const;		// A getter for the turnCount
-
+	void setJustRolledDiceNum(int dicenum);
 	int GetJustRolledDiceNum() const; // A getter for the JustRollDice  ==>> added by Medhat
 	///TODO: You can add setters and getters for data members here (if needed)
-
+	
 	// ====== Drawing Functions ======
 
 	void Draw(Output* pOut) const;			// Draws the Player's Circle on its current cell

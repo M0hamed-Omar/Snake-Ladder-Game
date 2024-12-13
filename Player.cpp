@@ -39,6 +39,11 @@ int Player::GetTurnCount() const
 }
 
 
+void Player::setJustRolledDiceNum(int dicenum)
+{
+	this->justRolledDiceNum = dicenum;
+}
+
 int Player::GetJustRolledDiceNum() const
 {
 	return justRolledDiceNum;
@@ -75,15 +80,34 @@ void Player::Move(Grid * pGrid, int diceNumber)
 
 
 	// 1- Increment the turnCount because calling Move() means that the player has rolled the dice once
-	
+	turnCount++;
 	// 2- Check the turnCount to know if the wallet recharge turn comes (recharge wallet instead of move)
 	//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
-	
+	if (turnCount == 3)
+	{
+		SetWallet(10 * diceNumber);
+		turnCount = 0;
+		return;
+	}
 	// 3- Set the justRolledDiceNum with the passed diceNumber
-
+	setJustRolledDiceNum(diceNumber);
 	// 4- Get the player current cell position, say "pos", and add to it the diceNumber (update the position)
 	//    Using the appropriate function of CellPosition class to update "pos"
-
+	if (GetWallet() > 0)
+	{
+		CellPosition& pos = pCell->GetCellPosition();
+		pos.AddCellNum(diceNumber);
+		pGrid->UpdatePlayerCell(this,pos);
+		if (pCell->HasCard() || pCell->HasSnake() || pCell->HasLadder())
+		{
+			GameObject* gameobj = pCell->GetGameObject();
+			gameobj->Apply(pGrid,this);
+		}
+		
+		bool checkEnd = (this->GetCell()->GetCellPosition().GetCellNum() == 99);
+		pGrid->SetEndGame(checkEnd);
+		
+	}
 	// 5- Use pGrid->UpdatePlayerCell() func to Update player's cell POINTER (pCell) with the cell in the passed position, "pos" (the updated one)
 	//    the importance of this function is that it Updates the pCell pointer of the player and Draws it in the new position
 
