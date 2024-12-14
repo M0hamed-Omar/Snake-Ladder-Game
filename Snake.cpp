@@ -28,6 +28,14 @@ void Snake::Apply(Grid* pGrid, Player* pPlayer)
 
 }
 
+void Snake::Save(ofstream& OutFile, ObjectType Obj)
+{
+	if (Obj != SnakeObj)
+		return;
+
+	OutFile << position.GetCellNum() << " " << endCellPos.GetCellNum() << endl;
+}
+
 CellPosition Snake::GetEndPosition() const
 {
 	return endCellPos;

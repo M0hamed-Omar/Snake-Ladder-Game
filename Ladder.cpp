@@ -30,6 +30,14 @@ void Ladder::Apply(Grid* pGrid, Player* pPlayer)
 	
 }
 
+void Ladder::Save(ofstream& OutFile, ObjectType Obj) 
+{
+	if (Obj != LadderObj)
+		return;
+
+	OutFile << position.GetCellNum() << " " << endCellPos.GetCellNum() << endl;
+}
+
 CellPosition Ladder::GetEndPosition() const
 {
 	return endCellPos;
