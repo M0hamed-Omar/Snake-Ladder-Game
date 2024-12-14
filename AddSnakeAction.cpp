@@ -31,7 +31,11 @@ void AddSnakeAction::ReadActionParameters()
 
 
 	///TODO: Make the needed validations on the read parameters
-
+	if (startPos.VCell() > endPos.VCell() || startPos.HCell() - endPos.HCell() != 0)
+	{
+		startPos.SetHCell(-1);
+		endPos.SetHCell(-1);
+	}
 
 
 	// Clear messages
@@ -60,6 +64,6 @@ void AddSnakeAction::Execute()
 		// Print an appropriate message
 		pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
 	}
-	// Here, the ladder is created and added to the GameObject of its Cell, so we finished executing the AddSnakeAction
+	// Here, the Snake is created and added to the GameObject of its Cell, so we finished executing the AddSnakeAction
 
 }
