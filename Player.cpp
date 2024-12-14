@@ -38,7 +38,6 @@ int Player::GetTurnCount() const
 	return turnCount;
 }
 
-
 void Player::setJustRolledDiceNum(int dicenum)
 {
 	this->justRolledDiceNum = dicenum;

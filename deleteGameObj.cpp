@@ -26,8 +26,17 @@ void deleteGameObj::ReadActionParameters()
 	
 	pOut->PrintMessage("Delete Game Object: Click on its Start Cell ...");
 	StartObjCell = pIn->GetCellClicked();
-	
-
+	if (!StartObjCell.IsValidCell())
+	{
+		pGrid->PrintErrorMessage("Invalid cell ! Click anywhere to continue....");
+		return;
+	}
+	if (!pGrid->GetGameObjectFromCell(StartObjCell))
+	{
+		pGrid->PrintErrorMessage("The cell does not have an object ! Click anywhere to continue....");
+		return;
+	}
+	pGrid->PrintErrorMessage("Deleted successfully , Click anywhere to continue....");
 		
 	pOut->ClearStatusBar();
 }
@@ -41,6 +50,7 @@ void deleteGameObj::Execute()
 	this->ReadActionParameters();
 	Grid* ptr = pManager->GetGrid();
 	ptr->RemoveObjectFromCell(StartObjCell);
+	
 }
 //======================================
 

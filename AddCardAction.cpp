@@ -9,6 +9,11 @@
 #include "Card6.h"
 #include "Card7.h"
 #include "Card8.h"
+#include "Card9.h"
+#include "Card10.h"
+#include "Card11.h"
+#include "Card12.h"
+#include "Card13.h"
 
 AddCardAction::AddCardAction(ApplicationManager* pApp) : Action(pApp)
 {
@@ -111,16 +116,21 @@ void AddCardAction::Execute()
 	case 8:
 		pCard = new Card8(CardPosition);
 		break;
-		/*
 	case 9:
 		pCard = new Card9(CardPosition);
 		break;
-		
-		
-		case 10:
-			pCard = new Card10(CardPosition);
-			break;
-			*/
+	case 10:
+		pCard = new Card10(CardPosition);
+		break;
+	case 11:
+		pCard = new Card11(CardPosition);
+		break;
+	case 12:
+		pCard = new Card12(CardPosition);
+		break;
+	case 13:
+		pCard = new Card13(CardPosition);
+		break;
 	}
 
 	// 3- if pCard is correctly set in the switch case (i.e. if pCard is pointing to an object -- NOT NULL)

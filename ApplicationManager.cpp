@@ -7,6 +7,8 @@
 #include "RollDiceAction.h"
 #include "deleteGameObj.h"
 #include "CopyCardAction.h"
+#include "CutCardAction.h"
+#include "PasteCardAction.h"
 
 ///TODO: Add #include for all action types
 
@@ -79,6 +81,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	
 	case COPY_CARD:
 		pAct = new CopyCardAction(this);
+		break;
+
+
+	case CUT_CARD:
+		pAct = new CutCardAction(this);
+		break;	
+	case PASTE_CARD:
+		pAct = new PasteCardAction(this);
 		break;
 
 		

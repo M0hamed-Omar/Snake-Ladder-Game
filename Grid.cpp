@@ -57,6 +57,21 @@ bool Grid::AddObjectToCell(GameObject * pNewObject)  // think if any validation 
 	return false; // if not a valid position
 }
 
+
+bool Grid::AddObjectToCell(GameObject* pNewObject, CellPosition* cell)// added by M.Omar
+{
+	if (cell->IsValidCell())
+	{
+		GameObject* pPrevObject = CellList[cell->VCell()][cell->HCell()]->GetGameObject();
+		if (pPrevObject)  // the cell already contains a game object
+			return false; // do NOT add and return false
+		// Set the game object of the Cell with the new game object
+		CellList[cell->VCell()][cell->HCell()]->SetGameObject(pNewObject);
+		return true; // indicating that addition is done
+	}
+	return false; // if not a valid position
+}
+
 void Grid::RemoveObjectFromCell(const CellPosition & pos)
 {
 	if (pos.IsValidCell()) // Check if valid position
@@ -124,7 +139,6 @@ void Grid::AdvanceCurrentPlayer()
 }
 
 // ========= Other Getters =========
-
 
 GameObject* Grid:: GetGameObjectFromCell(const CellPosition& cell) const
 {
