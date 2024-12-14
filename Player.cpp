@@ -1,6 +1,8 @@
 #include "Player.h"
 
 #include "GameObject.h"
+#include "Card.h"
+#include "Card8.h"
 
 Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerNum(playerNum)
 {
@@ -80,6 +82,16 @@ void Player::Move(Grid * pGrid, int diceNumber)
 
 	// 1- Increment the turnCount because calling Move() means that the player has rolled the dice once
 	turnCount++;
+
+	if (pCell->HasCard()) // check if i have card 8 so i won't move but by that logic the player is stuck at this cell and can't move to the rest of the game i need a counter Maybe
+	{                      // another quaestion what will be the apply of the card 8 ?  
+		Card8* pCard8 = dynamic_cast<Card8*>(pCell->GetGameObject());
+		
+		if (pCard8)
+		{
+			diceNumber = 0;
+		}
+	}
 	// 2- Check the turnCount to know if the wallet recharge turn comes (recharge wallet instead of move)
 	//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
 	if (turnCount == 3)
