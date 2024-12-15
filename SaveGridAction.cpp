@@ -40,9 +40,14 @@ void SaveGridAction::Execute()
 	ofstream outFile;
 	outFile.open(outputFileName);
 	if (outFile.is_open()) {
-		
+		//counts all Game Objects first 
+		int laddersCount, snakesCount, cardsCount;
+		pGrid->countGameObjects(laddersCount, snakesCount, cardsCount);
+		outFile << laddersCount << endl;
 		pGrid->SaveAll(outFile, LadderObj);
+		outFile << snakesCount << endl;
 		pGrid->SaveAll(outFile, SnakeObj);
+		outFile << cardsCount << endl;
 		pGrid->SaveAll(outFile, CardObj);
 		pGrid->PrintErrorMessage("Saved successfully !");
 		outFile.close();

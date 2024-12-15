@@ -25,3 +25,16 @@ void Card4::Apply(Grid* pGrid, Player* pPlayer)
 		pPlayer->Move(pGrid, startcell - currentcell); // move the player to the new cell number
 	}
 }
+
+void Card4::Save(ofstream& OutFile, ObjectType Obj)
+{
+	// Check Obj 
+	if (Obj != CardObj)
+		return;
+
+	// Call base class Save only if the check passes
+	Card::Save(OutFile, Obj);
+
+	// Now add Card parameters (It doesn't have)
+	OutFile << endl;
+}

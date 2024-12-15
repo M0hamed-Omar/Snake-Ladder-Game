@@ -63,5 +63,5 @@ void CardOne::Save(ofstream& OutFile, ObjectType Obj)
 	Card::Save(OutFile, Obj);
 
 	// Now add CardOne parameter
-	OutFile << walletAmount << endl;
+	OutFile << " " << walletAmount << endl;
 }

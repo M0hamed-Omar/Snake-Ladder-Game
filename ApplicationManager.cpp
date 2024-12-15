@@ -10,6 +10,7 @@
 #include "CutCardAction.h"
 #include "PasteCardAction.h"
 #include "SaveGridAction.h"
+#include "OpenGridAction.h"
 
 ///TODO: Add #include for all action types
 
@@ -117,6 +118,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new SaveGridAction(this);
 			break;
 
+	case OPEN_GRID:
+		pAct = new OpenGridAction(this);
+		break;
+
+	case INPUT_DICE_VALUE:
+			break;
 	case STATUS:	// a click on the status bar ==> no action
 		return;
 	}

@@ -3,6 +3,7 @@
 #include "Input.h"
 #include "Output.h"
 #include "CardOne.h"
+#include "Card2.h"
 #include "Card3.h"
 #include "Card4.h"
 #include "Card5.h"
@@ -93,11 +94,11 @@ void AddCardAction::Execute()
 		break;
 
 		// A- Add the remaining cases
-	/*
+	
 	case 2:
 		pCard = new Card2(CardPosition);
 		break;
-		*/
+		
 	case 3:
 		pCard = new Card3(CardPosition);
 		break;

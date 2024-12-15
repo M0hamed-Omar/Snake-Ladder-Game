@@ -13,3 +13,16 @@ void Card6::Apply(Grid* pGrid, Player* pPlayer)
 	pPlayer->Move(pGrid, -1*RollDiceNum);
 	
 }
+
+void Card6::Save(ofstream& OutFile, ObjectType Obj)
+{
+	// Check Obj 
+	if (Obj != CardObj)
+		return;
+
+	// Call base class Save only if the check passes
+	Card::Save(OutFile, Obj);
+
+	// Now add Card parameters (It doesn't have)
+	OutFile << endl;
+}

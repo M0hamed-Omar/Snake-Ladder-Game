@@ -24,3 +24,17 @@ void Card3::Apply(Grid* pGrid, Player* pPlayer)
 	}
 	
 }
+
+void Card3::Save(ofstream& OutFile, ObjectType Obj)
+{
+	// Check Obj 
+	if (Obj != CardObj)
+		return;
+
+	// Call base class Save only if the check passes
+	Card::Save(OutFile, Obj);
+
+	// Now add Card parameter (It doesn't have)
+	OutFile <<endl;
+}
+

@@ -3,7 +3,7 @@
 
 Card2::Card2(const CellPosition& pos) : Card(pos) // set the cell position of the card
 {
-	cardNumber = 2; // set the inherited cardNumber data member with the card number (1 here)
+	cardNumber = 2; // set the inherited cardNumber data member with the card number (2 here)
 }
 
 Card2::~Card2(void)
@@ -47,5 +47,5 @@ void Card2::Save(ofstream& OutFile, ObjectType Obj)
 	Card::Save(OutFile, Obj);
 
 	// Now add Card2 parameter
-	OutFile << walletAmount << endl;
+	OutFile <<" " << walletAmount << endl;
 }
