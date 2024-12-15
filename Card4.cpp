@@ -16,12 +16,12 @@ void Card4::Apply(Grid* pGrid, Player* pPlayer)
 	Snake* s = pGrid->GetNextSnake(cellposition);
 	const CellPosition new_cellposition = ((GameObject*)s)->GetPosition();
 	int startcell = new_cellposition.GetCellNum();
-	if (pGrid == NULL) // I am not sure if i put s is correct or not 
+	
+	if (s) // I am not sure if i put l is correct or not 
 	{
-
-	}
-	else
-	{
-		pPlayer->Move(pGrid, startcell);
+		const CellPosition new_cellposition = ((GameObject*)s)->GetPosition(); // to get the new cell poaition which have the start of ladder
+		int startcell = new_cellposition.GetCellNum(); // to get the cell number of the new cell position
+		int currentcell = pPlayer->GetCell()->GetCellPosition().GetCellNum();
+		pPlayer->Move(pGrid, startcell - currentcell); // move the player to the new cell number
 	}
 }
