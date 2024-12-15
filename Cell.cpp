@@ -33,7 +33,8 @@ bool Cell::SetGameObject(GameObject * pGObj)
 {
 	if (pGameObject != NULL && pGObj != NULL) // already contains one
 		return false; // do NOT add it and return false
-
+	if (pGameObject != NULL)
+		delete pGameObject;
 	pGameObject = pGObj;
 	return true;
 }
