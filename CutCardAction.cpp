@@ -1,17 +1,24 @@
-//===== BY Mohamed Omar =========
-#include"CopyCardAction.h"
+//========By : Mohamed Omar =================
+
 #include "Input.h"
 #include "Output.h"
+#include"Grid.h"
 #include"Card.h"
+#include"CutCardAction.h"
+//#include"CopyCardAction.h"
 
-CopyCardAction::CopyCardAction(ApplicationManager* ptr) : Action(ptr)
+CutCardAction::CutCardAction(ApplicationManager* ptr) : Action(ptr) //, CopyCardAction(ptr)
 {
 	SourceCard = new CellPosition(); // responsible for construction & destruction ( Aggregation )
-	CardPtr = NULL; // Association 
+	CardPtr = NULL; // Association
 }
 
-void CopyCardAction::ReadActionParameters()
+
+
+void CutCardAction::ReadActionParameters()
 {
+	//this->CopyCardAction::ReadActionParameters();// pohymerphism
+	
 	// make a pointr to input&output class to get the source card  and print messages on status bar
 
 	Grid* pGrid = pManager->GetGrid();
@@ -34,27 +41,29 @@ void CopyCardAction::ReadActionParameters()
 			pGrid->PrintErrorMessage("The cell does not have a Card ! Click any where to continue...");
 			return;
 		}
-		else
-			pGrid->PrintErrorMessage(" Copied successfully  ! Click any where to continue...");// m4 error hya bs ashan el print error msge bt3ml clear
-		//ll status bar bs 
 	}
 	else return;
 }
 
 
-//========================================
-
-
-// just store the card to the clipboard
-void CopyCardAction::Execute()
+void CutCardAction::Execute()
 {
 	ReadActionParameters();
 	Grid* pGrid = pManager->GetGrid();
 	pGrid->SetClipboard(CardPtr);
+	//CopyCardAction::Execute();
+	pGrid->RemoveObjectFromCell(*SourceCard);
+	pGrid->PrintErrorMessage(" Cut successfully  ! Click any where to continue...");// m4 error hya bs ashan el print error msge bt3ml clear
+//ll status bar bs 
 }
-//======================================
 
-CopyCardAction:: ~CopyCardAction()
+
+
+
+
+
+
+CutCardAction:: ~CutCardAction()
 {
 	delete SourceCard; // responsible for construction & destruction ( Aggregation )
 }

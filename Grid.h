@@ -6,6 +6,7 @@
 #include "Input.h"
 #include "Output.h"
 #include "CellPosition.h"
+#include "fstream"
 
 // forward declarations (the includes are in the cpp)
 class Cell;
@@ -43,6 +44,7 @@ public:
 	                                                     // only if the Cell does NOT already contain an object, 
 	                                                     // otherwise return false and don't add
 
+	bool Grid::AddObjectToCell(GameObject* pNewObject, CellPosition* cell);//added by M.Omar
 	void RemoveObjectFromCell(const CellPosition & pos); // Removes the GameObject of the Cell of the passed "position"
 
 	void UpdatePlayerCell(Player * player, const CellPosition & newPosition); // Update the player's pCell with the CellList's Cell pointer of the "newPosition",
@@ -65,6 +67,7 @@ public:
 	///TODO: add any needed setter/getter "EXCEPT" ANY setters or getters of "CellList" or "PlayerList" (Forbidden for class Responsibilities)
 
 	// ========= Other Getters =========
+	 
 	GameObject* GetGameObjectFromCell(const CellPosition& cell) const;// done by M.O
 	Player * GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
 	Ladder * GetNextLadder(const CellPosition & position);  // Gets a Pointer to the first Ladder after the passed "position"
@@ -79,6 +82,8 @@ public:
 
 	void PrintErrorMessage(string msg); // Prints an error message on statusbar, Waits for mouse click then clears statusbar
 									    // We added this function once here because it is used many times by other classes
+
+	void SaveAll(ofstream& out, ObjectType Obj);
 
 	~Grid(); // A destructor for any needed deallcations
 };

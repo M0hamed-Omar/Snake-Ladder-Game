@@ -57,6 +57,21 @@ bool Grid::AddObjectToCell(GameObject * pNewObject)  // think if any validation 
 	return false; // if not a valid position
 }
 
+
+bool Grid::AddObjectToCell(GameObject* pNewObject, CellPosition* cell)// added by M.Omar
+{
+	if (cell->IsValidCell())
+	{
+		GameObject* pPrevObject = CellList[cell->VCell()][cell->HCell()]->GetGameObject();
+		if (pPrevObject)  // the cell already contains a game object
+			return false; // do NOT add and return false
+		// Set the game object of the Cell with the new game object
+		CellList[cell->VCell()][cell->HCell()]->SetGameObject(pNewObject);
+		return true; // indicating that addition is done
+	}
+	return false; // if not a valid position
+}
+
 void Grid::RemoveObjectFromCell(const CellPosition & pos)
 {
 	if (pos.IsValidCell()) // Check if valid position
@@ -124,7 +139,6 @@ void Grid::AdvanceCurrentPlayer()
 }
 
 // ========= Other Getters =========
-
 
 GameObject* Grid:: GetGameObjectFromCell(const CellPosition& cell) const
 {
@@ -269,6 +283,22 @@ void Grid::PrintErrorMessage(string msg)
 }
 
 
+void Grid::SaveAll(ofstream& out, ObjectType Obj) // responsible for calling the GameObject :: Save() function for the GameObject of each cell (if any) in the Grid’s CellList
+{
+	for (int i = NumVerticalCells - 1; i >= 0; i--)
+	{
+		for (int j = 0; j < NumHorizontalCells; j++)
+		{
+			GameObject* pGameObj =CellList[i][j]->GetGameObject(); //Gets pointer to gameobj if exist otherwise it's NULL
+			if (pGameObj)
+				pGameObj->Save(out,Obj); //Calls the save func of the gameobj with polymorphism
+
+		}
+	}
+
+}
+
+
 Grid::~Grid()
 {
 	delete pIn;
@@ -289,3 +319,4 @@ Grid::~Grid()
 		delete PlayerList[i];
 	}
 }
+

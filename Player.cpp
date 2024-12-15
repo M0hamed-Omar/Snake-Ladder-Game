@@ -40,7 +40,6 @@ int Player::GetTurnCount() const
 	return turnCount;
 }
 
-
 void Player::setJustRolledDiceNum(int dicenum)
 {
 	this->justRolledDiceNum = dicenum;
@@ -55,9 +54,10 @@ int Player::GetJustRolledDiceNum() const
 void Player::Draw(Output* pOut) const
 {
 	color playerColor = UI.PlayerColors[playerNum];
-
+	CellPosition playerPosition = pCell->GetCellPosition();
 
 	///TODO: use the appropriate output function to draw the player with "playerColor"
+	pOut->DrawPlayer(playerPosition, playerNum, playerColor);
 
 }
 
@@ -65,9 +65,9 @@ void Player::ClearDrawing(Output* pOut) const
 {
 	color cellColor = pCell->HasCard() ? UI.CellColor_HasCard : UI.CellColor_NoCard;
 	
-	
+	CellPosition playerPosition = pCell->GetCellPosition();
 	///TODO: use the appropriate output function to draw the player with "cellColor" (to clear it)
-
+	pOut->DrawPlayer(playerPosition, playerNum, cellColor);
 }
 
 // ====== Game Functions ======

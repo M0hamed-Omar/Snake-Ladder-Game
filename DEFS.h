@@ -39,5 +39,10 @@ enum ActionType // The actions supported (add more as needed)
 	GRID_AREA,			// Inside Grid Area
 	STATUS 				// Inside StatusBar Area
 };
-
+enum ObjectType
+{
+	LadderObj,
+	SnakeObj,
+	CardObj,
+};
 #endif

@@ -30,7 +30,12 @@ void AddLadderAction::ReadActionParameters()
 	endPos = pIn->GetCellClicked();
 
 	///TODO: Make the needed validations on the read parameters
-	
+	if (startPos.VCell() < endPos.VCell() || startPos.HCell() - endPos.HCell() != 0)
+	{
+		startPos.SetHCell(-1);
+		endPos.SetHCell(-1);
+	}
+
 	// Clear messages
 	pOut->ClearStatusBar();
 }
