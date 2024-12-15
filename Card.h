@@ -27,6 +27,7 @@ public:
 	                                                   // It is a virtual function (implementation depends on Card Type)
 
 	virtual void Save(ofstream& OutFile, ObjectType Obj); // saving to a file when the ObjectType enum passed is CardObj else it returns
+	virtual void Load(ifstream& Infile);
 
 	virtual ~Card(); // A Virtual Destructor
 };

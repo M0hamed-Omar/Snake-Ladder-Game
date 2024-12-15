@@ -29,3 +29,12 @@ void Card7::Save(ofstream& OutFile, ObjectType Obj)
 	// Now add Card parameters (It doesn't have)
 	OutFile << endl;
 }
+
+void Card7::Load(ifstream& Infile)
+{
+	// load the card postition first by calling the base class load
+	Card::Load(Infile);
+	//load the card parameters 
+
+
+}

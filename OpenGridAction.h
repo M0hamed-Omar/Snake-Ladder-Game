@@ -3,7 +3,7 @@
 class OpenGridAction :	public Action
 {
 	// [Action Parameters]
-	string outputFileName; // name of the file to create and write in or if it already exsists overwite it
+	string inputFileName; // name of the file to create and write in or if it already exsists overwite it
 
 	// Note: These parameters should be read in ReadActionParameters()
 

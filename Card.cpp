@@ -46,6 +46,12 @@ void Card::Save(ofstream& OutFile, ObjectType Obj)
 	OutFile << cardNumber << " " << position.GetCellNum();
 }
 
+void Card::Load(ifstream& Infile)
+{
+	int cellNum;
+		Infile >> cellNum;
+	position = position.GetCellPositionFromNum(cellNum);
+}
 
 Card::~Card()
 {

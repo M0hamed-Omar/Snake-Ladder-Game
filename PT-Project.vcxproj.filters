@@ -385,7 +385,6 @@
     <ClInclude Include="Card8.h">
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
-    <ClInclude Include="Card9.h" />
     <ClInclude Include="SaveGridAction.h">
       <Filter>Actions</Filter>
     </ClInclude>
@@ -399,6 +398,9 @@
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Card2.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="Card9.h">
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
   </ItemGroup>

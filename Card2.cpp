@@ -37,6 +37,15 @@ void Card2::Apply(Grid* pGrid, Player* pPlayer)
 
 }
 
+void Card2::Load(ifstream& Infile)
+{
+	// load the card postition first by calling the base class load
+	Card::Load(Infile);
+	//load the card parameters 
+	Infile >> walletAmount;
+	
+}
+
 void Card2::Save(ofstream& OutFile, ObjectType Obj)
 {
 	// Check Obj 

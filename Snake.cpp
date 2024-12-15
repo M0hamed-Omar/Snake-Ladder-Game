@@ -36,6 +36,15 @@ void Snake::Save(ofstream& OutFile, ObjectType Obj)
 	OutFile << position.GetCellNum() << " " << endCellPos.GetCellNum() << endl;
 }
 
+void Snake::Load(ifstream& Infile)
+{
+	int start, end;
+	Infile >> start >> end;
+	position = position.GetCellPositionFromNum(start);
+	endCellPos = position.GetCellPositionFromNum(end);
+}
+
+
 CellPosition Snake::GetEndPosition() const
 {
 	return endCellPos;
