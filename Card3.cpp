@@ -19,7 +19,8 @@ void Card3::Apply(Grid* pGrid, Player* pPlayer)
 	{
 		const CellPosition new_cellposition = ((GameObject*)l)->GetPosition(); // to get the new cell poaition which have the start of ladder
 		int startcell = new_cellposition.GetCellNum(); // to get the cell number of the new cell position
-		pPlayer->Move(pGrid, startcell); // move the player to the new cell number
+		int currentcell = pPlayer->GetCell()->GetCellPosition().GetCellNum();
+		pPlayer->Move(pGrid, startcell - currentcell); // move the player to the new cell number
 	}
 	
 }
