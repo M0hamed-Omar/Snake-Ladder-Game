@@ -88,7 +88,7 @@ public:
 	void DeleteAll(); // Removes all Gameobjects from the Grid 
 	void countGameObjects(int& ladders, int& snakes, int& cards); //Changes the ints passed by refrence and make them equal to the count of different gameobjects 
 	void resetAllPlayers();
-	void resetStations(); // resets the owenership of all stations in the grid
+	void resetStations(); // resets the owenership of all stations in the grid.
 
 	~Grid(); // A destructor for any needed deallcations
 };
