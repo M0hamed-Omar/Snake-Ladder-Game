@@ -115,7 +115,7 @@ void Player::Move(Grid * pGrid, int diceNumber)
 	//    Using the appropriate function of CellPosition class to update "pos"
 	if (GetWallet() > 0)
 	{
-		CellPosition pos = pCell->GetCellPosition();
+		CellPosition& pos = pCell->GetCellPosition();
 		pos.AddCellNum(diceNumber);
 		pGrid->UpdatePlayerCell(this,pos);
 		if (pCell->HasCard() || pCell->HasSnake() || pCell->HasLadder())

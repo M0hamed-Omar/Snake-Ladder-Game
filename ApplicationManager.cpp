@@ -13,6 +13,7 @@
 #include "OpenGridAction.h"
 #include "NewGameAction.h"
 #include "ToPlayModeAction.h"
+#include "ToDesignModeAction.h"
 
 ///TODO: Add #include for all action types
 
@@ -110,7 +111,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case TO_DESIGN_MODE:
-		pOut->CreateDesignModeToolBar(); // Changed>>K
+		pAct = new ToDesignModeAction(this); // Changed>>K
 		break;
 
 		
