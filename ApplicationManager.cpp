@@ -11,6 +11,7 @@
 #include "PasteCardAction.h"
 #include "SaveGridAction.h"
 #include "OpenGridAction.h"
+#include "NewGameAction.h"
 
 ///TODO: Add #include for all action types
 
@@ -121,6 +122,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case OPEN_GRID:
 		pAct = new OpenGridAction(this);
 		break;
+
+	case NEW_GAME:
+		pAct = new NewGameAction(this);
 
 	case INPUT_DICE_VALUE:
 			break;

@@ -98,9 +98,6 @@ void OpenGridAction::Execute()
 			case 1:
 				pCard = new CardOne(tmp1);
 				break;
-
-				// A- Add the remaining cases
-
 			case 2:
 				pCard = new Card2(tmp1);
 				break;

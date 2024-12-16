@@ -313,6 +313,24 @@ void Grid::DeleteAll()
 
 }
 
+void Grid::resetAllPlayers()
+{
+	for (int i = 0; i < MaxPlayerCount; i++)
+	{
+		PlayerList[i]->SetCell(CellList[0][NumVerticalCells]);
+		PlayerList[i]->ResetPlayer();
+
+	}
+}
+void Grid::SetCurrentPlayer(int n)
+{
+	currPlayerNumber = n;
+}
+void Grid::resetStations()
+{
+
+}
+
 void Grid::countGameObjects(int& ladders, int& snakes, int& cards)
 {
 	ladders = snakes = cards = 0;

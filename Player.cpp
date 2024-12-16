@@ -13,6 +13,14 @@ Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerN
 }
 
 // ====== Setters and Getters ======
+void Player::ResetPlayer()
+{
+	
+	turnCount = 0;
+	stepCount = 0;
+	wallet = 100;
+
+}
 
 void Player::SetCell(Cell * cell)
 {

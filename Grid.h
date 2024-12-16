@@ -63,6 +63,7 @@ public:
 	bool GetEndGame() const;		 // A getter for endGame data member
 
 	void AdvanceCurrentPlayer();     // Increments the currPlayerNum and if reaches MaxPlayerCount reset to 0 (using %)
+	void SetCurrentPlayer(int n); // changes the current player number >>Karim
 
 	///TODO: add any needed setter/getter "EXCEPT" ANY setters or getters of "CellList" or "PlayerList" (Forbidden for class Responsibilities)
 
@@ -84,10 +85,10 @@ public:
 									    // We added this function once here because it is used many times by other classes
 	//>>>>>>> Karim
 	void SaveAll(ofstream& out, ObjectType Obj); //Calls the save func of each gameobject in the cell list 
-	void LoadAll(ifstream& in); //
 	void DeleteAll(); // Removes all Gameobjects from the Grid 
-	void Grid::countGameObjects(int& ladders, int& snakes, int& cards); //Changes the ints passed by refrence and make them equal to the count of different gameobjects 
-
+	void countGameObjects(int& ladders, int& snakes, int& cards); //Changes the ints passed by refrence and make them equal to the count of different gameobjects 
+	void resetAllPlayers();
+	void resetStations(); // resets the owenership of all stations in the grid
 
 	~Grid(); // A destructor for any needed deallcations
 };
