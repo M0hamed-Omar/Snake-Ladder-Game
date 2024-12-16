@@ -201,6 +201,8 @@
     <ClCompile Include="SaveGridAction.cpp" />
     <ClCompile Include="Snake.cpp" />
     <ClCompile Include="CopyCardAction.cpp" />
+    <ClCompile Include="ToDesignModeAction.cpp" />
+    <ClCompile Include="ToPlayModeAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Action.h" />
@@ -256,6 +258,8 @@
     <ClInclude Include="RollDiceAction.h" />
     <ClInclude Include="SaveGridAction.h" />
     <ClInclude Include="Snake.h" />
+    <ClInclude Include="ToDesignModeAction.h" />
+    <ClInclude Include="ToPlayModeAction.h" />
     <ClInclude Include="UI_Info.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

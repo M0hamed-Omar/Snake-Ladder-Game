@@ -317,7 +317,7 @@ void Grid::resetAllPlayers()
 {
 	for (int i = 0; i < MaxPlayerCount; i++)
 	{
-		PlayerList[i]->SetCell(CellList[0][NumVerticalCells]);
+		PlayerList[i]->SetCell(CellList[NumVerticalCells-1][0]);
 		PlayerList[i]->ResetPlayer();
 
 	}
