@@ -13,7 +13,7 @@ void NewGameAction::Execute()
 {
 	Grid* pGrid = pManager->GetGrid();
 	pGrid->resetAllPlayers(); //resets the position of all players and resets their wallet to contain 100
-	pGrid->SetCurrentPlayer(0); // sets the current player to be player 0;
+	pGrid->SetCurrentPlayer(0); // sets the current player to be player 0
 	pGrid->resetStations(); //Resets the ownership of all stations in the grid
 	
 }

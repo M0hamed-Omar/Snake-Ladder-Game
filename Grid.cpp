@@ -317,9 +317,8 @@ void Grid::resetAllPlayers()
 {
 	for (int i = 0; i < MaxPlayerCount; i++)
 	{
-		PlayerList[i]->SetCell(CellList[NumVerticalCells-1][0]);
-		PlayerList[i]->ResetPlayer();
-
+		PlayerList[i]->ResetPlayer(this); //Resets  all players and resets their wallet to contain 100
+		//UpdatePlayerCell(PlayerList[i], CellList[NumVerticalCells - 1][0]->GetCellPosition());
 	}
 }
 void Grid::SetCurrentPlayer(int n)

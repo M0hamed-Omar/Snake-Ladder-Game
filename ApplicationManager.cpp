@@ -14,6 +14,8 @@
 #include "NewGameAction.h"
 #include "ToPlayModeAction.h"
 #include "ToDesignModeAction.h"
+#include "InputDiceAction.h"
+
 
 ///TODO: Add #include for all action types
 
@@ -102,13 +104,13 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 	case TO_PLAY_MODE:
 		pAct = new ToPlayModeAction(this); //Changed >>K
-		
 		break;
 
 	case ROLL_DICE:
 		// create an object of RollDiceAction here
 		pAct = new RollDiceAction(this);
 		break;
+
 
 	case TO_DESIGN_MODE:
 		pAct = new ToDesignModeAction(this); // Changed>>K
@@ -128,8 +130,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 	case NEW_GAME:
 		pAct = new NewGameAction(this);
+		break;
 
 	case INPUT_DICE_VALUE:
+		pAct = new InputDiceAction(this);
 			break;
 	case STATUS:	// a click on the status bar ==> no action
 		return;

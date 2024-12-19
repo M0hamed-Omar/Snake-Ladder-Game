@@ -13,9 +13,10 @@ Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerN
 }
 
 // ====== Setters and Getters ======
-void Player::ResetPlayer()
+void Player::ResetPlayer(Grid *pGrid)
 {
-	
+	CellPosition zeroCell(NumVerticalCells - 1, 0 ); //distination Cell (first cell of the grid)
+		pGrid->UpdatePlayerCell(this,zeroCell );
 	turnCount = 0;
 	stepCount = 0;
 	wallet = 100;
@@ -35,6 +36,10 @@ Cell* Player::GetCell() const
 void Player::SetWallet(int wallet)
 {
 	this->wallet = wallet;
+	if (this->wallet < 0)
+	{
+		this->wallet = 0;
+	}
 	// Make any needed validations
 }
 
