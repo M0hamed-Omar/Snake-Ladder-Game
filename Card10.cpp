@@ -6,6 +6,7 @@ Card10::Card10(const CellPosition& pos) :Card(pos)
 	Fee = 0;
 	CardPrice = 0;
 }
+bool Card10::Flag = false;
 int Card10::count = 0;
 Player* Card10::CardOwner = NULL;
 Card10::~Card10()
@@ -97,5 +98,42 @@ void Card10::Apply(Grid* pGrid, Player* pPlayer)
 			pGrid->PrintErrorMessage("You are the owner of this card , No fee to pay ! Click anywhere to continue...");
 		}
 	}
+
+}
+
+
+
+void Card10::Save(ofstream& OutFile, ObjectType Obj)
+{
+	// Check Obj 
+	if (Obj != CardObj)
+		return;
+
+	// Call base class Save only if the check passes
+	Card::Save(OutFile, Obj);
+
+	// Now add Card parameters 
+	if (Flag)
+	OutFile << endl;
+	else
+	{
+		OutFile << CardPrice << " " << Fee << endl;
+		Flag = true;
+	}
+}
+
+void Card10::Load(ifstream& Infile)
+{
+	// load the card postition first by calling the base class load
+	Card::Load(Infile);
+	//load the card parameters 
+	if (Flag)
+		Infile >> CardPrice >> Fee;
+	else
+	{
+		Infile >> CardPrice >> Fee;
+		Flag = true;
+	}
+	
 
 }

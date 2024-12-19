@@ -32,6 +32,6 @@ void Card8::Load(ifstream& Infile)
 	// load the card postition first by calling the base class load
 	Card::Load(Infile);
 	//load the card parameters 
-
+	// no parameters
 
 }

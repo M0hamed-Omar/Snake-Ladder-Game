@@ -96,11 +96,11 @@ void AddCardAction::Execute()
 			break;
 
 			// A- Add the remaining cases
-		/*
+		
 		case 2:
 			pCard = new Card2(CardPosition);
 			break;
-			*/
+			
 		case 3:
 			pCard = new Card3(CardPosition);
 			break;

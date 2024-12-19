@@ -68,5 +68,9 @@ void Card9::Load(ifstream& Infile)
 	int DestinationCellNum;
 		Infile >> DestinationCellNum;
 
-	DestinationCell = &(CellPosition::GetCellPositionFromNum(DestinationCellNum));
+	CellPosition testCell = (CellPosition::GetCellPositionFromNum(DestinationCellNum));
+	if (testCell.IsValidCell())
+		DestinationCell = &testCell;
+	else
+		return;
 }
