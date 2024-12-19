@@ -13,6 +13,15 @@ Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerN
 }
 
 // ====== Setters and Getters ======
+void Player::ResetPlayer(Grid *pGrid)
+{
+	CellPosition zeroCell(NumVerticalCells - 1, 0 ); //distination Cell (first cell of the grid)
+		pGrid->UpdatePlayerCell(this,zeroCell );
+	turnCount = 0;
+	stepCount = 0;
+	wallet = 100;
+
+}
 
 void Player::SetCell(Cell * cell)
 {
@@ -27,6 +36,10 @@ Cell* Player::GetCell() const
 void Player::SetWallet(int wallet)
 {
 	this->wallet = wallet;
+	if (this->wallet < 0)
+	{
+		this->wallet = 0;
+	}
 	// Make any needed validations
 }
 
@@ -54,9 +67,10 @@ int Player::GetJustRolledDiceNum() const
 void Player::Draw(Output* pOut) const
 {
 	color playerColor = UI.PlayerColors[playerNum];
-
+	CellPosition playerPosition = pCell->GetCellPosition();
 
 	///TODO: use the appropriate output function to draw the player with "playerColor"
+	pOut->DrawPlayer(playerPosition, playerNum, playerColor);
 
 }
 
@@ -64,9 +78,9 @@ void Player::ClearDrawing(Output* pOut) const
 {
 	color cellColor = pCell->HasCard() ? UI.CellColor_HasCard : UI.CellColor_NoCard;
 	
-	
+	CellPosition playerPosition = pCell->GetCellPosition();
 	///TODO: use the appropriate output function to draw the player with "cellColor" (to clear it)
-
+	pOut->DrawPlayer(playerPosition, playerNum, cellColor);
 }
 
 // ====== Game Functions ======

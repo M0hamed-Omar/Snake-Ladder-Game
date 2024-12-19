@@ -77,7 +77,8 @@ void Grid::RemoveObjectFromCell(const CellPosition & pos)
 	if (pos.IsValidCell()) // Check if valid position
 	{
 		// Note: you can deallocate the object here before setting the pointer to null if it is needed
-
+		if (CellList[pos.VCell()][pos.HCell()]->GetGameObject())
+			delete CellList[pos.VCell()][pos.HCell()]->GetGameObject();
 		CellList[pos.VCell()][pos.HCell()]->SetGameObject(NULL);
 		CellList[pos.VCell()][pos.HCell()]->DrawCellOrCard(pOut);
 	}
@@ -283,6 +284,86 @@ void Grid::PrintErrorMessage(string msg)
 }
 
 
+void Grid::SaveAll(ofstream& out, ObjectType Obj) // responsible for calling the GameObject :: Save() function for the GameObject of each cell (if any) in the Grid’s CellList
+{
+	//could count the passed Object Type here and output the number to the file here rather than in saveGrid action yet will loop more times
+	for (int i = NumVerticalCells - 1; i >= 0; i--)
+	{
+		for (int j = 0; j < NumHorizontalCells; j++)
+		{
+			GameObject* pGameObj =CellList[i][j]->GetGameObject(); //Gets pointer to gameobj if exist otherwise it's NULL
+			if (pGameObj)
+				pGameObj->Save(out,Obj); //Calls the save func of the gameobj with polymorphism
+
+		}
+	}
+
+}
+
+void Grid::DeleteAll()
+{
+	for (int i = NumVerticalCells - 1; i >= 0; i--)
+	{
+		for (int j = 0; j < NumHorizontalCells; j++)
+		{
+			RemoveObjectFromCell(CellList[i][j]->GetCellPosition()); //Calls the remove obj for all cells to clear the grid
+
+		}
+	}
+
+}
+
+void Grid::resetAllPlayers()
+{
+	for (int i = 0; i < MaxPlayerCount; i++)
+	{
+		PlayerList[i]->ResetPlayer(this); //Resets  all players and resets their wallet to contain 100
+		//UpdatePlayerCell(PlayerList[i], CellList[NumVerticalCells - 1][0]->GetCellPosition());
+	}
+}
+void Grid::SetCurrentPlayer(int n)
+{
+	currPlayerNumber = n;
+}
+void Grid::resetStations()
+{
+
+}
+
+bool Grid::isOverlapping(GameObject* Obj)
+{
+	for (int i = NumVerticalCells - 1; i >= 0; i--)
+	{
+		for (int j = 0; j < NumHorizontalCells; j++)
+		{
+			GameObject* pGameObj = CellList[i][j]->GetGameObject(); //Gets pointer to gameobj if exist otherwise it's NULL
+			if (pGameObj)
+				if(pGameObj->IsOverLapping(Obj)) //Calls the IsOverlapping func of the gameobj with polymorphism
+					return true;
+			
+		}
+	}
+	return false;
+}
+
+void Grid::countGameObjects(int& ladders, int& snakes, int& cards)
+{
+	ladders = snakes = cards = 0;
+	for (int i = NumVerticalCells - 1; i >= 0; i--)
+	{
+		for (int j = 0; j < NumHorizontalCells; j++)
+		{
+			if (CellList[i][j]->HasLadder())
+				ladders++;
+			else if (CellList[i][j]->HasSnake())
+				snakes++;
+			else if (CellList[i][j]->HasCard())
+				cards++;
+		}
+	}
+}
+
+
 Grid::~Grid()
 {
 	delete pIn;
@@ -303,3 +384,4 @@ Grid::~Grid()
 		delete PlayerList[i];
 	}
 }
+

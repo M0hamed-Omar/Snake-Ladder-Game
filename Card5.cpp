@@ -18,3 +18,25 @@ void Card5::Apply(Grid* pGrid, Player* pPlayer)
 	}
 
 }
+
+void Card5::Save(ofstream& OutFile, ObjectType Obj)
+{
+	// Check Obj 
+	if (Obj != CardObj)
+		return;
+
+	// Call base class Save only if the check passes
+	Card::Save(OutFile, Obj);
+
+	// Now add Card parameters (It doesn't have)
+	OutFile << endl;
+}
+
+void Card5::Load(ifstream& Infile)
+{
+	// load the card postition first by calling the base class load
+	Card::Load(Infile);
+	//load the card parameters 
+
+
+}

@@ -235,6 +235,27 @@
     <ClCompile Include="Card13.cpp">
       <Filter>GameObjects\Cards</Filter>
     </ClCompile>
+    <ClCompile Include="Card2.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveGridAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGridAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="NewGameAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="ToDesignModeAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="ToPlayModeAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="InputDiceAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -376,26 +397,35 @@
     <ClInclude Include="Card8.h">
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
-    <ClInclude Include="CutCardAction.h">
+    <ClInclude Include="SaveGridAction.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGridAction.h">
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="PasteCardAction.h">
       <Filter>Actions</Filter>
     </ClInclude>
+    <ClInclude Include="CutCardAction.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Card2.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
     <ClInclude Include="Card9.h">
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
-    <ClInclude Include="Card10.h">
-      <Filter>GameObjects\Cards</Filter>
+    <ClInclude Include="NewGameAction.h">
+      <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="Card11.h">
-      <Filter>GameObjects\Cards</Filter>
+    <ClInclude Include="ToDesignModeAction.h">
+      <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="Card12.h">
-      <Filter>GameObjects\Cards</Filter>
+    <ClInclude Include="ToPlayModeAction.h">
+      <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="Card13.h">
-      <Filter>GameObjects\Cards</Filter>
+    <ClInclude Include="InputDiceAction.h">
+      <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

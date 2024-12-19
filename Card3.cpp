@@ -19,7 +19,31 @@ void Card3::Apply(Grid* pGrid, Player* pPlayer)
 	{
 		const CellPosition new_cellposition = ((GameObject*)l)->GetPosition(); // to get the new cell poaition which have the start of ladder
 		int startcell = new_cellposition.GetCellNum(); // to get the cell number of the new cell position
-		pPlayer->Move(pGrid, startcell); // move the player to the new cell number
+		int currentcell = pPlayer->GetCell()->GetCellPosition().GetCellNum();
+		pPlayer->Move(pGrid, startcell - currentcell); // move the player to the new cell number
 	}
 	
 }
+
+void Card3::Save(ofstream& OutFile, ObjectType Obj)
+{
+	// Check Obj 
+	if (Obj != CardObj)
+		return;
+
+	// Call base class Save only if the check passes
+	Card::Save(OutFile, Obj);
+
+	// Now add Card parameter (It doesn't have)
+	OutFile <<endl;
+}
+
+void Card3::Load(ifstream& Infile)
+{
+	// load the card postition first by calling the base class load
+	Card::Load(Infile);
+	//load the card parameters 
+	
+
+}
+

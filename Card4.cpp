@@ -16,12 +16,34 @@ void Card4::Apply(Grid* pGrid, Player* pPlayer)
 	Snake* s = pGrid->GetNextSnake(cellposition);
 	const CellPosition new_cellposition = ((GameObject*)s)->GetPosition();
 	int startcell = new_cellposition.GetCellNum();
-	if (pGrid == NULL) // I am not sure if i put s is correct or not 
+	
+	if (s) // I am not sure if i put l is correct or not 
 	{
+		const CellPosition new_cellposition = ((GameObject*)s)->GetPosition(); // to get the new cell poaition which have the start of ladder
+		int startcell = new_cellposition.GetCellNum(); // to get the cell number of the new cell position
+		int currentcell = pPlayer->GetCell()->GetCellPosition().GetCellNum();
+		pPlayer->Move(pGrid, startcell - currentcell); // move the player to the new cell number
+	}
+}
 
-	}
-	else
-	{
-		pPlayer->Move(pGrid, startcell);
-	}
+void Card4::Save(ofstream& OutFile, ObjectType Obj)
+{
+	// Check Obj 
+	if (Obj != CardObj)
+		return;
+
+	// Call base class Save only if the check passes
+	Card::Save(OutFile, Obj);
+
+	// Now add Card parameters (It doesn't have)
+	OutFile << endl;
+}
+
+void Card4::Load(ifstream& Infile)
+{
+	// load the card postition first by calling the base class load
+	Card::Load(Infile);
+	//load the card parameters 
+	
+
 }

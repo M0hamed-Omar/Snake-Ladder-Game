@@ -15,6 +15,8 @@ public:
 	// Applies the effect of CardOne on the passed Player
 	//this effect is moved to destination cell
 	virtual void Apply(Grid* pGrid, Player* pPlayer); 
+	virtual void Save(ofstream& OutFile, ObjectType Obj);
+	virtual void Load(ifstream& Infile);
 
 	//=============================================
 	virtual ~Card9(); // A Virtual Destructor

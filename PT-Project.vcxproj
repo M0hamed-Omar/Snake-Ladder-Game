@@ -138,6 +138,7 @@
     <ClCompile Include="Card11.cpp" />
     <ClCompile Include="Card12.cpp" />
     <ClCompile Include="Card13.cpp" />
+    <ClCompile Include="Card2.cpp" />
     <ClCompile Include="Card3.cpp" />
     <ClCompile Include="Card4.cpp" />
     <ClCompile Include="Card5.cpp" />
@@ -189,14 +190,20 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="InputDiceAction.cpp" />
     <ClCompile Include="Ladder.cpp" />
+    <ClCompile Include="NewGameAction.cpp" />
+    <ClCompile Include="OpenGridAction.cpp" />
     <ClCompile Include="Output.cpp" />
     <ClCompile Include="PasteCardAction.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="RollDiceAction.cpp" />
+    <ClCompile Include="SaveGridAction.cpp" />
     <ClCompile Include="Snake.cpp" />
     <ClCompile Include="CopyCardAction.cpp" />
+    <ClCompile Include="ToDesignModeAction.cpp" />
+    <ClCompile Include="ToPlayModeAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Action.h" />
@@ -205,10 +212,7 @@
     <ClInclude Include="AddSnakeAction.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="Card.h" />
-    <ClInclude Include="Card10.h" />
-    <ClInclude Include="Card11.h" />
-    <ClInclude Include="Card12.h" />
-    <ClInclude Include="Card13.h" />
+    <ClInclude Include="Card2.h" />
     <ClInclude Include="Card3.h" />
     <ClInclude Include="Card4.h" />
     <ClInclude Include="Card5.h" />
@@ -246,12 +250,18 @@
     <ClInclude Include="Grid.h" />
     <ClInclude Include="CopyCardAction.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="InputDiceAction.h" />
     <ClInclude Include="Ladder.h" />
+    <ClInclude Include="NewGameAction.h" />
+    <ClInclude Include="OpenGridAction.h" />
     <ClInclude Include="Output.h" />
     <ClInclude Include="PasteCardAction.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="RollDiceAction.h" />
+    <ClInclude Include="SaveGridAction.h" />
     <ClInclude Include="Snake.h" />
+    <ClInclude Include="ToDesignModeAction.h" />
+    <ClInclude Include="ToPlayModeAction.h" />
     <ClInclude Include="UI_Info.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

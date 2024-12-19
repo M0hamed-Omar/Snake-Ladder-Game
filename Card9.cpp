@@ -48,3 +48,25 @@ void  Card9::Apply(Grid* pGrid, Player* pPlayer)
 	int Dist = x - y;
 	pPlayer->Move(pGrid, Dist);
 }
+void Card9::Save(ofstream& OutFile, ObjectType Obj)
+{
+	// Check Obj 
+	if (Obj != CardObj)
+		return;
+
+	// Call base class Save only if the check passes
+	Card::Save(OutFile, Obj);
+
+	// Now add Card parameters (It doesn't have)
+	OutFile <<" " << DestinationCell->GetCellNum() << endl;
+}
+void Card9::Load(ifstream& Infile)
+{
+	// load the card postition first by calling the base class load
+	Card::Load(Infile);
+	//load the card parameters 
+	int DestinationCellNum;
+		Infile >> DestinationCellNum;
+
+	DestinationCell = &(CellPosition::GetCellPositionFromNum(DestinationCellNum));
+}

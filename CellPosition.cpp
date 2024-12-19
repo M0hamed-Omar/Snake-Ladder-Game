@@ -118,7 +118,7 @@ void CellPosition::AddCellNum(int addedNum)
 
 	/// TODO: Implement this function as described in the .h file
 	int cell = addedNum + GetCellNumFromPosition(*this);
-	this->GetCellPositionFromNum(cell);
+	*this = this->GetCellPositionFromNum(cell); ////AAAAAAAAAAAAAAHHHHHHHH
 
 
 	// Note: this function updates the data members (vCell and hCell) of the calling object

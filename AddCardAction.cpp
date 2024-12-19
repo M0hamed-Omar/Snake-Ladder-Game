@@ -3,6 +3,7 @@
 #include "Input.h"
 #include "Output.h"
 #include "CardOne.h"
+#include "Card2.h"
 #include "Card3.h"
 #include "Card4.h"
 #include "Card5.h"
@@ -48,7 +49,7 @@ void AddCardAction::ReadActionParameters()
 	CardNumber = TempCardNumber;
 	// 3- Read the "cardPosition" parameter (its cell position) and set its data member
 	pOut->PrintMessage("click on card cell");
-	CardPosition = pIn->GetCellClicked();
+	CellPosition tmpCardPosition = pIn->GetCellClicked();
 	// 4- Make the needed validations on the read parameters
 
 	//the needed validations are :
@@ -56,7 +57,7 @@ void AddCardAction::ReadActionParameters()
 	// 2-the cell clicked does not have any game object
 
 	//======= first validation  ==========
-	if (!CardPosition.IsValidCell())
+	if (!tmpCardPosition.IsValidCell())
 	{
 		pGrid->PrintErrorMessage("The cell you entered is invalid cell ! click any where to continue...");
 		return;
@@ -67,7 +68,7 @@ void AddCardAction::ReadActionParameters()
 		pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
 		return;
 	}
-
+	CardPosition = tmpCardPosition;
 
 	// 5- Clear status bar
 	pOut->ClearStatusBar();

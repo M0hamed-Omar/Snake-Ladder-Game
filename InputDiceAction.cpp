@@ -1,25 +1,24 @@
-#include "RollDiceAction.h"
+#include "InputDiceAction.h"
 
 #include "Grid.h"
 #include "Player.h"
 
-#include <time.h> // used to in srand to generate random numbers with different seed
-
-RollDiceAction::RollDiceAction(ApplicationManager *pApp) : Action(pApp)
+InputDiceAction::InputDiceAction(ApplicationManager* pApp) : Action(pApp)
 {
 }
 
-void RollDiceAction::ReadActionParameters()
+void InputDiceAction::ReadActionParameters()
 {
 	// no parameters to read from user
 }
 
-void RollDiceAction::Execute()
+void InputDiceAction::Execute()
 {
-		
-	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
+
 
 	Grid* pGrid = pManager->GetGrid();
+	Output* pOut = pGrid->GetOutput();
+	Input* pIn = pGrid->GetInput();
 
 	// == Here are some guideline steps (numbered below) to implement this function ==
 
@@ -29,12 +28,16 @@ void RollDiceAction::Execute()
 		pGrid->PrintErrorMessage("Game Already Ended .. Please Start a new game");
 	}
 	// -- If not ended, do the following --:
+	
+	pOut->PrintMessage("Please Input Dice Value : (1 to 6)");
+	
+	int diceNumber = pIn->GetInteger(pOut);
+	if (diceNumber < 1 || diceNumber > 6)
+	{
+		pGrid->PrintErrorMessage("Invalid Dice Value !");
+		return;
+	}
 
-	// 2- Generate a random number from 1 to 6 --> This step is done for you
-	srand((int)time(NULL)); // time is for different seed each run
-	int diceNumber = 1 + rand() % 6; // from 1 to 6 --> should change seed
-
-	pGrid->PrintErrorMessage( to_string(diceNumber) +"      Click to move");
 	// 3- Get the "current" player from pGrid
 	Player* pCurrentPlayer = pGrid->GetCurrentPlayer();
 
@@ -43,11 +46,12 @@ void RollDiceAction::Execute()
 
 	// 5- Advance the current player number of pGrid
 	pGrid->AdvanceCurrentPlayer();
+	pOut->ClearStatusBar();
 	//------------->>>>>>>>>>>>>>>>>>>>>>>>>>>> CHECK FIRST IS THAT CARD 8 OR NOT <<<<<<<<<<<<---------------------
 	// NOTE: the above guidelines are the main ones but not a complete set (You may need to add more steps).
 
 }
 
-RollDiceAction::~RollDiceAction()
+InputDiceAction::~InputDiceAction()
 {
 }

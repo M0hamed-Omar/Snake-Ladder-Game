@@ -273,7 +273,9 @@ void Output::PrintMessage(string msg) const	//Prints a message on status bar
 void Output::PrintPlayersInfo(string info)
 {
 	///TODO: Clear what was written on the toolbar
-	//ClearToolBar(); **== I think it is already made when I switched to Play Mode so it will CLEAR all images in Play Mode Tool Bar ==**
+	pWind->SetPen(UI.ToolBarColor, 1);
+	pWind->SetBrush(UI.ToolBarColor);
+	pWind->DrawRectangle(UI.MenuItemWidth * (ITM_EXIT_2 +1),0 , UI.width, UI.ToolBarHeight);;// 5 is the number of imgs (actions in the playmode ) (enum ==4 +1 =5)
 	// Set the pen and font before drawing the string on the window
 	pWind->SetPen(UI.PlayerInfoColor);
 	pWind->SetFont(20, BOLD, BY_NAME, "Verdana");

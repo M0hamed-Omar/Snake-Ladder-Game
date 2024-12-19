@@ -9,6 +9,13 @@
 #include "CopyCardAction.h"
 #include "CutCardAction.h"
 #include "PasteCardAction.h"
+#include "SaveGridAction.h"
+#include "OpenGridAction.h"
+#include "NewGameAction.h"
+#include "ToPlayModeAction.h"
+#include "ToDesignModeAction.h"
+#include "InputDiceAction.h"
+
 
 ///TODO: Add #include for all action types
 
@@ -96,7 +103,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case TO_PLAY_MODE:
-		pOut->CreatePlayModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
+		pAct = new ToPlayModeAction(this); //Changed >>K
 		break;
 
 	case ROLL_DICE:
@@ -104,16 +111,30 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new RollDiceAction(this);
 		break;
 
+
 	case TO_DESIGN_MODE:
-		pOut->CreateDesignModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
+		pAct = new ToDesignModeAction(this); // Changed>>K
 		break;
 
 		
 
 		///TODO: Add a case for EACH Action type in the Design mode or Play mode
 
+	case SAVE_GRID:
+			pAct = new SaveGridAction(this);
+			break;
 
+	case OPEN_GRID:
+		pAct = new OpenGridAction(this);
+		break;
 
+	case NEW_GAME:
+		pAct = new NewGameAction(this);
+		break;
+
+	case INPUT_DICE_VALUE:
+		pAct = new InputDiceAction(this);
+			break;
 	case STATUS:	// a click on the status bar ==> no action
 		return;
 	}

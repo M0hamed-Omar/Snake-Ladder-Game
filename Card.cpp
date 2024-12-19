@@ -40,6 +40,19 @@ void Card::Apply(Grid* pGrid, Player* pPlayer)
 	pGrid->PrintErrorMessage("You have reached card " + to_string(cardNumber) + ". Click to continue ...");
 }
 
+void Card::Save(ofstream& OutFile, ObjectType Obj)
+{
+
+	OutFile << cardNumber << " " << position.GetCellNum();
+}
+
+void Card::Load(ifstream& Infile)
+{
+	int cellNum;
+		Infile >> cellNum;
+	position = position.GetCellPositionFromNum(cellNum);
+}
+
 Card::~Card()
 {
 }
