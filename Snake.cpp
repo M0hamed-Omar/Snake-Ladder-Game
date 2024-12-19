@@ -38,9 +38,9 @@ bool Snake::IsOverLapping(GameObject* Obj)
 		if (position.HCell() == pSnake->GetPosition().HCell())
 		{
 			if (endCellPos.VCell() < pSnake->GetPosition().VCell() || pSnake->GetEndPosition().VCell() < position.VCell())
-				return true;
-			else
 				return false;
+			else
+				return true;
 		}
 	}
 	else if (Ladder* pLadder = dynamic_cast<Ladder*>(Obj))

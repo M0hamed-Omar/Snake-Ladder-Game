@@ -64,6 +64,12 @@ void AddSnakeAction::Execute()
 
 	Grid* pGrid = pManager->GetGrid(); // We get a pointer to the Grid from the ApplicationManager
 
+	if (pGrid->isOverlapping(pSnake))
+	{
+		pGrid->PrintErrorMessage("Error: Overlapping! Click to continue ...");
+		return;
+	}
+
 	// Add the card object to the GameObject of its Cell:
 	bool added = pGrid->AddObjectToCell(pSnake);
 
