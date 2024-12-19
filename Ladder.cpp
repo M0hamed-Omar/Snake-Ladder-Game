@@ -48,6 +48,16 @@ void Ladder::Save(ofstream& OutFile, ObjectType Obj)
 	 endCellPos = position.GetCellPositionFromNum(end);
 }
 
+ bool Ladder::IsOverLapping(GameObject* Obj)
+ {
+	 if (Ladder* pLadder = dynamic_cast<Ladder*>(Obj))
+	 {
+		 if (position.HCell() == pLadder->GetPosition().HCell() && ( endCellPos.VCell() < pLadder->GetPosition().VCell() || pLadder->GetEndPosition().VCell() < position.VCell()  ))
+			 return true;
+	 }
+	 return false;
+ }
+
 CellPosition Ladder::GetEndPosition() const
 {
 	return endCellPos;

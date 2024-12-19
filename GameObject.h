@@ -27,7 +27,7 @@ public:
 
 	// The following functions are examples of what should be supported by the GameObject class
 	// They should be overridden by each inherited class
-
+	virtual bool IsOverLapping(GameObject* Obj);  // Checks if the passed GameObject overlaps with this GameObject
 	// Decide the parameters that you should pass to each function	
 	
 	virtual void Save(ofstream &OutFile , ObjectType Obj) = 0;	// Saves the GameObject parameters to the file

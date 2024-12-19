@@ -89,6 +89,7 @@ public:
 	void countGameObjects(int& ladders, int& snakes, int& cards); //Changes the ints passed by refrence and make them equal to the count of different gameobjects 
 	void resetAllPlayers();
 	void resetStations(); // resets the owenership of all stations in the grid.
+	bool isOverlapping(GameObject* newObj); // checks if the new object is overlapping with any other object in the grid
 
 	~Grid(); // A destructor for any needed deallcations
 };

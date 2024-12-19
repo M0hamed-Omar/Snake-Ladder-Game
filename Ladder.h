@@ -16,6 +16,8 @@ public:
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applys the effect of the ladder by moving player to ladder's end cell
 
+	virtual bool IsOverLapping(GameObject* Obj); // Checks if the passed GameObject overlaps with this ladder
+
 	CellPosition GetEndPosition() const; // A getter for the endCellPos data member
 
 	virtual void Save(ofstream& OutFile, ObjectType Obj); // saving to a file when the ObjectType enum passed is LadderObj else it returns
