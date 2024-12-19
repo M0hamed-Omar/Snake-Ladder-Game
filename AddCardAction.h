@@ -7,6 +7,7 @@ class AddCardAction : public Action
 	// [Action Parameters]
 	int CardNumber;            // 1- the card number
 	CellPosition CardPosition; // 2- cell position of the card
+	bool excute;
 
 	// Note: These parameters should be read in ReadActionParameters()
 	
