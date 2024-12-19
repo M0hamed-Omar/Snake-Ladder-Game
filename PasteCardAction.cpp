@@ -52,10 +52,6 @@ void  PasteCardAction::ReadActionParameters()
 			pGrid->PrintErrorMessage("Error: The cell already has an GameObject ! Click anywhere to continue...");
 			return;
 		}
-	
-			
-			
-		
 		pGrid->PrintErrorMessage("Pasted successfully ! Click anywhere to continue....");
 	}
 	else
@@ -77,6 +73,7 @@ void PasteCardAction::Execute()
 	if (added)
 	{
 		pGrid->SetClipboard(nullptr);//kda akenna 4elna el ptr mn el clipboard
+	
 	}
 }
 
