@@ -31,10 +31,16 @@ void AddSnakeAction::ReadActionParameters()
 
 
 	///TODO: Make the needed validations on the read parameters
-	if (startPos.VCell() > endPos.VCell() || startPos.HCell() - endPos.HCell() != 0)
+	if (!startPos.IsValidCell() || !endPos.IsValidCell())
 	{
-		startPos.SetHCell(-1);
-		endPos.SetHCell(-1);
+		pGrid->PrintErrorMessage("Error: Invalid Cell ! Click to continue ...");
+		return;
+	}
+	if (startPos.VCell() > endPos.VCell() || startPos.HCell() != endPos.HCell())
+	{
+		pGrid->PrintErrorMessage("Error: Invalid Ladder position! Click to continue ...");
+		startPos = endPos = CellPosition(-1, -1);
+		return;
 	}
 
 
@@ -49,7 +55,10 @@ void AddSnakeAction::Execute()
 	// The first line of any Action Execution is to read its parameter first 
 	// and hence initializes its data members
 	ReadActionParameters();
-
+	if (!startPos.IsValidCell() || !endPos.IsValidCell())
+	{
+		return;
+	}
 	// Create a Snake object with the parameters read from the user
 	Snake* pSnake = new Snake(startPos, endPos);
 

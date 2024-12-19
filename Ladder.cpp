@@ -1,4 +1,5 @@
 #include "Ladder.h"
+#include "Snake.h"
 
 
 Ladder::Ladder(const CellPosition & startCellPos, const CellPosition & endCellPos) : GameObject(startCellPos)
@@ -52,10 +53,24 @@ void Ladder::Save(ofstream& OutFile, ObjectType Obj)
  {
 	 if (Ladder* pLadder = dynamic_cast<Ladder*>(Obj))
 	 {
-		 if (position.HCell() == pLadder->GetPosition().HCell() && ( endCellPos.VCell() < pLadder->GetPosition().VCell() || pLadder->GetEndPosition().VCell() < position.VCell()  ))
-			 return true;
+		 if (position.HCell() == pLadder->GetPosition().HCell())
+		 {
+			 if (endCellPos.VCell() > pLadder->GetPosition().VCell() || pLadder->GetEndPosition().VCell() > position.VCell())
+				 return false;
+			 else
+				 return true;
+		 }
+	 }
+	 else if (Snake* pSnake = dynamic_cast<Snake*>(Obj))
+	 {
+		 if (position.HCell() == pSnake->GetPosition().HCell())
+		 {
+			 if (pSnake->GetPosition().VCell() == endCellPos.VCell())
+				 return true;
+		 }
 	 }
 	 return false;
+
  }
 
 CellPosition Ladder::GetEndPosition() const
