@@ -130,7 +130,7 @@ void Card13::Load(ifstream& Infile)
 	Card::Load(Infile);
 	//load the card parameters 
 	if (Flag)
-		Infile >> CardPrice >> Fee;
+		return;
 	else
 	{
 		Infile >> CardPrice >> Fee;
@@ -138,4 +138,14 @@ void Card13::Load(ifstream& Infile)
 	}
 
 
+}
+
+void Card13::ResetFlag()
+{
+	Flag = false;
+}
+
+void Card13::resetStationOwner()
+{
+	CardOwner = NULL;
 }

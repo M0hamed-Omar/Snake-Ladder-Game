@@ -19,3 +19,13 @@ CellPosition GameObject::GetPosition() const
 GameObject::~GameObject()
 {
 }
+ 
+void GameObject::ResetFlag()
+{
+	return;
+}
+
+void GameObject::resetStationOwner()
+{
+	return;
+}

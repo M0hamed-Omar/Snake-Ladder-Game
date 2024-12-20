@@ -59,6 +59,7 @@ void OpenGridAction::Execute()
 
 		//clears current grid
 		pGrid->DeleteAll();
+		
 
 		int laddersCount = 0;
 		int snakesCount = 0;
@@ -89,7 +90,7 @@ void OpenGridAction::Execute()
 			inFile >> tmpNum;
 			if (tmpNum > 13 || tmpNum < 1)
 			{
-				pGrid->PrintErrorMessage("There is an invalid cardNum (will skip it and continue");
+				pGrid->PrintErrorMessage("There is an invalid cardNum (will skip it and continue)");
 					continue;
 			}
 			Card* pCard;
@@ -141,8 +142,10 @@ void OpenGridAction::Execute()
 			pGrid->AddObjectToCell(pCard);
 		}
 		inFile.close();
+		pGrid->ResetFlags();
 		pGrid->PrintErrorMessage("Loaded successfully !   Click to see changes");
 	}
+
 	else
 	{
 		pGrid->PrintErrorMessage("Failed to open file");

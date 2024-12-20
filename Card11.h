@@ -26,8 +26,10 @@ public:
 	//ii-if the player (differenet than the owner ) stands on it --> take the fee from his wallet 
 	//2- if no : no action taken 
 	virtual void Apply(Grid* pGrid, Player* pPlayer);
-	virtual void Save(ofstream& OutFile, ObjectType Obj);
-	virtual void Load(ifstream& Infile);
+	 void Save(ofstream& OutFile, ObjectType Obj);
+	 void Load(ifstream& Infile);
+	 void ResetFlag(); 
+	 void resetStationOwner();
 
 
 	virtual ~Card11(); // A Virtual Destructor

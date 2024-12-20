@@ -34,6 +34,9 @@ public:
 
 	virtual bool IsOverLapping(GameObject* Obj);  // Checks if the passed GameObject overlaps with this GameObject
 
+	virtual void ResetFlag(); // Resets the flag of the GameObject (if exists) to save and load correctly
+	virtual void resetStationOwner(); // Resets the station of the GameObject
+
 	virtual ~GameObject(); // Virtual destructor
 };
 
