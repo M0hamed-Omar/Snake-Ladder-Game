@@ -118,7 +118,7 @@ void Card11::Save(ofstream& OutFile, ObjectType Obj)
 		OutFile << endl;
 	else
 	{
-		OutFile << CardPrice << " " << Fee << endl;
+		OutFile << " " << CardPrice << " " << Fee << endl;
 		Flag = true;
 	}
 }
