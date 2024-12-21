@@ -33,7 +33,7 @@ public:
 	void setJustRolledDiceNum(int dicenum);
 	int GetJustRolledDiceNum() const; // A getter for the JustRollDice  ==>> added by Medhat
 	int getPlayerNum() const;
-	void setPlayerState(bool state);
+	void setPlayerState(bool state); // to change isMoving state
 	bool getPlayerState() const;
 	///TODO: You can add setters and getters for data members here (if needed)
 	void ResetPlayer(Grid*);
@@ -54,8 +54,5 @@ public:
 	                                                   // for example: P0(wallet, turnCount)
 
 
-	// ====== Special Attack Functions ======
-
-	void Ice(Grid* pGrid,Player* pPlayer);
 };
 

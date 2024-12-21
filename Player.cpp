@@ -128,6 +128,7 @@ void Player::Move(Grid * pGrid, int diceNumber)
 	//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
 	if (turnCount == 3)
 	{
+
 		SetWallet(10 * diceNumber);
 		turnCount = 0;
 		return;
@@ -165,11 +166,4 @@ void Player::AppendPlayerInfo(string & playersInfo) const
 	playersInfo += "P" + to_string(playerNum) + "(" ;
 	playersInfo += to_string(wallet) + ", ";
 	playersInfo += to_string(turnCount) + ")";
-}
-
-void Player::Ice(Grid* pGrid, Player* pPlayer)
-{
-	Input* In = pGrid->GetInput();
-	Output* Out = pGrid->GetOutput();
-	pGrid->SetCurrentPlayer(5);
 }
