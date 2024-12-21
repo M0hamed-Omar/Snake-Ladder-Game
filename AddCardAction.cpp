@@ -18,7 +18,7 @@
 
 AddCardAction::AddCardAction(ApplicationManager* pApp) : Action(pApp)
 {
-		// Initializes the pManager pointer of Action with the passed pointer
+	// Initializes the pManager pointer of Action with the passed pointer
 }
 
 AddCardAction::~AddCardAction()
@@ -76,65 +76,58 @@ void AddCardAction::ReadActionParameters()
 
 void AddCardAction::Execute()
 {
-
-
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
-
 
 	// == Here are some guideline steps (numbered below) to implement this function ==
 
 	// 1- The first line of any Action Execution is to read its parameter first
 	ReadActionParameters();
 
-	
-		// 2- Switch case on cardNumber data member and create the appropriate card object type
-		Card* pCard = NULL; // will point to the card object type
-		switch (CardNumber)
-		{
-		case 1:
-			pCard = new CardOne(CardPosition);
-			break;
+	// 2- Switch case on cardNumber data member and create the appropriate card object type
+	Card* pCard = NULL; // will point to the card object type
+	switch (CardNumber) {
 
-			// A- Add the remaining cases
-		/*
-		case 2:
-			pCard = new Card2(CardPosition);
-			break;
-			*/
-		case 3:
-			pCard = new Card3(CardPosition);
-			break;
-		case 4:
-			pCard = new Card4(CardPosition);
-			break;
-		case 5:
-			pCard = new Card5(CardPosition);
-			break;
-		case 6:
-			pCard = new Card6(CardPosition);
-			break;
-		case 7:
-			pCard = new Card7(CardPosition);
-			break;
-		case 8:
-			pCard = new Card8(CardPosition);
-			break;
-		case 9:
-			pCard = new Card9(CardPosition);
-			break;
-		case 10:
-			pCard = new Card10(CardPosition);
-			break;
-		case 11:
-			pCard = new Card11(CardPosition);
-			break;
-		case 12:
-			pCard = new Card12(CardPosition);
-			break;
-		case 13:
-			pCard = new Card13(CardPosition);
-			break;
-		}
+		// A- Add the remaining cases
+
+	//case 2:
+		//pCard = new Card2(CardPosition);
+		//break;
+
+	case 3:
+		pCard = new Card3(CardPosition);
+		break;
+	case 4:
+		pCard = new Card4(CardPosition);
+		break;
+	case 5:
+		pCard = new Card5(CardPosition);
+		break;
+	case 6:
+		pCard = new Card6(CardPosition);
+		break;
+	case 7:
+		pCard = new Card7(CardPosition);
+		break;
+	case 8:
+		pCard = new Card8(CardPosition);
+		break;
+	case 9:
+		pCard = new Card9(CardPosition);
+		break;
+	case 10:
+		pCard = new Card10(CardPosition);
+		break;
+	case 11:
+		pCard = new Card11(CardPosition);
+		break;
+	case 12:
+		pCard = new Card12(CardPosition);
+		break;
+	case 13:
+		pCard = new Card13(CardPosition);
+		break;
+	}
+
 
 		// 3- if pCard is correctly set in the switch case (i.e. if pCard is pointing to an object -- NOT NULL)
 		if (pCard)
@@ -152,7 +145,7 @@ void AddCardAction::Execute()
 			}
 		}
 		// Here, the card is created and added to the GameObject of its Cell, so we finished executing the AddCardAction
-	
+
 }
 
 
