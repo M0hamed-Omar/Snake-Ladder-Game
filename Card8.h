@@ -5,7 +5,7 @@
 class Card8 : public Card
 {
 
-	int nextRollDice;
+	int counter;
 
 public:
 	Card8(const CellPosition& pos);
@@ -13,5 +13,5 @@ public:
 	virtual void Apply(Grid* pGrid, Player* pPlayer);
 	virtual void Save(ofstream& OutFile, ObjectType Obj);
 	virtual void Load(ifstream& Infile);
-
+	int getCounter() const;
 };

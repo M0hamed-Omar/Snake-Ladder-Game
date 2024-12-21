@@ -35,7 +35,7 @@ Cell* Player::GetCell() const
 
 void Player::SetWallet(int wallet)
 {
-	this->wallet = wallet;
+	this->wallet += wallet;
 	if (this->wallet < 0)
 	{
 		this->wallet = 0;
@@ -103,6 +103,7 @@ void Player::Move(Grid * pGrid, int diceNumber)
 		
 		if (pCard8)
 		{
+			if(pCard8->getCounter() % 2 != 0)
 			diceNumber = 0;
 		}
 	}

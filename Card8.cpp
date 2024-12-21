@@ -4,14 +4,12 @@
 Card8::Card8(const CellPosition & pos) :Card(pos)
 {
 	cardNumber = 8;
+	counter = 0;
 }
 
 void Card8::Apply(Grid* pGrid, Player* pPlayer)
 {
-	Card::Apply(pGrid, pPlayer);
-	int prevTurnCount = pPlayer->GetTurnCount();
-	//if()
-	/*AdvanceCurrentPlayer()*/ //use it
+	counter++;
 }
 
 void Card8::Save(ofstream& OutFile, ObjectType Obj)
@@ -34,4 +32,8 @@ void Card8::Load(ifstream& Infile)
 	//load the card parameters 
 
 
+}
+
+int Card8::getCounter() const {
+	return counter;
 }
