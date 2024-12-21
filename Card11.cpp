@@ -4,9 +4,11 @@ Card11::Card11(const CellPosition& pos) :Card(pos)
 {
 	cardNumber = 11; // set the inherited cardNumber data member with the card number 
 	count++;
-	Fee = 0;
-	CardPrice = 0;
+	
 }
+int Card11::CardPrice = 0;
+int Card11::Fee = 0;
+bool Card11::Flag = false;
 int Card11::count = 0;
 Player* Card11::CardOwner = NULL;
 Card11::~Card11()
@@ -99,4 +101,50 @@ void Card11::Apply(Grid* pGrid, Player* pPlayer)
 		}
 	}
 
+}
+
+
+void Card11::Save(ofstream& OutFile, ObjectType Obj)
+{
+	// Check Obj 
+	if (Obj != CardObj)
+		return;
+
+	// Call base class Save only if the check passes
+	Card::Save(OutFile, Obj);
+
+	// Now add Card parameters 
+	if (Flag)
+		OutFile << endl;
+	else
+	{
+		OutFile << " " << CardPrice << " " << Fee << endl;
+		Flag = true;
+	}
+}
+
+void Card11::Load(ifstream& Infile)
+{
+	// load the card postition first by calling the base class load
+	Card::Load(Infile);
+	//load the card parameters 
+	if (Flag)
+		return;
+	else
+	{
+		Infile >> CardPrice >> Fee;
+		Flag = true;
+	}
+
+
+}
+
+void Card11::ResetFlag()
+{
+	Flag = false;
+}
+
+void Card11::resetStationOwner()
+{
+	CardOwner = NULL;
 }

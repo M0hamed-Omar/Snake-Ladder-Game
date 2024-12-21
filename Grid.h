@@ -90,6 +90,7 @@ public:
 	void resetAllPlayers();
 	void resetStations(); // resets the owenership of all stations in the grid.
 	bool isOverlapping(GameObject* newObj); // checks if the new object is overlapping with any other object in the grid
+	void ResetFlags(); //Resets the flags of all game objects in the grid ( card10 to 13 ) to save file I/O correctly
 
 	~Grid(); // A destructor for any needed deallcations
 };

@@ -96,11 +96,11 @@ void AddCardAction::Execute()
 			break;
 
 			// A- Add the remaining cases
-		/*
+		
 		case 2:
 			pCard = new Card2(CardPosition);
 			break;
-			*/
+			
 		case 3:
 			pCard = new Card3(CardPosition);
 			break;
@@ -142,7 +142,12 @@ void AddCardAction::Execute()
 			// A- We get a pointer to the Grid from the ApplicationManager
 			Grid* pGrid = pManager->GetGrid();
 			// B- Make the "pCard" reads its card parameters: ReadCardParameters(), It is virtual and depends on the card type
-			pCard->ReadCardParameters(pGrid);
+			try { pCard->ReadCardParameters(pGrid); }
+			catch (...)
+			{
+				pGrid->PrintErrorMessage("Error: Invalid Card Parameters ! Card is not added ...");
+				return;
+			}
 			// C- Add the card object to the GameObject of its Cell:
 			bool Added = pGrid->AddObjectToCell(pCard);
 			// D- if the GameObject cannot be added in the Cell, Print the appropriate error message on statusbar

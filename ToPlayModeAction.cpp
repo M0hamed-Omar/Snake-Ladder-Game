@@ -18,6 +18,7 @@ ToPlayModeAction::ToPlayModeAction(ApplicationManager* pApp) : Action(pApp)
 	 pGrid->resetAllPlayers(); //resets the position of all players and resets their wallet to contain 100
 	 pGrid->SetCurrentPlayer(0); // sets the current player to be player 0;
 	 pGrid->resetStations(); //Resets the ownership of all stations in the grid
+	 pGrid->SetEndGame(false); //sets the end game flag to false
 	 
  }
 
