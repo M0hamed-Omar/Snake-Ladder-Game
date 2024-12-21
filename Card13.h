@@ -3,8 +3,8 @@
 #include "Card.h"
 class Card13 :public Card
 {
-	int CardPrice;
-	int Fee;
+	static int CardPrice;
+	static int Fee;
 	static int count;
 	static Player* CardOwner; //to own the all card10 cards in the grid
 	static bool Flag; // to correctly save parameters and load them once per card type

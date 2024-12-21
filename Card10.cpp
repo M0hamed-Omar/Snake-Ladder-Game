@@ -3,9 +3,10 @@ Card10::Card10(const CellPosition& pos) :Card(pos)
 {
 	cardNumber = 10; // set the inherited cardNumber data member with the card number 
 	count++;
-	Fee = 0;
-	CardPrice = 0;
+
 }
+int Card10::CardPrice = 0;
+int Card10::Fee = 0;
 bool Card10::Flag = false;
 int Card10::count = 0;
 Player* Card10::CardOwner = NULL;
