@@ -14,10 +14,10 @@ void SpecialAttacksAction::ReadActionParameters()
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
-	pOut->PrintMessage("Please Action Value : 1->Burn  2->Freeze  3->Poison  4->Lightining");
+	pOut->PrintMessage("Please Action Value : 1->Lightining  2->Burn  3->Freeze  4->Poison");
 
 	attackNumber = pIn->GetInteger(pOut);
-	if (attackNumber < 1 || attackNumber > 6)
+	if (attackNumber < 1 || attackNumber > 4)
 	{
 		attackNumber = -1;
 		return;
@@ -31,6 +31,7 @@ void SpecialAttacksAction::Execute()
 	ReadActionParameters();
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
+	Input* pIn = pGrid->GetInput();
 
 	// == Here are some guideline steps (numbered below) to implement this function ==
 
@@ -63,29 +64,65 @@ void SpecialAttacksAction::Execute()
 	}
 
 	// 4- Switch case on the "attackNumber" to perform the appropriate action
-	
-	switch (attackNumber)
+	int tmp;
+	try {
+		switch (attackNumber)
+		{
+		case 1:
+			pCurrentPlayer->LightiningAttack(pGrid);
+			break;
+
+		case 2:
+			pOut->PrintMessage("Please Type the player number you want to burn");
+			 tmp =pIn->GetInteger(pOut);
+			 if (tmp < 0 || tmp > MaxPlayerCount)
+			 {
+				 pGrid->PrintErrorMessage("Invalid Player Number !");
+				 return;
+			 }
+			pCurrentPlayer->BurnAttack(pGrid , tmp);
+			break;
+
+
+		case 3:
+			pOut->PrintMessage("Please Type the player number you want to freeze");
+			tmp = pIn->GetInteger(pOut);
+			if (tmp < 0 || tmp > MaxPlayerCount)
+			{
+				pGrid->PrintErrorMessage("Invalid Player Number !");
+				return;
+			}
+			pCurrentPlayer->FreezeAttack(pGrid ,tmp);
+
+			break;
+
+
+		case 4:
+
+			pOut->PrintMessage("Please Type the player number you want to poison");
+			tmp = pIn->GetInteger(pOut);
+			if (tmp < 0 || tmp > MaxPlayerCount)
+			{
+				pGrid->PrintErrorMessage("Invalid Player Number !");
+				return;
+			}
+			pCurrentPlayer->PoisonAttack(pGrid, tmp);
+			
+			break;
+		default:
+			return;
+
+		}
+	}
+	catch (...)
 	{
-	case 1:
-		pCurrentPlayer->LightiningAttack(pGrid);
-		break;
-		
-	case 2:
-		pCurrentPlayer->BurnAttack(pGrid);
-		break;
-	case 3:
-		pCurrentPlayer->FreezeAttack(pGrid);
-		break;
-	case 4:
-		pCurrentPlayer->PoisonAttack(pGrid);
-		break;
-	default:
+		pGrid->PrintErrorMessage("You Can do an attack type once per game !");
 		return;
-		
 	}
 
 	// 5- Advance the current player number of pGrid
 	pGrid->AdvanceCurrentPlayer();
+
 	pOut->ClearStatusBar();
 	//------------->>>>>>>>>>>>>>>>>>>>>>>>>>>> CHECK FIRST IS THAT CARD 8 OR NOT <<<<<<<<<<<<---------------------
 	// NOTE: the above guidelines are the main ones but not a complete set (You may need to add more steps).

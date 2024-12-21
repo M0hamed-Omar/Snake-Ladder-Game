@@ -21,6 +21,11 @@ class Player
 	int poisonAttackNum;
 	int lightningAttackNum;
 
+	int isburned; // to track burned player
+	int ispoisoned; // to track poisoned player
+	int isfrozen; // to track frozen player
+
+
 	
 	bool isMoving;
 public:
@@ -60,11 +65,15 @@ public:
 	                                                   // for example: P0(wallet, turnCount)
 
 	void LightiningAttack(Grid* pGrid);
-	void BurnAttack(Grid* pGrid);
-	void PoisonAttack(Grid* pGrid);
-	void FreezeAttack(Grid* pGrid);
+	void BurnAttack(Grid* pGrid,int targetPlayer);
+	void PoisonAttack(Grid* pGrid, int targetPlayer);
+	void FreezeAttack(Grid* pGrid, int targetPlayer);
 
 	bool CanAttack(); // checks if the player can attack or not ( 2 attacks only per player)
 	void decrementWallet(int amount); // decrements the wallet by the amount passed
+	void makeBurned(); // sets the player to be burned
+	void makePoisoned(); // sets the player to be poisoned
+	void makeFrozen(); // sets the player to be frozen
+	
 };
 

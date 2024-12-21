@@ -378,6 +378,54 @@ void Grid::resetStations()
 
 }
 
+
+//Special Attacks
+
+
+void Grid::ApplyLightningAttack(int playerIndex)
+{
+	for (int i = 0; i < MaxPlayerCount; i++)
+	{
+		if (i != playerIndex)
+		{
+			PlayerList[i]->decrementWallet(20);//Apply the lightning attack on all players except the player with the index passed
+		}
+	}
+}
+
+void Grid::ApplyBurnAttack(int playerIndex)
+{
+	for (int i = 0; i < MaxPlayerCount; i++)
+	{
+		if (i = playerIndex)
+		{
+			PlayerList[i]->makeBurned(); //Applies the burn attack on the player passed
+		}
+	}
+}
+
+void Grid::ApplyFreezeAttack(int playerIndex)
+{
+	for (int i = 0; i < MaxPlayerCount; i++)
+	{
+		if (i = playerIndex)
+		{
+			PlayerList[i]->makeFrozen(); //Applies the freeze attack on the player passed
+		}
+	}
+}
+
+void Grid::ApplyPoisonAttack(int playerIndex)
+{
+	for (int i = 0; i < MaxPlayerCount; i++)
+	{
+		if (i = playerIndex)
+		{
+			PlayerList[i]->makePoisoned(); //Applies the poison attack on the player passed
+		}
+	}
+}
+
 Grid::~Grid()
 {
 	delete pIn;

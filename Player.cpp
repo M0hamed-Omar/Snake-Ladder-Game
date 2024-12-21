@@ -14,6 +14,10 @@ Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerN
 	poisonAttackNum = 0;
 	lightningAttackNum = 0;
 
+	isburned = 0;
+	ispoisoned = 0;
+	isfrozen = 0;
+
 	isMoving = true;
 	// Make all the needed initialization or validations
 }
@@ -26,6 +30,17 @@ void Player::ResetPlayer(Grid *pGrid)
 	turnCount = 0;
 	stepCount = 0;
 	wallet = 100;
+	burnAttackNum = 0;
+	freezeAttackNum = 0;
+	poisonAttackNum = 0;
+	lightningAttackNum = 0;
+
+	isburned = 0;
+	ispoisoned = 0;
+	isfrozen = 0;
+
+	isMoving = true;
+
 
 }
 
@@ -117,6 +132,19 @@ void Player::Move(Grid * pGrid, int diceNumber)
 	// 1- Increment the turnCount because calling Move() means that the player has rolled the dice once
 	turnCount++;
 
+	// check for any attack on the player
+	
+	if (isburned > 0 && isburned < 4)
+	{
+		decrementWallet(20);
+		isburned++;
+	}
+
+	if (ispoisoned > 0 && ispoisoned < 6)
+	{
+		diceNumber--;
+		ispoisoned++;
+	}
 	//if (pCell->HasCard()) // check if i have card 8 so i won't move but by that logic the player is stuck at this cell and can't move to the rest of the game i need a counter Maybe
 	//{                      // another quaestion what will be the apply of the card 8 ?  
 	//	Card8* pCard8 = dynamic_cast<Card8*>(pCell->GetGameObject());
@@ -174,28 +202,54 @@ bool Player::CanAttack()
 	}
 	return false;
 }
-void Player::FreezeAttack(Grid* pGrid)
+void Player::FreezeAttack(Grid* pGrid, int targetPlayer)
 {
+	if (freezeAttackNum =! 0)
+	{
+		throw "You can't use freeze attack more than once";
+	}
 	freezeAttackNum++;
 	turnCount = 0;
+	pGrid->ApplyFreezeAttack(targetPlayer);
 }
 
-void Player::PoisonAttack(Grid* pGrid)
+void Player::PoisonAttack(Grid* pGrid ,int targetPlayer)
 {
+	if (poisonAttackNum != 0)
+	{
+		throw "You can't use poison attack more than once";
+	}
 	poisonAttackNum++;
 	turnCount = 0;
+	pGrid->ApplyPoisonAttack( targetPlayer);
+
 }
 
-void Player::BurnAttack(Grid* pGrid)
+void Player::BurnAttack(Grid* pGrid, int targetPlayer)
 {
+	if (burnAttackNum != 0)
+	{
+		throw "You can't use burn attack more than once";
+	}
 	burnAttackNum++;
 	turnCount = 0;
+	pGrid->ApplyBurnAttack( targetPlayer);
+	
 }
 
 void Player::LightiningAttack(Grid* pGrid)
 {
-	lightningAttackNum++;
-	turnCount = 0;
+	if (lightningAttackNum != 0)
+	{
+		throw "You can't use lightning attack more than once";
+	}
+    lightningAttackNum++;
+    turnCount = 0;
+
+	pGrid->ApplyLightningAttack(playerNum);
+	
+    // Decrease 20 from all other players' wallets
+
 }
 
 void Player::AppendPlayerInfo(string & playersInfo) const
@@ -213,7 +267,19 @@ void Player::decrementWallet(int n)
 	{
 		wallet = 0;
 	}
+}
 
+void Player::makeBurned()
+{
+	isburned = 1;
+}
 
-	
+void Player::makePoisoned()
+{
+	ispoisoned = 1;
+}
+
+void Player::makeFrozen()
+{
+	isfrozen = 1;
 }

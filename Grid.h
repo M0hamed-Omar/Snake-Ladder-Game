@@ -91,6 +91,13 @@ public:
 	void resetStations(); // resets the owenership of all stations in the grid.
 	bool isOverlapping(GameObject* newObj); // checks if the new object is overlapping with any other object in the grid
 	void ResetFlags(); //Resets the flags of all game objects in the grid ( card10 to 13 ) to save file I/O correctly
+	
+	//Applying Special Attacks
+	void ApplyBurnAttack(int playerIndex); //Applies the burn attack on the player
+	void ApplyFreezeAttack(int playerIndex); //Applies the freeze attack on the player
+	void ApplyPoisonAttack(int playerIndex); //Applies the poison attack on the player
+	void ApplyLightningAttack(int playerIndex); //Applies the lightning attack on all players except the player with the index passed
+
 
 	~Grid(); // A destructor for any needed deallcations
 };
