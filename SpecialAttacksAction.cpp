@@ -7,6 +7,7 @@
 SpecialAttacksAction::SpecialAttacksAction(ApplicationManager* pApp) : Action(pApp)
 {
 	attackNumber = -1;
+	howManyOccured = 0;
 }
 
 void SpecialAttacksAction::ReadActionParameters()
@@ -17,7 +18,7 @@ void SpecialAttacksAction::ReadActionParameters()
 	pOut->PrintMessage("Please Action Value : 1->Burn  2->Freeze  3->Poison  4->Lightining");
 
 	attackNumber = pIn->GetInteger(pOut);
-	if (attackNumber < 1 || attackNumber > 6)
+	if (attackNumber < 1 || attackNumber > 4)
 	{
 		attackNumber = -1;
 		return;
@@ -56,7 +57,7 @@ void SpecialAttacksAction::Execute()
 		pGrid->PrintErrorMessage("You Can only attack on the third roll (turn 2)");
 		return;
 	}
-	if (!pCurrentPlayer->CanAttack())
+	if (!pCurrentPlayer->stillHaveAttack())
 	{
 		pGrid->PrintErrorMessage("You Can only attack twice per Game");
 		return;
@@ -81,13 +82,12 @@ void SpecialAttacksAction::Execute()
 		break;
 	default:
 		return;
-		
+
 	}
 
 	// 5- Advance the current player number of pGrid
 	pGrid->AdvanceCurrentPlayer();
 	pOut->ClearStatusBar();
-	//------------->>>>>>>>>>>>>>>>>>>>>>>>>>>> CHECK FIRST IS THAT CARD 8 OR NOT <<<<<<<<<<<<---------------------
 	// NOTE: the above guidelines are the main ones but not a complete set (You may need to add more steps).
 
 }

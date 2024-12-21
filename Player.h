@@ -23,6 +23,7 @@ class Player
 
 	
 	bool isMoving;
+	bool isIced;
 public:
 
 	Player(Cell * pCell, int playerNum); // Constructor making any needed initializations
@@ -41,6 +42,9 @@ public:
 	int getPlayerNum() const;
 	void setPlayerState(bool state); // to change isMoving state
 	bool getPlayerState() const;
+
+	void setIcedState(bool state); // to change isMoving state
+	bool getIcedState() const;
 	///TODO: You can add setters and getters for data members here (if needed)
 	void ResetPlayer(Grid*);
 
@@ -64,7 +68,8 @@ public:
 	void PoisonAttack(Grid* pGrid);
 	void FreezeAttack(Grid* pGrid);
 
-	bool CanAttack(); // checks if the player can attack or not ( 2 attacks only per player)
+	bool stillHaveAttack(); // checks if the player can attack or not ( 2 attacks only per player)
 	void decrementWallet(int amount); // decrements the wallet by the amount passed
+	bool canAttack();
 };
 

@@ -15,6 +15,7 @@ Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerN
 	lightningAttackNum = 0;
 
 	isMoving = true;
+	isIced = false;
 	// Make all the needed initialization or validations
 }
 
@@ -81,6 +82,16 @@ void Player::setPlayerState(bool state)
 bool Player::getPlayerState() const
 {
 	return isMoving;
+}
+
+void Player::setIcedState(bool state)
+{
+	isIced = state;
+}
+
+bool Player::getIcedState() const
+{
+	return isIced;
 }
 // ====== Drawing Functions ======
 
@@ -167,7 +178,7 @@ void Player::Move(Grid * pGrid, int diceNumber)
 
 }
 
-bool Player::CanAttack()
+bool Player::stillHaveAttack()
 {
 	if (burnAttackNum + freezeAttackNum + poisonAttackNum + lightningAttackNum < 2)
 	{
@@ -175,9 +186,22 @@ bool Player::CanAttack()
 	}
 	return false;
 }
+
+bool Player::canAttack()
+{
+	if (turnCount == 2) {
+		return true;
+	}
+	return false;
+}
+
 void Player::FreezeAttack(Grid* pGrid)
 {
 	freezeAttackNum++;
+	pGrid->GetOutput()->PrintMessage("Enter the Player number to freeze him..");
+	int playernum = pGrid->GetInput()->GetInteger(pGrid->GetOutput());
+	pGrid->SetCurrentPlayer(playernum);
+	
 	turnCount = 0;
 }
 

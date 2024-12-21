@@ -38,6 +38,14 @@ void RollDiceAction::Execute()
 		diceNumber = 0;
 		pGrid->PrintErrorMessage("You aren't allowed to move, click to continue..");
 	}
+
+	if (pGrid->GetCurrentPlayer()->getIcedState() == true)
+	{
+		diceNumber = 0;
+		pGrid->PrintErrorMessage("You are Frozen, click to continue..");
+		pGrid->GetCurrentPlayer()->setIcedState(!pGrid->GetCurrentPlayer()->getIcedState());
+	}
+
 	pGrid->PrintErrorMessage( to_string(diceNumber) +"      Click to Apply");
 	// 3- Get the "current" player from pGrid
 	Player* pCurrentPlayer = pGrid->GetCurrentPlayer();

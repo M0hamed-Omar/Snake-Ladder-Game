@@ -16,7 +16,8 @@
 #include "ToDesignModeAction.h"
 #include "InputDiceAction.h"
 #include "SpecialAttacksAction.h"
-
+#include"Freeze.h"
+#include"Player.h"
 
 ///TODO: Add #include for all action types
 
@@ -56,6 +57,9 @@ void ApplicationManager::UpdateInterface() const
 ActionType ApplicationManager::GetUserAction() const
 {
 	// Ask the input to get the action from the user.
+	if (this->pGrid->GetCurrentPlayer()->canAttack() == true) {
+		pOut->PrintMessage("You can attack now, If you want");
+	}
 	return pIn->GetUserAction();
 }
 
