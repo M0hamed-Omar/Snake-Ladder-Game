@@ -22,6 +22,7 @@ class Player
 	int lightningAttackNum;
 
 	
+	bool isMoving;
 public:
 
 	Player(Cell * pCell, int playerNum); // Constructor making any needed initializations
@@ -37,6 +38,9 @@ public:
 	int GetTurnCount() const;		// A getter for the turnCount
 	void setJustRolledDiceNum(int dicenum);
 	int GetJustRolledDiceNum() const; // A getter for the JustRollDice  ==>> added by Medhat
+	int getPlayerNum() const;
+	void setPlayerState(bool state);
+	bool getPlayerState() const;
 	///TODO: You can add setters and getters for data members here (if needed)
 	void ResetPlayer(Grid*);
 
