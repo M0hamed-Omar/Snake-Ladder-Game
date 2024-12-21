@@ -427,5 +427,17 @@
     <ClInclude Include="InputDiceAction.h">
       <Filter>Actions</Filter>
     </ClInclude>
+    <ClInclude Include="Card10.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="Card13.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="Card12.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="Card11.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -2,7 +2,8 @@
 
 Card9::Card9(const CellPosition& pos):Card(pos)
 {
-	cardNumber = 9; // set the inherited cardNumber data member with the card number (1 here)
+	cardNumber = 9; // set the inherited cardNumber data member with the card number 
+	
 }
 Card9:: ~Card9()
 {
@@ -25,25 +26,28 @@ void  Card9::ReadCardParameters(Grid* pGrid)
 	Input* pIn = pGrid->GetInput();
 	// 2- Read the destination cell from the user using the Input class and set the destination cell  parameter with it
 	//    Don't forget to first print to a descriptive message to the user 
-	pOut->PrintMessage("Enter the Cell to be moved to");
-	CellPosition TempCell=pIn->GetCellClicked();
+	pOut->PrintMessage("Write the Cell number to be moved to . . . ");
+	CellPosition TempCell = pIn->GetInteger(pOut); // get the cell position from the user (convertion constructor)
 
 	// now validate if the input cell is valid or not 
 	if (!TempCell.IsValidCell())
 	{
 		pGrid->PrintErrorMessage("Error : The entered cell is invalid ! Click anywhere to continue....");
+		throw "Invalid Cell";
 		return;
 	}
 	else
 	{
-		DestinationCell = &TempCell;
+		DestinationCell = CellPosition::GetCellNumFromPosition(TempCell);
 	}
+	// 3- Clear the status bar
+	pOut->ClearStatusBar();
 }
 
 void  Card9::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer);
-	int x = DestinationCell->GetCellNum();
+	int x = DestinationCell;
 	int y = pPlayer->GetCell()->GetCellPosition().GetCellNum();
 	int Dist = x - y;
 	pPlayer->Move(pGrid, Dist);
@@ -57,16 +61,14 @@ void Card9::Save(ofstream& OutFile, ObjectType Obj)
 	// Call base class Save only if the check passes
 	Card::Save(OutFile, Obj);
 
-	// Now add Card parameters (It doesn't have)
-	OutFile <<" " << DestinationCell->GetCellNum() << endl;
+	// Now add Card parameters 
+	OutFile <<" " << DestinationCell << endl;
 }
 void Card9::Load(ifstream& Infile)
 {
 	// load the card postition first by calling the base class load
 	Card::Load(Infile);
 	//load the card parameters 
-	int DestinationCellNum;
-		Infile >> DestinationCellNum;
+	Infile >> DestinationCell;
 
-	DestinationCell = &(CellPosition::GetCellPositionFromNum(DestinationCellNum));
 }

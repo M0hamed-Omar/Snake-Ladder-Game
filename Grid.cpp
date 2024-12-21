@@ -325,10 +325,7 @@ void Grid::SetCurrentPlayer(int n)
 {
 	currPlayerNumber = n;
 }
-void Grid::resetStations()
-{
 
-}
 
 bool Grid::isOverlapping(GameObject* Obj)
 {
@@ -363,6 +360,23 @@ void Grid::countGameObjects(int& ladders, int& snakes, int& cards)
 	}
 }
 
+void Grid::ResetFlags()
+{
+	for (int i = NumVerticalCells - 1; i >= 0; i--)
+	{
+		for (int j = 0; j < NumHorizontalCells; j++)
+		{
+			GameObject* pGameObj = CellList[i][j]->GetGameObject(); //Gets pointer to gameobj if exist otherwise it's NULL
+			if (pGameObj)
+				pGameObj->ResetFlag(); //Calls the ResetFlag func of the gameobj with polymorphism
+		}
+	}
+}
+
+void Grid::resetStations()
+{
+
+}
 
 Grid::~Grid()
 {

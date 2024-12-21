@@ -1,13 +1,34 @@
 #include "Ladder.h"
+#include "Snake.h"
 
 
 Ladder::Ladder(const CellPosition & startCellPos, const CellPosition & endCellPos) : GameObject(startCellPos)
 {
-	if(startCellPos.GetCellNum()<endCellPos.GetCellNum())
-	this->endCellPos = endCellPos;
+	//if(startCellPos.GetCellNum()<endCellPos.GetCellNum())
+	//this->endCellPos = endCellPos;
 
 	///TODO: Do the needed validation
 	// ============done by M.Omar=============
+	if (!startCellPos.IsValidCell() || !endCellPos.IsValidCell())
+	{
+		position.SetHCell(-1);
+		position.SetVCell(-1);
+		this->endCellPos.SetHCell(-1);	
+		this->endCellPos.SetVCell(-1);
+	}
+	else if (startCellPos.HCell() != endCellPos.HCell() || startCellPos.VCell() <= endCellPos.VCell())
+	{
+		position.SetHCell(-1);
+		position.SetVCell(-1);
+		this->endCellPos.SetHCell(-1);
+		this->endCellPos.SetVCell(-1);
+	}
+	else
+	{
+		position = startCellPos;
+		this->endCellPos = endCellPos;
+	}
+// undone by Karim 
 }
 
 void Ladder::Draw(Output* pOut) const
@@ -52,10 +73,24 @@ void Ladder::Save(ofstream& OutFile, ObjectType Obj)
  {
 	 if (Ladder* pLadder = dynamic_cast<Ladder*>(Obj))
 	 {
-		 if (position.HCell() == pLadder->GetPosition().HCell() && ( endCellPos.VCell() < pLadder->GetPosition().VCell() || pLadder->GetEndPosition().VCell() < position.VCell()  ))
-			 return true;
+		 if (position.HCell() == pLadder->GetPosition().HCell())
+		 {
+			 if (endCellPos.VCell() > pLadder->GetPosition().VCell() || pLadder->GetEndPosition().VCell() > position.VCell())
+				 return false;
+			 else
+				 return true;
+		 }
+	 }
+	 else if (Snake* pSnake = dynamic_cast<Snake*>(Obj))
+	 {
+		 if (position.HCell() == pSnake->GetPosition().HCell())
+		 {
+			 if (pSnake->GetPosition().VCell() == endCellPos.VCell())
+				 return true;
+		 }
 	 }
 	 return false;
+
  }
 
 CellPosition Ladder::GetEndPosition() const

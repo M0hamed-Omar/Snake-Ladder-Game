@@ -3,7 +3,7 @@
 #include "Card.h"
 class Card9 :public Card
 {
-	CellPosition* DestinationCell;
+	int DestinationCell;
 public:
 	Card9(const CellPosition& pos);
 	//=====================================
@@ -12,7 +12,7 @@ public:
 	virtual void ReadCardParameters(Grid* pGrid);
 
 	//=======================================
-	// Applies the effect of CardOne on the passed Player
+	// Applies the effect of Card on the passed Player
 	//this effect is moved to destination cell
 	virtual void Apply(Grid* pGrid, Player* pPlayer); 
 	virtual void Save(ofstream& OutFile, ObjectType Obj);

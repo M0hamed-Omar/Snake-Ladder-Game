@@ -1,9 +1,25 @@
 #include"Snake.h"
-
+#include "Ladder.h"
 Snake::Snake(const CellPosition& startCellPos, const CellPosition& endCellPos) : GameObject(startCellPos)
 {
-	this->endCellPos = endCellPos;
 
+	if (!startCellPos.IsValidCell() || !endCellPos.IsValidCell())
+	{
+		position.SetHCell(-1);
+		position.SetVCell(-1);
+	}
+	else if (startCellPos.HCell() != endCellPos.HCell() || startCellPos.VCell() >= endCellPos.VCell())
+	{
+		position.SetHCell(-1);
+		position.SetVCell(-1);
+		this->endCellPos.SetHCell(-1);
+		this->endCellPos.SetVCell(-1);
+	}
+	else
+	{
+		position = startCellPos;
+		this->endCellPos = endCellPos;
+	}
 	///TODO: Do the needed validation
 }
 
@@ -31,7 +47,29 @@ void Snake::Apply(Grid* pGrid, Player* pPlayer)
 
 
 }
+bool Snake::IsOverLapping(GameObject* Obj)
+{
+	if (Snake* pSnake = dynamic_cast<Snake*>(Obj))
+	{
+		if (position.HCell() == pSnake->GetPosition().HCell())
+		{
+			if (endCellPos.VCell() < pSnake->GetPosition().VCell() || pSnake->GetEndPosition().VCell() < position.VCell())
+				return false;
+			else
+				return true;
+		}
+	}
+	else if (Ladder* pLadder = dynamic_cast<Ladder*>(Obj))
+	{
+		if (position.HCell() == pLadder->GetPosition().HCell())
+		{
+			if (pLadder->GetPosition().VCell() == endCellPos.VCell())
+				return true;
+		}
+	}
+	return false;
 
+}
 void Snake::Save(ofstream& OutFile, ObjectType Obj)
 {
 	if (Obj != SnakeObj)

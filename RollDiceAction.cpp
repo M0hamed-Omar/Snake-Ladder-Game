@@ -27,6 +27,7 @@ void RollDiceAction::Execute()
 	if (pGrid->GetEndGame())
 	{
 		pGrid->PrintErrorMessage("Game Already Ended .. Please Start a new game");
+		return;
 	}
 	// -- If not ended, do the following --:
 

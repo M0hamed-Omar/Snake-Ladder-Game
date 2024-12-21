@@ -212,6 +212,10 @@
     <ClInclude Include="AddSnakeAction.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="Card.h" />
+    <ClInclude Include="Card10.h" />
+    <ClInclude Include="Card11.h" />
+    <ClInclude Include="Card12.h" />
+    <ClInclude Include="Card13.h" />
     <ClInclude Include="Card2.h" />
     <ClInclude Include="Card3.h" />
     <ClInclude Include="Card4.h" />
