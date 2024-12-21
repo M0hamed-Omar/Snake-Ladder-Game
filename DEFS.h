@@ -30,6 +30,7 @@ enum ActionType // The actions supported (add more as needed)
 	TO_DESIGN_MODE,	// Go to Design Mode
 	INPUT_DICE_VALUE, //added
 	NEW_GAME,//added
+	SPECIAL_ATTACKS,
 	EXIT_2, //added
 	//AnyMore actions must be added before EXIT_2 for output to behave correctly (DrawPlayersInfo)
 	///TODO: Add more action types of Play Mode

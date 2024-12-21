@@ -16,6 +16,7 @@
 #include "ToDesignModeAction.h"
 #include "InputDiceAction.h"
 #include "EditCardAction.h"
+#include "SpecialAttacksAction.h"
 
 
 ///TODO: Add #include for all action types
@@ -140,8 +141,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case INPUT_DICE_VALUE:
 		pAct = new InputDiceAction(this);
 			break;
+
+	case SPECIAL_ATTACKS:
+
+		 pAct = new SpecialAttacksAction(this);
+		 break;
 	case STATUS:	// a click on the status bar ==> no action
 		return;
+
 	}
 
 	// Execute the created action

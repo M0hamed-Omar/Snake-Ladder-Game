@@ -212,6 +212,7 @@ void Output::CreateDesignModeToolBar() const
 	MenuItemImages[ITM_PASTE_CARD] = "images\\Menu_PasteCard.jpg";
 	MenuItemImages[ITM_EDIT_CARD] = "images\\Menu_EditCard.jpg";
 	MenuItemImages[ITM_SAVE_GRID] = "images\\Menu_SaveGrid.jpg";
+	
 
 
 	// Draw menu item one image at a time
@@ -244,6 +245,7 @@ void Output::CreatePlayModeToolBar() const
 	MenuItemImages[ITM_INPUT_DICE_VALUE] = "images\\Menu_INPUT_Dice_VALUE.jpg";
 	MenuItemImages[ITM_NEW_GAME] = "images\\Menu_NewGame.jpg";
 	MenuItemImages[ITM_EXIT_2] = "images\\Menu_Exit.jpg";//ITM_ROLL_DICE,
+	MenuItemImages[ITM_SPECIAL_ATTACKS] = "images\\Special_Attack.jpg";
 
 
 
