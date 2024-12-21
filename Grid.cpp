@@ -390,35 +390,17 @@ void Grid::ApplyLightningAttack(int playerIndex)
 
 void Grid::ApplyBurnAttack(int playerIndex)
 {
-	for (int i = 0; i < MaxPlayerCount; i++)
-	{
-		if (i = playerIndex)
-		{
-			PlayerList[i]->makeBurned(); //Applies the burn attack on the player passed
-		}
-	}
+			PlayerList[playerIndex]->makeBurned(); //Applies the burn attack on the player passed
 }
 
 void Grid::ApplyFreezeAttack(int playerIndex)
 {
-	for (int i = 0; i < MaxPlayerCount; i++)
-	{
-		if (i = playerIndex)
-		{
-			PlayerList[i]->makeFrozen(); //Applies the freeze attack on the player passed
-		}
-	}
+	PlayerList[playerIndex]->makeFrozen(); //Applies the freeze attack on the player passed
 }
 
 void Grid::ApplyPoisonAttack(int playerIndex)
 {
-	for (int i = 0; i < MaxPlayerCount; i++)
-	{
-		if (i = playerIndex)
-		{
-			PlayerList[i]->makePoisoned(); //Applies the poison attack on the player passed
-		}
-	}
+			PlayerList[playerIndex]->makePoisoned(); //Applies the poison attack on the player passed
 }
 
 Grid::~Grid()

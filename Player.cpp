@@ -16,10 +16,10 @@ Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerN
 
 	isburned = 0;
 	ispoisoned = 0;
-	isfrozen = 0;
+	isfrozen = false;
 
 	isMoving = true;
-	isIced = false;
+	
 	// Make all the needed initialization or validations
 }
 
@@ -99,15 +99,9 @@ bool Player::getPlayerState() const
 	return isMoving;
 }
 
-void Player::setIcedState(bool state)
-{
-	isIced = state;
-}
 
-bool Player::getIcedState() const
-{
-	return isIced;
-}
+
+
 // ====== Drawing Functions ======
 
 void Player::Draw(Output* pOut) const
@@ -151,7 +145,7 @@ void Player::Move(Grid * pGrid, int diceNumber)
 		isburned++;
 	}
 
-	if (ispoisoned > 0 && ispoisoned < 6)
+	if (this->ispoisoned % 3 != 0)
 	{
 		diceNumber--;
 		ispoisoned++;
@@ -229,10 +223,6 @@ void Player::FreezeAttack(Grid* pGrid, int targetPlayer)
 		throw "You can't use freeze attack more than once";
 	}
 	freezeAttackNum++;
-	pGrid->GetOutput()->PrintMessage("Enter the Player number to freeze him..");
-	int playernum = pGrid->GetInput()->GetInteger(pGrid->GetOutput());
-	pGrid->SetCurrentPlayer(playernum);
-	
 	turnCount = 0;
 	pGrid->ApplyFreezeAttack(targetPlayer);
 }
@@ -300,10 +290,19 @@ void Player::makeBurned()
 
 void Player::makePoisoned()
 {
-	ispoisoned = 1;
+	ispoisoned++;
 }
 
 void Player::makeFrozen()
 {
 	isfrozen = 1;
+}
+
+bool Player::getFrozenState() const
+{
+	return this->isfrozen;
+}
+
+void Player::setFrozenState(bool state) {
+	this->isfrozen = state;
 }

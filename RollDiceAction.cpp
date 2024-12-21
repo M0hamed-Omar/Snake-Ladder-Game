@@ -39,11 +39,11 @@ void RollDiceAction::Execute()
 		pGrid->PrintErrorMessage("You aren't allowed to move, click to continue..");
 	}
 
-	if (pGrid->GetCurrentPlayer()->getIcedState() == true)
+	if (pGrid->GetCurrentPlayer()->getFrozenState() == true)
 	{
 		diceNumber = 0;
 		pGrid->PrintErrorMessage("You are Frozen, click to continue..");
-		pGrid->GetCurrentPlayer()->setIcedState(!pGrid->GetCurrentPlayer()->getIcedState());
+		pGrid->GetCurrentPlayer()->setFrozenState(!pGrid->GetCurrentPlayer()->getFrozenState());
 	}
 
 	pGrid->PrintErrorMessage( to_string(diceNumber) +"      Click to Apply");

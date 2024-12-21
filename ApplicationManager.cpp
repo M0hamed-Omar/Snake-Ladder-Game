@@ -17,7 +17,7 @@
 #include "InputDiceAction.h"
 #include "EditCardAction.h"
 #include "SpecialAttacksAction.h"
-#include"Freeze.h"
+
 #include"Player.h"
 
 ///TODO: Add #include for all action types

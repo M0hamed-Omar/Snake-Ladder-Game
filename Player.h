@@ -23,12 +23,12 @@ class Player
 
 	int isburned; // to track burned player
 	int ispoisoned; // to track poisoned player
-	int isfrozen; // to track frozen player
+	bool isfrozen; // to track frozen player
 
 
 	
 	bool isMoving;
-	bool isIced;
+	
 public:
 
 	Player(Cell * pCell, int playerNum); // Constructor making any needed initializations
@@ -48,8 +48,6 @@ public:
 	void setPlayerState(bool state); // to change isMoving state
 	bool getPlayerState() const;
 
-	void setIcedState(bool state); // to change isMoving state
-	bool getIcedState() const;
 	///TODO: You can add setters and getters for data members here (if needed)
 	void ResetPlayer(Grid*);
 
@@ -79,6 +77,8 @@ public:
 	void makePoisoned(); // sets the player to be poisoned
 	void makeFrozen(); // sets the player to be frozen
 	
+	bool getFrozenState() const;
+	void setFrozenState(bool state);
 	bool canAttack();
 };
 
