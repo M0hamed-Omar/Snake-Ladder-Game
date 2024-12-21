@@ -8,6 +8,11 @@ Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerN
 {
 	this->pCell = pCell;
 	this->turnCount = 0;
+	// Make all attacks zero
+	burnAttackNum = 0;
+	freezeAttackNum = 0;
+	poisonAttackNum = 0;
+	lightningAttackNum = 0;
 
 	// Make all the needed initialization or validations
 }
@@ -142,9 +147,54 @@ void Player::Move(Grid * pGrid, int diceNumber)
 
 }
 
+bool Player::CanAttack()
+{
+	if (burnAttackNum + freezeAttackNum + poisonAttackNum + lightningAttackNum < 2)
+	{
+		return true;
+	}
+	return false;
+}
+void Player::FreezeAttack(Grid* pGrid)
+{
+	freezeAttackNum++;
+	turnCount = 0;
+}
+
+void Player::PoisonAttack(Grid* pGrid)
+{
+	poisonAttackNum++;
+	turnCount = 0;
+}
+
+void Player::BurnAttack(Grid* pGrid)
+{
+	burnAttackNum++;
+	turnCount = 0;
+}
+
+void Player::LightiningAttack(Grid* pGrid)
+{
+	lightningAttackNum++;
+	turnCount = 0;
+}
+
 void Player::AppendPlayerInfo(string & playersInfo) const
 {
 	playersInfo += "P" + to_string(playerNum) + "(" ;
 	playersInfo += to_string(wallet) + ", ";
 	playersInfo += to_string(turnCount) + ")";
+}
+
+void Player::decrementWallet(int n)
+{
+	wallet -= n;
+
+	if (wallet < 0)
+	{
+		wallet = 0;
+	}
+
+
+	
 }
