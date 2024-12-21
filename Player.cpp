@@ -8,7 +8,7 @@ Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerN
 {
 	this->pCell = pCell;
 	this->turnCount = 0;
-
+	isMoving = true;
 	// Make all the needed initialization or validations
 }
 
@@ -62,6 +62,20 @@ int Player::GetJustRolledDiceNum() const
 {
 	return justRolledDiceNum;
 }
+
+int Player::getPlayerNum() const {
+	return playerNum;
+}
+
+void Player::setPlayerState(bool state)
+{
+	isMoving = state;
+}
+
+bool Player::getPlayerState() const
+{
+	return isMoving;
+}
 // ====== Drawing Functions ======
 
 void Player::Draw(Output* pOut) const
@@ -97,16 +111,19 @@ void Player::Move(Grid * pGrid, int diceNumber)
 	// 1- Increment the turnCount because calling Move() means that the player has rolled the dice once
 	turnCount++;
 
-	if (pCell->HasCard()) // check if i have card 8 so i won't move but by that logic the player is stuck at this cell and can't move to the rest of the game i need a counter Maybe
-	{                      // another quaestion what will be the apply of the card 8 ?  
-		Card8* pCard8 = dynamic_cast<Card8*>(pCell->GetGameObject());
-		
-		if (pCard8)
-		{
-			if(pCard8->getCounter() % 2 != 0)
-			diceNumber = 0;
-		}
-	}
+	//if (pCell->HasCard()) // check if i have card 8 so i won't move but by that logic the player is stuck at this cell and can't move to the rest of the game i need a counter Maybe
+	//{                      // another quaestion what will be the apply of the card 8 ?  
+	//	Card8* pCard8 = dynamic_cast<Card8*>(pCell->GetGameObject());
+	//	
+	//	if (pCard8)
+	//	{
+	//		if(pCard8->getCounter() % 2 != 0)
+	//		diceNumber = 0;
+	//	}
+	//}
+	// 
+	// ==>>> flase way just to see the steps
+	
 	// 2- Check the turnCount to know if the wallet recharge turn comes (recharge wallet instead of move)
 	//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
 	if (turnCount == 3)
@@ -148,4 +165,11 @@ void Player::AppendPlayerInfo(string & playersInfo) const
 	playersInfo += "P" + to_string(playerNum) + "(" ;
 	playersInfo += to_string(wallet) + ", ";
 	playersInfo += to_string(turnCount) + ")";
+}
+
+void Player::Ice(Grid* pGrid, Player* pPlayer)
+{
+	Input* In = pGrid->GetInput();
+	Output* Out = pGrid->GetOutput();
+	pGrid->SetCurrentPlayer(5);
 }

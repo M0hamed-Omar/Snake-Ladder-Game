@@ -23,7 +23,7 @@ void Card7::Apply(Grid* pGrid, Player* pPlayer)
 	pPlayer->Move(pGrid, diceNumber);
 	else
 	{
-		pGrid->PrintErrorMessage("The wallet will be charged with " + to_string(diceNumber) + "    Click to charge the wallet..");
+		pGrid->PrintErrorMessage("The wallet will be charged with " + to_string(diceNumber*10) + " Click to charge the wallet..");
 		pPlayer->Move(pGrid, diceNumber);
 	}
 }

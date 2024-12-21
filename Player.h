@@ -16,7 +16,7 @@ class Player
 	int turnCount;         // a counter that starts with 0, is incremented with each dice roll
 	                       // and reset again when reached 3
 	                       // it is used to indicate when to move and when to add to your wallet
-	
+	bool isMoving;
 public:
 
 	Player(Cell * pCell, int playerNum); // Constructor making any needed initializations
@@ -32,6 +32,9 @@ public:
 	int GetTurnCount() const;		// A getter for the turnCount
 	void setJustRolledDiceNum(int dicenum);
 	int GetJustRolledDiceNum() const; // A getter for the JustRollDice  ==>> added by Medhat
+	int getPlayerNum() const;
+	void setPlayerState(bool state);
+	bool getPlayerState() const;
 	///TODO: You can add setters and getters for data members here (if needed)
 	void ResetPlayer(Grid*);
 
@@ -50,5 +53,9 @@ public:
 	void AppendPlayerInfo(string & playersInfo) const; // Appends player's info to the input string, 
 	                                                   // for example: P0(wallet, turnCount)
 
+
+	// ====== Special Attack Functions ======
+
+	void Ice(Grid* pGrid,Player* pPlayer);
 };
 
