@@ -25,7 +25,10 @@ void Card::Draw(Output* pOut) const
 	//the position is come from the base class "GameObject"
 
 }
-
+void Card:: DrawNew(CellPosition cPos)
+{
+	position = cPos;
+}
 void Card::ReadCardParameters(Grid* pGrid)
 {
 	// we should not make it pure virtual because some Cards doesn't have parameters

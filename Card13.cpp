@@ -149,3 +149,11 @@ void Card13::resetStationOwner()
 {
 	CardOwner = NULL;
 }
+void Card13::SetFee(int f)
+{
+	Fee = f;
+}
+void Card13::SetCardPrice(int p)
+{
+	CardPrice = p;
+}

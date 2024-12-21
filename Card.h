@@ -16,10 +16,9 @@ public:
 
 	void SetCardNumber(int cnum);   // The setter of card number
 	int GetCardNumber();            // The getter of card number
-
 	void Draw(Output* pOut) const;  // Draws the card number in the cell position of the card
 	                                // It has the same implementation for all Card Types (Non-Virtual)
-
+	void DrawNew(CellPosition cPos);//added by omar to draw card un the paste action 
 	virtual void ReadCardParameters(Grid * pGrid); // It reads the parameters specific for each Card Type
 	                                               // It is a virtual function (implementation depends on Card Type)
 
