@@ -5,12 +5,12 @@
 #include"Grid.h"
 #include"Card.h"
 #include"CutCardAction.h"
-//#include"CopyCardAction.h"
+
 
 CutCardAction::CutCardAction(ApplicationManager* ptr) : Action(ptr) //, CopyCardAction(ptr)
 {
 	SourceCard = new CellPosition(); // responsible for construction & destruction ( Aggregation )
-	CardPtr = NULL; // Association
+	excute = true;
 }
 
 
@@ -18,7 +18,7 @@ CutCardAction::CutCardAction(ApplicationManager* ptr) : Action(ptr) //, CopyCard
 void CutCardAction::ReadActionParameters()
 {
 	//this->CopyCardAction::ReadActionParameters();// pohymerphism
-	
+
 	// make a pointr to input&output class to get the source card  and print messages on status bar
 
 	Grid* pGrid = pManager->GetGrid();
@@ -34,33 +34,37 @@ void CutCardAction::ReadActionParameters()
    //   1- is a valid cell     2- is the cell contain a card  ( dynamic cast from gameobject to card)
 	if (SourceCard->IsValidCell())
 	{
-		GameObject* ObjPtr = pGrid->GetGameObjectFromCell(*SourceCard);
-		CardPtr = dynamic_cast<Card*>(ObjPtr);
+		CardPtr = dynamic_cast<Card*>(pGrid->GetGameObjectFromCell(*SourceCard));
 		if (!CardPtr)
 		{
 			pGrid->PrintErrorMessage("The cell does not have a Card ! Click any where to continue...");
+			excute = false;
 			return;
 		}
 	}
-	else return;
+	else
+	{
+		excute = false;
+		return;
+	}
 }
 
 
 void CutCardAction::Execute()
 {
 	ReadActionParameters();
-	Grid* pGrid = pManager->GetGrid();
-	pGrid->SetClipboard(CardPtr);
-	//CopyCardAction::Execute();
-	pGrid->RemoveObjectFromCell(*SourceCard);
-	pGrid->PrintErrorMessage(" Cut successfully  ! Click any where to continue...");// m4 error hya bs ashan el print error msge bt3ml clear
-//ll status bar bs 
+	if (excute)
+	{
+		Grid* pGrid = pManager->GetGrid();
+		pGrid->SetClipboard(CardPtr);
+		pGrid->SetGameObjectToCell(SourceCard, NULL); // we will use func not the remove func , as the remove func deletes the object from the cell and 
+		// set the object ptr to NULL and the clipboard has this ptr ,so when it points to Null the clipboard also points to null so it give a run time error  
+		
+		// ================  INCORRECT : pGrid->RemoveObjectFromCell(*SourceCard);  =========================
+		pGrid->PrintErrorMessage(" Cut successfully  ! Click any where to continue...");// m4 error hya bs ashan el print error msge bt3ml clear
+		//ll status bar bs 
+	}
 }
-
-
-
-
-
 
 
 CutCardAction:: ~CutCardAction()

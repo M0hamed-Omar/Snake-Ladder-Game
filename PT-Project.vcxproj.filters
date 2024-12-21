@@ -256,6 +256,9 @@
     <ClCompile Include="InputDiceAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="EditCardAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
     <ClCompile Include="SpecialAttacksAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
@@ -441,6 +444,9 @@
     </ClInclude>
     <ClInclude Include="Card11.h">
       <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="EditCardAction.h">
+      <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="SpecialAttacksAction.h">
       <Filter>Actions</Filter>

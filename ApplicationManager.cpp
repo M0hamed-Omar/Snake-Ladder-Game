@@ -15,6 +15,7 @@
 #include "ToPlayModeAction.h"
 #include "ToDesignModeAction.h"
 #include "InputDiceAction.h"
+#include "EditCardAction.h"
 #include "SpecialAttacksAction.h"
 
 
@@ -131,6 +132,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 	case NEW_GAME:
 		pAct = new NewGameAction(this);
+		break;
+
+	case EDIT_CARD:
+		pAct = new EditCardAction(this);
 		break;
 
 	case INPUT_DICE_VALUE:

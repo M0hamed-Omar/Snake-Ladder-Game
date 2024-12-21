@@ -59,3 +59,8 @@ void Card2::Save(ofstream& OutFile, ObjectType Obj)
 	// Now add Card2 parameter
 	OutFile <<" " << walletAmount << endl;
 }
+
+void Card2:: SetWalletAmount2(int newValue) // added by omar to be used in edit card 
+{
+	walletAmount = newValue;
+}

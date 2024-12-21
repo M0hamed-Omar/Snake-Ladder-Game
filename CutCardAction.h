@@ -5,15 +5,13 @@
 class CutCardAction :public Action//,public  CopyCardAction
 {
 private:
-	/*CopyCardAction* coPtr;  //  (the relation is Agg. as we responsible for construcing & destructing this ptr
-	 we will use this pointer becauce the functionality of the copy card is the same as cut card ,but cut will remove the card from the cell
-	 */
 	CellPosition* SourceCard; // // responsible for construction & destruction ( Aggregation )
-	Card* CardPtr;//to point at the card ( Association )
+	Card* CardPtr;//to point at the card , we will set a value to it (not responsible for constructing or destructing it ) ,So the relation is Association
+	bool excute; //just to indicate if we will excute or not
 public:
 	CutCardAction(ApplicationManager* ptr);
 
-	//just check the cell the user entered is valid and also if it has a GameObject or not 
+	//just check the cell the user entered is valid and also if it has a GameObject( card ) or not 
 	virtual void ReadActionParameters();
 
 	//=======================================

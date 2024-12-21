@@ -18,7 +18,8 @@
 
 AddCardAction::AddCardAction(ApplicationManager* pApp) : Action(pApp)
 {
-		// Initializes the pManager pointer of Action with the passed pointer
+	// Initializes the pManager pointer of Action with the passed pointer
+	excute = true;
 }
 
 AddCardAction::~AddCardAction()
@@ -49,7 +50,7 @@ void AddCardAction::ReadActionParameters()
 	CardNumber = TempCardNumber;
 	// 3- Read the "cardPosition" parameter (its cell position) and set its data member
 	pOut->PrintMessage("click on card cell");
-	CellPosition tmpCardPosition = pIn->GetCellClicked();
+	CardPosition = pIn->GetCellClicked();
 	// 4- Make the needed validations on the read parameters
 
 	//the needed validations are :
@@ -57,18 +58,20 @@ void AddCardAction::ReadActionParameters()
 	// 2-the cell clicked does not have any game object
 
 	//======= first validation  ==========
-	if (!tmpCardPosition.IsValidCell())
+	if (!CardPosition.IsValidCell())
 	{
 		pGrid->PrintErrorMessage("The cell you entered is invalid cell ! click any where to continue...");
+		excute = false;
 		return;
 	}
 	//=======second validation========
 	if (pGrid->GetGameObjectFromCell(CardPosition))
 	{
 		pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
+		excute = false;
 		return;
 	}
-	CardPosition = tmpCardPosition;
+
 
 	// 5- Clear status bar
 	pOut->ClearStatusBar();
@@ -85,8 +88,8 @@ void AddCardAction::Execute()
 
 	// 1- The first line of any Action Execution is to read its parameter first
 	ReadActionParameters();
-
-	
+	if (excute)
+	{
 		// 2- Switch case on cardNumber data member and create the appropriate card object type
 		Card* pCard = NULL; // will point to the card object type
 		switch (CardNumber)
@@ -94,13 +97,9 @@ void AddCardAction::Execute()
 		case 1:
 			pCard = new CardOne(CardPosition);
 			break;
-
-			// A- Add the remaining cases
-		
 		case 2:
 			pCard = new Card2(CardPosition);
 			break;
-			
 		case 3:
 			pCard = new Card3(CardPosition);
 			break;
@@ -142,12 +141,7 @@ void AddCardAction::Execute()
 			// A- We get a pointer to the Grid from the ApplicationManager
 			Grid* pGrid = pManager->GetGrid();
 			// B- Make the "pCard" reads its card parameters: ReadCardParameters(), It is virtual and depends on the card type
-			try { pCard->ReadCardParameters(pGrid); }
-			catch (...)
-			{
-				pGrid->PrintErrorMessage("Error: Invalid Card Parameters ! Card is not added ...");
-				return;
-			}
+			pCard->ReadCardParameters(pGrid);
 			// C- Add the card object to the GameObject of its Cell:
 			bool Added = pGrid->AddObjectToCell(pCard);
 			// D- if the GameObject cannot be added in the Cell, Print the appropriate error message on statusbar
@@ -157,7 +151,5 @@ void AddCardAction::Execute()
 			}
 		}
 		// Here, the card is created and added to the GameObject of its Cell, so we finished executing the AddCardAction
-	
+	}
 }
-
-

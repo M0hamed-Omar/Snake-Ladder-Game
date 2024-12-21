@@ -7,7 +7,7 @@
 CopyCardAction::CopyCardAction(ApplicationManager* ptr) : Action(ptr)
 {
 	SourceCard = new CellPosition(); // responsible for construction & destruction ( Aggregation )
-	CardPtr = NULL; // Association 
+	excute = true;
 }
 
 void CopyCardAction::ReadActionParameters()
@@ -27,18 +27,22 @@ void CopyCardAction::ReadActionParameters()
    //   1- is a valid cell     2- is the cell contain a card  ( dynamic cast from gameobject to card)
 	if (SourceCard->IsValidCell())
 	{
-		GameObject* ObjPtr = pGrid->GetGameObjectFromCell(*SourceCard);
-		CardPtr = dynamic_cast<Card*>(ObjPtr);
+		CardPtr = dynamic_cast<Card*>(pGrid->GetGameObjectFromCell(*SourceCard));
 		if (!CardPtr)
 		{
 			pGrid->PrintErrorMessage("The cell does not have a Card ! Click any where to continue...");
+			excute = false;
 			return;
 		}
 		else
 			pGrid->PrintErrorMessage(" Copied successfully  ! Click any where to continue...");// m4 error hya bs ashan el print error msge bt3ml clear
 		//ll status bar bs 
 	}
-	else return;
+	else
+	{
+		excute = false;
+		return;
+	}
 }
 
 
@@ -49,8 +53,11 @@ void CopyCardAction::ReadActionParameters()
 void CopyCardAction::Execute()
 {
 	ReadActionParameters();
-	Grid* pGrid = pManager->GetGrid();
-	pGrid->SetClipboard(CardPtr);
+	if (excute)
+	{
+		Grid* pGrid = pManager->GetGrid();
+		pGrid->SetClipboard(CardPtr);
+	}
 }
 //======================================
 

@@ -1,9 +1,10 @@
-//=============By : Mohamed Omar==============
+//=============By : Mohamed Omar ==============
 #pragma once
 #include "Card.h"
 class Card9 :public Card
 {
 	int DestinationCell;
+
 public:
 	Card9(const CellPosition& pos);
 	//=====================================
@@ -18,6 +19,7 @@ public:
 	virtual void Save(ofstream& OutFile, ObjectType Obj);
 	virtual void Load(ifstream& Infile);
 
+	void SetDestinationCell(int pos); // added by omar to use in edit card 
 	//=============================================
 	virtual ~Card9(); // A Virtual Destructor
 };
