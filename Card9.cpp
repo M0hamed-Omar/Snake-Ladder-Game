@@ -33,7 +33,7 @@ void  Card9::ReadCardParameters(Grid* pGrid)
 	if (!TempCell.IsValidCell())
 	{
 		pGrid->PrintErrorMessage("Error : The entered cell is invalid ! Click anywhere to continue....");
-
+		throw "Invalid Cell";
 		return;
 	}
 	else
