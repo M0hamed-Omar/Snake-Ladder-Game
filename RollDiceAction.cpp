@@ -38,7 +38,7 @@ void RollDiceAction::Execute()
 		diceNumber = 0;
 		pGrid->PrintErrorMessage("You aren't allowed to move, click to continue..");
 	}
-	pGrid->PrintErrorMessage( to_string(diceNumber) +"      Click to move");
+	pGrid->PrintErrorMessage( to_string(diceNumber) +"      Click to Apply");
 	// 3- Get the "current" player from pGrid
 	Player* pCurrentPlayer = pGrid->GetCurrentPlayer();
 

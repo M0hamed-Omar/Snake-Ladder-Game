@@ -202,6 +202,7 @@
     <ClCompile Include="SaveGridAction.cpp" />
     <ClCompile Include="Snake.cpp" />
     <ClCompile Include="CopyCardAction.cpp" />
+    <ClCompile Include="SpecialAttacksAction.cpp" />
     <ClCompile Include="ToDesignModeAction.cpp" />
     <ClCompile Include="ToPlayModeAction.cpp" />
   </ItemGroup>
@@ -264,6 +265,7 @@
     <ClInclude Include="RollDiceAction.h" />
     <ClInclude Include="SaveGridAction.h" />
     <ClInclude Include="Snake.h" />
+    <ClInclude Include="SpecialAttacksAction.h" />
     <ClInclude Include="ToDesignModeAction.h" />
     <ClInclude Include="ToPlayModeAction.h" />
     <ClInclude Include="UI_Info.h" />

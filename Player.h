@@ -16,6 +16,12 @@ class Player
 	int turnCount;         // a counter that starts with 0, is incremented with each dice roll
 	                       // and reset again when reached 3
 	                       // it is used to indicate when to move and when to add to your wallet
+	int burnAttackNum;
+	int freezeAttackNum;
+	int poisonAttackNum;
+	int lightningAttackNum;
+
+	
 	bool isMoving;
 public:
 
@@ -53,6 +59,12 @@ public:
 	void AppendPlayerInfo(string & playersInfo) const; // Appends player's info to the input string, 
 	                                                   // for example: P0(wallet, turnCount)
 
+	void LightiningAttack(Grid* pGrid);
+	void BurnAttack(Grid* pGrid);
+	void PoisonAttack(Grid* pGrid);
+	void FreezeAttack(Grid* pGrid);
 
+	bool CanAttack(); // checks if the player can attack or not ( 2 attacks only per player)
+	void decrementWallet(int amount); // decrements the wallet by the amount passed
 };
 
