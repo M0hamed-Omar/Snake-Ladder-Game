@@ -44,7 +44,6 @@ public:
 	                                                     // only if the Cell does NOT already contain an object, 
 	                                                     // otherwise return false and don't add
 
-	bool Grid::AddObjectToCell(GameObject* pNewObject, CellPosition* cell);//added by M.Omar
 	void RemoveObjectFromCell(const CellPosition & pos); // Removes the GameObject of the Cell of the passed "position"
 
 	void UpdatePlayerCell(Player * player, const CellPosition & newPosition); // Update the player's pCell with the CellList's Cell pointer of the "newPosition",
@@ -52,7 +51,7 @@ public:
 	    																	  // and  Draws it in the new cell
 
 	// ========= Setters and Getters Functions =========
-
+	Card* HasCard(CellPosition pos);// added by omar to use in edit card action 
 	Input * GetInput() const;	// Gets a Pointer to the Input
 	Output * GetOutput() const; // Gets a Pointer to the Output 
 
@@ -68,7 +67,7 @@ public:
 	///TODO: add any needed setter/getter "EXCEPT" ANY setters or getters of "CellList" or "PlayerList" (Forbidden for class Responsibilities)
 
 	// ========= Other Getters =========
-	 
+	void SetGameObjectToCell(CellPosition*pos,GameObject*pGame);// added by omar
 	GameObject* GetGameObjectFromCell(const CellPosition& cell) const;// done by M.O
 	Player * GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
 	Ladder * GetNextLadder(const CellPosition & position);  // Gets a Pointer to the first Ladder after the passed "position"

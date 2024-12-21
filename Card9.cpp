@@ -26,22 +26,25 @@ void  Card9::ReadCardParameters(Grid* pGrid)
 	Input* pIn = pGrid->GetInput();
 	// 2- Read the destination cell from the user using the Input class and set the destination cell  parameter with it
 	//    Don't forget to first print to a descriptive message to the user 
-	pOut->PrintMessage("Write the Cell number to be moved to . . . ");
-	CellPosition TempCell = pIn->GetInteger(pOut); // get the cell position from the user (convertion constructor)
 
-	// now validate if the input cell is valid or not 
-	if (!TempCell.IsValidCell())
-	{
-		pGrid->PrintErrorMessage("Error : The entered cell is invalid ! Click anywhere to continue....");
-		throw "Invalid Cell";
-		return;
-	}
-	else
-	{
-		DestinationCell = CellPosition::GetCellNumFromPosition(TempCell);
-	}
-	// 3- Clear the status bar
-	pOut->ClearStatusBar();
+	
+		pOut->PrintMessage("Write the Cell number to be moved to . . . ");
+		CellPosition TempCell = pIn->GetInteger(pOut); // get the cell position from the user (convertion constructor)
+
+		// now validate if the input cell is valid or not 
+		if (!TempCell.IsValidCell())
+		{
+			pGrid->PrintErrorMessage("Error : The entered cell is invalid ! Click anywhere to continue....");
+			throw "Invalid Cell";
+			return;
+		}
+		else
+		{
+			DestinationCell = CellPosition::GetCellNumFromPosition(TempCell);
+		}
+		// 3- Clear the status bar
+		pOut->ClearStatusBar();
+	
 }
 
 void  Card9::Apply(Grid* pGrid, Player* pPlayer)
@@ -71,4 +74,9 @@ void Card9::Load(ifstream& Infile)
 	//load the card parameters 
 	Infile >> DestinationCell;
 
+}
+
+void Card9:: SetDestinationCell(int pos) // added by omar to use in edit card
+{
+	DestinationCell = pos;
 }

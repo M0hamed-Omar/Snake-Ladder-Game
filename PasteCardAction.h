@@ -1,13 +1,13 @@
 //==========By : Mohamed Omar=============
 #pragma once
 #include "Action.h"
-//#include "AddCardAction.h"
+
 
 
 class PasteCardAction : public Action 
 {
 	CellPosition* DestinationCell;
-	//AddCardAction *acPtr;
+	bool excute;
 public:
 	PasteCardAction(ApplicationManager* ptr);
 

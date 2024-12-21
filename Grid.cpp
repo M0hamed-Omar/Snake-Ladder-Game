@@ -58,19 +58,6 @@ bool Grid::AddObjectToCell(GameObject * pNewObject)  // think if any validation 
 }
 
 
-bool Grid::AddObjectToCell(GameObject* pNewObject, CellPosition* cell)// added by M.Omar
-{
-	if (cell->IsValidCell())
-	{
-		GameObject* pPrevObject = CellList[cell->VCell()][cell->HCell()]->GetGameObject();
-		if (pPrevObject)  // the cell already contains a game object
-			return false; // do NOT add and return false
-		// Set the game object of the Cell with the new game object
-		CellList[cell->VCell()][cell->HCell()]->SetGameObject(pNewObject);
-		return true; // indicating that addition is done
-	}
-	return false; // if not a valid position
-}
 
 void Grid::RemoveObjectFromCell(const CellPosition & pos)
 {
@@ -139,9 +126,18 @@ void Grid::AdvanceCurrentPlayer()
 	currPlayerNumber = (currPlayerNumber + 1) % MaxPlayerCount; // this generates value from 0 to MaxPlayerCount - 1
 }
 
+void Grid::SetGameObjectToCell(CellPosition* pos, GameObject* pGame)//added by omar 
+{
+	Cell* CellPtr = CellList[pos->VCell()][pos->HCell()];
+	CellPtr->SetGameObject(pGame);
+}
 // ========= Other Getters =========
-
-GameObject* Grid:: GetGameObjectFromCell(const CellPosition& cell) const
+Card* Grid::HasCard(CellPosition pos) // added by omar to use in edit card action 
+{
+	Cell* CellPtr = CellList[pos.VCell()][pos.HCell()];
+	return CellPtr->HasCard();
+}
+GameObject* Grid:: GetGameObjectFromCell(const CellPosition& cell) const // added by omar 
 {
 	/*
 	first we check if the cell is a valid  : 
@@ -166,7 +162,6 @@ GameObject* Grid:: GetGameObjectFromCell(const CellPosition& cell) const
 		}
 
 	}
-
 	return NULL;
 }
 

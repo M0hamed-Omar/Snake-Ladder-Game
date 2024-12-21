@@ -20,7 +20,7 @@ public:
 	                                                  // by decrementing the player's wallet by the walletAmount data member
 	virtual void Save(ofstream& OutFile, ObjectType Obj); // saving to a file when the ObjectType enum passed is CardObj else it returns
 	virtual void Load(ifstream& Infile);
-
+	void SetWalletAmount(int newValue);// added by omar to use in edit card 
 
 	virtual ~CardOne(); // A Virtual Destructor
 };

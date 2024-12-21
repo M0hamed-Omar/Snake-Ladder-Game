@@ -3,12 +3,11 @@
 #include "Output.h"
 #include "Grid.h"
 #include"Card.h"
-//#include "AddCardAction.h"
 
-PasteCardAction::PasteCardAction(ApplicationManager* ptr) : Action(ptr) 
+PasteCardAction::PasteCardAction(ApplicationManager* ptr) : Action(ptr)
 {
 	DestinationCell = new CellPosition();
-	//acPtr = new AddCardAction(ptr);
+	excute = true;
 }
 //====================================================
 
@@ -17,7 +16,7 @@ PasteCardAction::PasteCardAction(ApplicationManager* ptr) : Action(ptr)
 	// 2-need to read the destination cell , and check if:
 	// i- valid cell 
 	// ii- does not have a card 
-	
+
 void  PasteCardAction::ReadActionParameters()
 {
 	// make a pointr to input&output class to get the destination cell  and print messages on status bar
@@ -27,12 +26,13 @@ void  PasteCardAction::ReadActionParameters()
 	Input* pIn = pGrid->GetInput();
 	//==================================
 
-		
+
 	//  1-the clipboard ptr . **Note we do not need to check if the ptr is to card or not as the clipboard accept the CardPtrs only !!! 
 			// we will just check if the clipboard has ptr or not 
 	if (!pGrid->GetClipboard())
 	{
 		pGrid->PrintErrorMessage("The clipboard is empty ! Click anywhere to continue....");
+		excute = false;
 		return;
 	}
 	//get the destination cell
@@ -50,6 +50,7 @@ void  PasteCardAction::ReadActionParameters()
 		if (ObjPtr)//" ii " done
 		{
 			pGrid->PrintErrorMessage("Error: The cell already has an GameObject ! Click anywhere to continue...");
+			excute = false;
 			return;
 		}
 		pGrid->PrintErrorMessage("Pasted successfully ! Click anywhere to continue....");
@@ -57,6 +58,7 @@ void  PasteCardAction::ReadActionParameters()
 	else
 	{
 		pGrid->PrintErrorMessage("Invalid Cell ! Click anywhere to continue....");
+		excute = false;
 		return;
 	}
 }
@@ -66,14 +68,15 @@ void  PasteCardAction::ReadActionParameters()
 void PasteCardAction::Execute()
 {
 	ReadActionParameters();
-	//acPtr->ReadActionParameters();
-	//acPtr->Execute();
-	Grid* pGrid = pManager->GetGrid();
-	bool added =pGrid->AddObjectToCell((GameObject*)pGrid->GetClipboard(), DestinationCell);//put the object in the destination cell using "Up Casting" from Card to GameObject
-	if (added)
+	if (excute)
 	{
+		
+		Grid* pGrid = pManager->GetGrid();
+		Card* pCard = pGrid->GetClipboard();
+		pGrid->SetGameObjectToCell(DestinationCell,(GameObject*)pCard);
+
+		pCard->DrawNew(*DestinationCell); // to draw the card in the destination cell not the source 
 		pGrid->SetClipboard(nullptr);//kda akenna 4elna el ptr mn el clipboard
-	
 	}
 }
 

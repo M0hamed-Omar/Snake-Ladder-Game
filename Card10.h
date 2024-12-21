@@ -30,6 +30,8 @@ public:
 	 void Load(ifstream& Infile);
 	 void ResetFlag ();
 	 void resetStationOwner ();
+	 void SetFee(int f);
+	 void SetCardPrice(int p);
 
 	virtual ~Card10(); // A Virtual Destructor
 };

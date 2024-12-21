@@ -65,7 +65,10 @@ void CardOne::Save(ofstream& OutFile, ObjectType Obj)
 	// Now add CardOne parameter
 	OutFile << " " << walletAmount << endl;
 }
-
+void CardOne::SetWalletAmount(int newValue)
+{
+	walletAmount = newValue;
+}
 void CardOne::Load(ifstream& Infile)
 {
 	// load the card postition first by calling the base class load
@@ -74,3 +77,4 @@ void CardOne::Load(ifstream& Infile)
 	Infile >> walletAmount;
 
 }
+
