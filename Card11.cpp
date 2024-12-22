@@ -36,7 +36,11 @@ void  Card11::ReadCardParameters(Grid* pGrid)
 		CardPrice = pIn->GetInteger(pOut);
 		if (CardPrice <= 0)
 		{
-			pGrid->PrintErrorMessage("The price should be greater than 0 ! Click anywhere to continue.....");
+			pGrid->PrintErrorMessage("The price should be greater than 0 ! Click anywhere to continue, Enter a Valid Card price.....");
+			do {
+				pOut->PrintMessage("Enter the amount of the card price ....");
+				CardPrice = pIn->GetInteger(pOut);
+			} while (CardPrice <= 0);
 			return;
 		}
 		pOut->PrintMessage("Enter the amount of the fee ....");
@@ -44,7 +48,11 @@ void  Card11::ReadCardParameters(Grid* pGrid)
 		pOut->ClearStatusBar();
 		if (Fee < 0)
 		{
-			pGrid->PrintErrorMessage("The fee should be greater than 0 ! Click anywhere to continue...");
+			pGrid->PrintErrorMessage("The fee should be greater than 0 ! Click anywhere to continue, Enter a Valid Fee...");
+			do {
+				pOut->PrintMessage("Enter the amount of the fee ....");
+				Fee = pIn->GetInteger(pOut);
+			} while (Fee < 0);
 			return;
 		}
 	}
@@ -75,7 +83,7 @@ void Card11::Apply(Grid* pGrid, Player* pPlayer)
 			CardOwner = pPlayer;
 			if (pPlayer->GetWallet() >= CardPrice)// check if the player has enough money or not 
 			{
-				pPlayer->SetWallet(pPlayer->GetWallet() - CardPrice);
+				pPlayer->decrementWallet(CardPrice);
 				pGrid->PrintErrorMessage("Bought successfully ! Click anywhere to continue....");
 			}
 			else
@@ -90,8 +98,8 @@ void Card11::Apply(Grid* pGrid, Player* pPlayer)
 		if (pGrid->GetCurrentPlayer() != CardOwner)
 		{
 			pGrid->PrintErrorMessage("Owner : You have arrived at my card !!,  Pay the fee immediately, or you'll be on your way to bankruptcy! Click to continue...");
-			pPlayer->SetWallet(pPlayer->GetWallet() - Fee);
-			CardOwner->SetWallet(CardOwner->GetWallet() + Fee);
+			pPlayer->decrementWallet(Fee);
+			CardOwner->SetWallet(Fee);
 			pGrid->PrintErrorMessage("The fee transfered successfully ! Click any where to continue...");
 			pGrid->PrintErrorMessage("Owner : You can go now ! Click anywhere to continue...");
 		}

@@ -3,6 +3,7 @@ Card10::Card10(const CellPosition& pos) :Card(pos)
 {
 	cardNumber = 10; // set the inherited cardNumber data member with the card number 
 	count++;
+	
 }
 int Card10::CardPrice = 0;
 int Card10::Fee = 0;
@@ -34,7 +35,11 @@ void  Card10::ReadCardParameters(Grid* pGrid)
 		CardPrice = pIn->GetInteger(pOut);
 		if (CardPrice <= 0)
 		{
-			pGrid->PrintErrorMessage("The price should be greater than 0 ! Click anywhere to continue.....");
+			pGrid->PrintErrorMessage("The price should be greater than 0 ! Click anywhere to continue, Enter a Valid Card price.....");
+			do {
+				pOut->PrintMessage("Enter the amount of the card price ....");
+				CardPrice = pIn->GetInteger(pOut);
+			} while (CardPrice <= 0);
 			return;
 		}
 		pOut->PrintMessage("Enter the amount of the fee ....");
@@ -42,7 +47,11 @@ void  Card10::ReadCardParameters(Grid* pGrid)
 		pOut->ClearStatusBar();
 		if (Fee < 0)
 		{
-			pGrid->PrintErrorMessage("The fee should be greater than 0 ! Click anywhere to continue...");
+			pGrid->PrintErrorMessage("The fee should be greater than 0 ! Click anywhere to continue, Enter a Valid Fee...");
+			do {
+				pOut->PrintMessage("Enter the amount of the fee ....");
+				Fee = pIn->GetInteger(pOut);
+			} while (Fee < 0);
 			return;
 		}
 	}
@@ -56,48 +65,49 @@ void Card10::Apply(Grid* pGrid, Player* pPlayer)
 	//ii-if the player (differenet than the owner ) stands on it --> take the fee from his wallet 
 	//2- if no : no action taken 
 {
-	Card::Apply(pGrid, pPlayer);
-	Output* pOut = pGrid->GetOutput();
-	Input* pIn = pGrid->GetInput();
-	if (!CardOwner)
-	{
-		pOut->PrintMessage("Would you like to buy this card ?....Note: Answer with \"yes\" or \"no\" ");
-		string answer = pIn->GetSrting(pOut);
-		if (answer == "no" || answer == "No")
+
+		Card::Apply(pGrid, pPlayer);
+		Output* pOut = pGrid->GetOutput();
+		Input* pIn = pGrid->GetInput();
+		if (!CardOwner)
 		{
-			pGrid->PrintErrorMessage("Click anywhere to continue....");
-			return;
-		}
-		else if (answer == "yes" || answer == "Yes")
-		{
-			CardOwner = pPlayer;
-			if (pPlayer->GetWallet() >= CardPrice)// check if the player has enough money or not 
+			pOut->PrintMessage("Would you like to buy this card ?....Note: Answer with \"yes\" or \"no\" ");
+			string answer = pIn->GetSrting(pOut);
+			if (answer == "no" || answer == "No")
 			{
-				pPlayer->SetWallet(pPlayer->GetWallet() - CardPrice);
-				pGrid->PrintErrorMessage("Bought successfully ! Click anywhere to continue....");
-			}
-			else
-			{
-				pGrid->PrintErrorMessage("Cannot buy \"do not have enough money\"! Click anywhere to continue....");
+				pGrid->PrintErrorMessage("Click anywhere to continue....");
 				return;
 			}
-		}
-	}
-	else
-	{
-		if (pGrid->GetCurrentPlayer() != CardOwner)
-		{
-			pGrid->PrintErrorMessage("Owner : You have arrived at my card !!,  Pay the fee immediately, or you'll be on your way to bankruptcy! Click to continue...");
-			pPlayer->SetWallet(pPlayer->GetWallet() - Fee);
-			CardOwner->SetWallet(CardOwner->GetWallet() + Fee);
-			pGrid->PrintErrorMessage("The fee transfered successfully ! Click any where to continue...");
-			pGrid->PrintErrorMessage("Owner : You can go now ! Click anywhere to continue...");
+			else if (answer == "yes" || answer == "Yes")
+			{
+				CardOwner = pPlayer;
+				if (pPlayer->GetWallet() >= CardPrice)// check if the player has enough money or not 
+				{
+					pPlayer->decrementWallet(CardPrice);
+					pGrid->PrintErrorMessage("Bought successfully ! Click anywhere to continue....");
+				}
+				else
+				{
+					pGrid->PrintErrorMessage("Cannot buy \"do not have enough money\"! Click anywhere to continue....");
+					return;
+				}
+			}
 		}
 		else
 		{
-			pGrid->PrintErrorMessage("You are the owner of this card , No fee to pay ! Click anywhere to continue...");
+			if (pGrid->GetCurrentPlayer() != CardOwner)
+			{
+				pGrid->PrintErrorMessage("Owner : You have arrived at my card !!,  Pay the fee immediately, or you'll be on your way to bankruptcy! Click to continue...");
+				pPlayer->decrementWallet(Fee);
+				CardOwner->SetWallet(Fee);
+				pGrid->PrintErrorMessage("The fee transfered successfully ! Click any where to continue...");
+				pGrid->PrintErrorMessage("Owner : You can go now ! Click anywhere to continue...");
+			}
+			else
+			{
+				pGrid->PrintErrorMessage("You are the owner of this card , No fee to pay ! Click anywhere to continue...");
+			}
 		}
-	}
 
 }
 
@@ -155,3 +165,4 @@ void Card10::SetCardPrice(int p)
 {
 	CardPrice = p;
 }
+

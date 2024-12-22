@@ -218,7 +218,7 @@ bool Player::canAttack()
 }
 void Player::FreezeAttack(Grid* pGrid, int targetPlayer)
 {
-	if (freezeAttackNum =! 0)
+	if (freezeAttackNum != 0)
 	{
 		throw "You can't use freeze attack more than once";
 	}

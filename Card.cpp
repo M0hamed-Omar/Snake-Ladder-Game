@@ -3,6 +3,7 @@
 
 Card::Card(const CellPosition& pos) : GameObject(pos) // sets the cell position of the GameObject
 {
+	excute = true;
 }
 
 void Card::SetCardNumber(int cnum)
@@ -58,4 +59,8 @@ void Card::Load(ifstream& Infile)
 
 Card::~Card()
 {
+}
+
+bool Card::getexcute() {
+	return true;
 }
