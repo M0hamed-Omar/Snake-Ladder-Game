@@ -19,8 +19,11 @@ void Card2::ReadCardParameters(Grid* pGrid)
 	Input* pIn = pGrid->GetInput();
 	// 2- Read an Integer from the user using the Input class and set the walletAmount parameter with it
 	// print a descriptive message to the user like:"New Card2: Enter its wallet amount ..."
-	pOut->PrintMessage("New Card2: Enter its wallet amount ...");
-	walletAmount = pIn->GetInteger(pOut);
+	do {
+		pOut->PrintMessage("New Card2: Enter its wallet amount ...");
+		walletAmount = pIn->GetInteger(pOut);
+	} while (walletAmount < 0);
+
 
 	// 3- Clear the status bar
 	pOut->ClearStatusBar();

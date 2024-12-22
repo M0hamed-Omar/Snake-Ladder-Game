@@ -76,7 +76,6 @@ public:
 	void makeBurned(); // sets the player to be burned
 	void makePoisoned(); // sets the player to be poisoned
 	void makeFrozen(); // sets the player to be frozen
-	
 	bool getFrozenState() const;
 	void setFrozenState(bool state);
 	bool canAttack();
