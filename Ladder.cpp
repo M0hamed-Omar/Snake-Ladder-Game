@@ -87,6 +87,8 @@ void Ladder::Save(ofstream& OutFile, ObjectType Obj)
 		 {
 			 if (pSnake->GetPosition().VCell() == endCellPos.VCell())
 				 return true;
+			 else if (pSnake->GetEndPosition().VCell() == position.VCell())
+				 return true;
 		 }
 	 }
 	 return false;

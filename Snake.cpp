@@ -65,6 +65,8 @@ bool Snake::IsOverLapping(GameObject* Obj)
 		{
 			if (pLadder->GetEndPosition().VCell() == position.VCell())
 				return true;
+			else if (pLadder->GetPosition().VCell() == endCellPos.VCell())
+				return true;
 		}
 	}
 	return false;
