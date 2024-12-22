@@ -59,7 +59,7 @@ ActionType ApplicationManager::GetUserAction() const
 {
 	// Ask the input to get the action from the user.
 	if (this->pGrid->GetCurrentPlayer()->canAttack() == true) {
-		pOut->PrintMessage("You can attack now, If you want");
+		pOut->PrintMessage("You can attack now player "+to_string(pGrid->GetCurrentPlayer()->getPlayerNum())+" , If you want");//+" If you want"
 	}
 	return pIn->GetUserAction();
 }
