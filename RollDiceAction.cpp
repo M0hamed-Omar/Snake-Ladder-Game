@@ -46,7 +46,7 @@ void RollDiceAction::Execute()
 		pGrid->GetCurrentPlayer()->setFrozenState(!pGrid->GetCurrentPlayer()->getFrozenState());
 	}
 
-	pGrid->PrintErrorMessage( to_string(diceNumber) +"      Click to Apply");
+	pGrid->PrintErrorMessage( to_string(diceNumber) +"      Click to Apply, player "+to_string(pGrid->GetCurrentPlayer()->getPlayerNum()));
 	// 3- Get the "current" player from pGrid
 	Player* pCurrentPlayer = pGrid->GetCurrentPlayer();
 
