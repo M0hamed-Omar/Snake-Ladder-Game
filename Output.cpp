@@ -56,10 +56,10 @@ Output::Output()
 	UI.SnakeColor = FIREBRICK;
 
 	// Colors of the 4 Players
-	UI.PlayerColors[0] = GOLD;
-	UI.PlayerColors[1] = DARKSLATEBLUE;
-	UI.PlayerColors[2] = KHAKI;
-	UI.PlayerColors[3] = CHOCOLATE;
+	UI.PlayerColors[0] = RED;
+	UI.PlayerColors[1] = ORANGE;
+	UI.PlayerColors[2] = GREEN;
+	UI.PlayerColors[3] = TURQUOISE;
 
 	// Create the output window
 	pWind = CreateWind(UI.width + 15, UI.height, UI.wx, UI.wy);
@@ -314,7 +314,10 @@ void Output::DrawCell(const CellPosition& cellPos, int cardNum) const
 	// ----- 1- Draw the cell itself (background) --> Filled Rectangle -----
 	pWind->SetPen(UI.GridLineColor, 1);
 	if (cardNum == -1) // no card
-		pWind->SetBrush(UI.CellColor_NoCard);
+		if (cellPos.GetCellNum()%2 == 0)
+			pWind->SetBrush(CORNFLOWERBLUE);//UI.CellColor_NoCard
+		else
+			pWind->SetBrush(LIGHTSLATEGREY);
 	else
 		pWind->SetBrush(UI.CellColor_HasCard);
 
