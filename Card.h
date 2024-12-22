@@ -10,7 +10,7 @@ class Card : public GameObject
 {
 protected:
 	int cardNumber; // an integer representing the card number
-
+	
 public:
 	Card(const CellPosition & pos); // A Constructor for card that takes the cell position of it
 
@@ -27,7 +27,7 @@ public:
 
 	virtual void Save(ofstream& OutFile, ObjectType Obj); // saving to a file when the ObjectType enum passed is CardObj else it returns
 	virtual void Load(ifstream& Infile);
-
+	
 	virtual ~Card(); // A Virtual Destructor
 };
 

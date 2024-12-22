@@ -49,7 +49,7 @@ void CardOne::Apply(Grid* pGrid, Player* pPlayer)
 
 	// 2- Decrement the wallet of pPlayer by the walletAmount data member of CardOne
 
-	pPlayer->SetWallet(pPlayer->GetWallet() - walletAmount);
+	pPlayer->decrementWallet( walletAmount);
 
 }
 

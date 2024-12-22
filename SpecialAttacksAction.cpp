@@ -65,7 +65,7 @@ void SpecialAttacksAction::Execute()
 	}
 
 	// 4- Switch case on the "attackNumber" to perform the appropriate action
-	int tmp;
+	int tmp; 
 	try {
 		switch (attackNumber)
 		{
