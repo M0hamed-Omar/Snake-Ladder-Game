@@ -24,8 +24,10 @@ void CardOne::ReadCardParameters(Grid * pGrid)
 	Input* pIn = pGrid->GetInput();
 	// 2- Read an Integer from the user using the Input class and set the walletAmount parameter with it
 	//    Don't forget to first print to a descriptive message to the user like:"New CardOne: Enter its wallet amount ..."
-	pOut->PrintMessage("New CardOne: Enter its wallet amount ...");
+	do {
+		pOut->PrintMessage("New Card2: Enter its wallet amount ...");
 		walletAmount = pIn->GetInteger(pOut);
+	} while (walletAmount < 0);
 
 	// [ Note ]:
 	// In CardOne, the only parameter of CardOne is the "walletAmount" value to decrease from player

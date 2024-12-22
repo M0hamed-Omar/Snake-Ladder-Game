@@ -44,7 +44,17 @@ void InputDiceAction::Execute()
 		pGrid->PrintErrorMessage("Invalid Dice Value !");
 		return;
 	}
+	if (pGrid->GetCurrentPlayer()->getPlayerState() == false) {
+		diceNum = 0;
+		pGrid->PrintErrorMessage("You aren't allowed to move, click to continue..");
+	}
 
+	if (pGrid->GetCurrentPlayer()->getFrozenState() == true)
+	{
+		diceNum = 0;
+		pGrid->PrintErrorMessage("You are Frozen, click to continue..");
+		pGrid->GetCurrentPlayer()->setFrozenState(!pGrid->GetCurrentPlayer()->getFrozenState());
+	}
 	// 3- Get the "current" player from pGrid
 	Player* pCurrentPlayer = pGrid->GetCurrentPlayer();
 

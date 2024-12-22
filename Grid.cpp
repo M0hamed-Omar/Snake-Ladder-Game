@@ -370,7 +370,15 @@ void Grid::ResetFlags()
 
 void Grid::resetStations()
 {
-
+	for (int i = NumVerticalCells - 1; i >= 0; i--)
+	{
+		for (int j = 0; j < NumHorizontalCells; j++)
+		{
+			GameObject* pGameObj = CellList[i][j]->GetGameObject(); //Gets pointer to gameobj if exist otherwise it's NULL
+			if (pGameObj)
+				pGameObj->resetStationOwner(); //Calls the resetStation func of the gameobj with polymorphism
+		}
+	}
 }
 
 

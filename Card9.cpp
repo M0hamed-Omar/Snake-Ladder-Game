@@ -27,21 +27,30 @@ void  Card9::ReadCardParameters(Grid* pGrid)
 	// 2- Read the destination cell from the user using the Input class and set the destination cell  parameter with it
 	//    Don't forget to first print to a descriptive message to the user 
 
-	
-		pOut->PrintMessage("Write the Cell number to be moved to . . . ");
-		CellPosition TempCell = pIn->GetInteger(pOut); // get the cell position from the user (convertion constructor)
-
+	bool check;
+	CellPosition TempCell;// get the cell position from the user (convertion constructor)
+	do
+	{	
+			pOut->PrintMessage("Write the Cell number to be moved to (1 : 99) ");
+			TempCell = pIn->GetInteger(pOut);
 		// now validate if the input cell is valid or not 
-		if (!TempCell.IsValidCell())
+		 check = TempCell.IsValidCell();
+		 if (check == false) { pOut->PrintMessage("Invalid please enter again"); }
+		 else check = true;
+
+	} while (check == false);
+		
+		/*while (!TempCell.IsValidCell())
 		{
-			pGrid->PrintErrorMessage("Error : The entered cell is invalid ! Click anywhere to continue....");
-			throw "Invalid Cell";
-			return;
-		}
-		else
-		{
+			pOut->PrintMessage("Error : Invalid Number Should be 1 : 99 ");
+			 TempCell = pIn->GetInteger(pOut); // get the cell position from the user (convertion constructor)
+			
+		}*/
+		
+		
+		
 			DestinationCell = CellPosition::GetCellNumFromPosition(TempCell);
-		}
+		
 		// 3- Clear the status bar
 		pOut->ClearStatusBar();
 	
