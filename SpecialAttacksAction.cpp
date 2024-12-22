@@ -76,7 +76,7 @@ void SpecialAttacksAction::Execute()
 		case 2:
 			pOut->PrintMessage("Please Type the player number you want to burn");
 			 tmp =pIn->GetInteger(pOut);
-			 if (tmp < 0 || tmp > MaxPlayerCount)
+			 if (tmp < 0 || tmp + 1 > MaxPlayerCount)
 			 {
 				 pGrid->PrintErrorMessage("Invalid Player Number !");
 				 return;
@@ -88,7 +88,7 @@ void SpecialAttacksAction::Execute()
 		case 3:
 			pOut->PrintMessage("Please Type the player number you want to freeze");
 			tmp = pIn->GetInteger(pOut);
-			if (tmp < 0 || tmp > MaxPlayerCount)
+			if (tmp < 0 || tmp + 1 > MaxPlayerCount)
 			{
 				pGrid->PrintErrorMessage("Invalid Player Number !");
 				return;
@@ -102,7 +102,7 @@ void SpecialAttacksAction::Execute()
 
 			pOut->PrintMessage("Please Type the player number you want to poison");
 			tmp = pIn->GetInteger(pOut);
-			if (tmp < 0 || tmp > MaxPlayerCount)
+			if (tmp < 0 || tmp + 1 > MaxPlayerCount)
 			{
 				pGrid->PrintErrorMessage("Invalid Player Number !");
 				return;
