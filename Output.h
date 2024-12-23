@@ -64,13 +64,13 @@ public:
 	// the cell rectangle's color depends on heving a card or not
 
 ///TODO: COMPLETE THE IMPLEMENTATIN OF THE FOLLOWING FUNCTION	
-	void DrawPlayer(const CellPosition& cellpos, int playerNum, color playerColor) const;
+	void DrawPlayer(const CellPosition& cellpos, int playerNum, color playerColor, int cardnum = -1 ) const;
 	// Draws "Player Circle" filled with the passed color               *****MO///done
 	// "playerNum" parameter is used for locating the circle
 	// ** Players' Circles Locations depending on "playerNum" is as follows: **
 	//    Player_0   Player_1
 	//    Player_2   Player_3
-
+	
 ///TODO: COMPLETE THE IMPLEMENTATIN OF THE FOLLOWING FUNCTION	
 	void DrawLadder(const CellPosition& fromCellPos, const CellPosition& toCellPos) const;                      //****MD7t ==**DONE**==
 	// Draws Ladder from start cell to end cell (start < end)
