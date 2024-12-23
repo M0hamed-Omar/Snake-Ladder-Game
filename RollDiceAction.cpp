@@ -51,6 +51,10 @@ void RollDiceAction::Execute()
 	Player* pCurrentPlayer = pGrid->GetCurrentPlayer();
 
 	// 4- Move the currentPlayer using function Move of class player
+	if (pCurrentPlayer->GetCell()->GetCellPosition().GetCellNum() + diceNumber > 99) {
+		pGrid->GetOutput()->PrintMessage("You can't move, you need to get an exact dice roll to reach the end of the game");
+		diceNumber = 0;
+	}
 	pCurrentPlayer->Move(pGrid, diceNumber);
 
 	// 5- Advance the current player number of pGrid
