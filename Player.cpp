@@ -101,7 +101,10 @@ bool Player::getPlayerState() const
 
 void Player::decrementTurnCount()
 {
+	if (turnCount > 0)
 	turnCount--;
+	else
+		turnCount = 2;
 }
 
 

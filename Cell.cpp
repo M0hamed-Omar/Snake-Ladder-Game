@@ -40,7 +40,7 @@ bool Cell::SetGameObject(GameObject * pGObj)
 
 void Cell::deleteGameObj() {
 	if (pGameObject != NULL) {
-		delete pGameObject;
+		//delete pGameObject;
 		pGameObject = nullptr;
 	}
 }
