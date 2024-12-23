@@ -197,6 +197,11 @@ void Player::Move(Grid * pGrid, int diceNumber)
 		return;
 	}
 
+	if (GetCell()->GetCellPosition().GetCellNum() + diceNumber > 99) {
+		pGrid->PrintErrorMessage("You can't move, you need to get an exact dice roll to reach the end of the game");
+		diceNumber = 0;
+	}
+
 
 	// 3- Set the justRolledDiceNum with the passed diceNumber
 	setJustRolledDiceNum(diceNumber);
