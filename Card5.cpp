@@ -16,6 +16,7 @@ void Card5::Apply(Grid* pGrid, Player* pPlayer)
 	{
 		ptr->GetGameObject()->Apply(pGrid,pPlayer);
 	}
+	pPlayer->decrementTurnCount(); // to decrease the turn count by 1 as the player already moved when he got the card
 
 }
 
