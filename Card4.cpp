@@ -22,6 +22,7 @@ void Card4::Apply(Grid* pGrid, Player* pPlayer)
 		int startcell = new_cellposition.GetCellNum(); // to get the cell number of the new cell position
 		int currentcell = pPlayer->GetCell()->GetCellPosition().GetCellNum();
 		pPlayer->Move(pGrid, startcell - currentcell); // move the player to the new cell number
+		pPlayer->decrementTurnCount(); // to decrease the turn count by 1 as the player already moved when he got the card
 	}
 	else
 		pGrid->PrintErrorMessage("No snake to move for..");

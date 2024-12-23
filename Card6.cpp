@@ -11,7 +11,7 @@ void Card6::Apply(Grid* pGrid, Player* pPlayer)
 	pGrid->PrintErrorMessage("You will move backward again by the last roll dice..");
 	int RollDiceNum = pPlayer->GetJustRolledDiceNum();
 	pPlayer->Move(pGrid, -1*RollDiceNum);
-	
+	pPlayer->decrementTurnCount(); // to decrease the turn count by 1 as the player already moved when he got the card
 }
 
 void Card6::Save(ofstream& OutFile, ObjectType Obj)

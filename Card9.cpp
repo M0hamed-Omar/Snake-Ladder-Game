@@ -63,6 +63,7 @@ void  Card9::Apply(Grid* pGrid, Player* pPlayer)
 	int y = pPlayer->GetCell()->GetCellPosition().GetCellNum();
 	int Dist = x - y;
 	pPlayer->Move(pGrid, Dist);
+	pPlayer->decrementTurnCount(); // to decrease the turn count by 1 as the player already moved when he got the card
 }
 void Card9::Save(ofstream& OutFile, ObjectType Obj)
 {

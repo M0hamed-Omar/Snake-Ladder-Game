@@ -99,7 +99,10 @@ bool Player::getPlayerState() const
 	return isMoving;
 }
 
-
+void Player::decrementTurnCount()
+{
+	turnCount--;
+}
 
 
 // ====== Drawing Functions ======
@@ -193,6 +196,8 @@ void Player::Move(Grid * pGrid, int diceNumber)
 		turnCount = 0;
 		return;
 	}
+
+
 	// 3- Set the justRolledDiceNum with the passed diceNumber
 	setJustRolledDiceNum(diceNumber);
 	// 4- Get the player current cell position, say "pos", and add to it the diceNumber (update the position)
