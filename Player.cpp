@@ -108,7 +108,11 @@ void Player::Draw(Output* pOut) const
 {
 	color playerColor = UI.PlayerColors[playerNum];
 	CellPosition playerPosition = pCell->GetCellPosition();
-
+	Card* pCard = this->GetCell()->HasCard();
+	if (pCard) {
+		int cardnum = pCard->GetCardNumber();
+		pOut->DrawPlayer(playerPosition, playerNum, playerColor, cardnum);
+	}
 	///TODO: use the appropriate output function to draw the player with "playerColor"
 	pOut->DrawPlayer(playerPosition, playerNum, playerColor);
 
@@ -117,15 +121,26 @@ void Player::Draw(Output* pOut) const
 void Player::ClearDrawing(Output* pOut) const
 {
 	color cellColor;// = pCell->HasCard() ? UI.CellColor_HasCard : UI.CellColor_NoCard;
-	if (pCell->GetCellPosition().GetCellNum() % 2 == 0)
+	if (! pCell->HasCard())
 	{
-		cellColor = CORNFLOWERBLUE;
+
+		if (pCell->GetCellPosition().GetCellNum() % 2 == 0)
+		{
+			cellColor = CORNFLOWERBLUE;
+		}
+		else
+			cellColor = LIGHTSLATEGREY;
+
 	}
 	else
-		cellColor = LIGHTSLATEGREY;
-
+		cellColor = UI.CellColor_HasCard;
 	CellPosition playerPosition = pCell->GetCellPosition();
 	///TODO: use the appropriate output function to draw the player with "cellColor" (to clear it)
+	if (pCell->HasCard())
+	{
+		pOut->DrawPlayer(playerPosition, playerNum, cellColor, pCell->HasCard()->GetCardNumber());
+	}
+	else
 	pOut->DrawPlayer(playerPosition, playerNum, cellColor);
 }
 

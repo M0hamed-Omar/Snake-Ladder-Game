@@ -10,6 +10,7 @@ Card7::Card7(const CellPosition& pos) :Card(pos)
 void Card7::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer);
+	pGrid->PrintErrorMessage("you will have another roll dice..");
 	/*((RollDiceAction*)pGrid)->Execute();*/
 	/*((ApplicationManager*)pGrid)->ExecuteAction(ROLL_DICE);    */          
 	//ApplicationManager AppMan;

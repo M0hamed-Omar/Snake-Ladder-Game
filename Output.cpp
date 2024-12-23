@@ -355,7 +355,7 @@ void Output::DrawCell(const CellPosition& cellPos, int cardNum) const
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
-void Output::DrawPlayer(const CellPosition& cellPos, int playerNum, color playerColor) const
+void Output::DrawPlayer(const CellPosition& cellPos, int playerNum, color playerColor, int cardnum ) const
 {
 
 	///TODO: Validate the playerNum, if not valid return
@@ -393,8 +393,15 @@ void Output::DrawPlayer(const CellPosition& cellPos, int playerNum, color player
 	pWind->SetPen(playerColor);
 	pWind->SetBrush(playerColor);
 	pWind->DrawCircle(x, y, radius);
-
-
+	if (cardnum == -1)
+		if (cellPos.GetCellNum() % 2 == 0)
+			pWind->SetPen(CORNFLOWERBLUE);
+		else
+			pWind->SetPen(LIGHTSLATEGREY);
+	else
+		pWind->SetPen(UI.CellColor_HasCard);
+	pWind->SetFont(14, BOLD | ITALICIZED, BY_NAME, "Arial");
+	pWind->DrawInteger(x-4, y-5, playerNum);
 }
 // =============done===========
 
