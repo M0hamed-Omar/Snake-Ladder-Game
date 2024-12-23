@@ -8,7 +8,7 @@ Card6::Card6(const CellPosition& pos) :Card(pos)
 void Card6::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer);
-
+	pGrid->PrintErrorMessage("You will move backward again by the last roll dice..");
 	int RollDiceNum = pPlayer->GetJustRolledDiceNum();
 	pPlayer->Move(pGrid, -1*RollDiceNum);
 	

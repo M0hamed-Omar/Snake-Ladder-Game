@@ -22,6 +22,8 @@ void Card3::Apply(Grid* pGrid, Player* pPlayer)
 		int currentcell = pPlayer->GetCell()->GetCellPosition().GetCellNum();
 		pPlayer->Move(pGrid, startcell - currentcell); // move the player to the new cell number
 	}
+	else
+		pGrid->PrintErrorMessage("No ladder to move for..");
 	
 }
 
