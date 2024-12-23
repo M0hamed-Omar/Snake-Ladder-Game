@@ -27,7 +27,7 @@ void  Card9::ReadCardParameters(Grid* pGrid)
 	// 2- Read the destination cell from the user using the Input class and set the destination cell  parameter with it
 	//    Don't forget to first print to a descriptive message to the user 
 
-	bool check;
+	bool check; 
 	CellPosition TempCell;// get the cell position from the user (convertion constructor)
 	do
 	{	
