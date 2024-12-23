@@ -55,7 +55,6 @@ void  Card9::ReadCardParameters(Grid* pGrid)
 		pOut->ClearStatusBar();
 	
 }
-
 void  Card9::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer);
