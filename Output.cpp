@@ -519,7 +519,7 @@ void Output::DrawSnake(const CellPosition& fromCell, const CellPosition& toCell)
 
 }
 ///================done============
-
+    
 //////////////////////////////////////////////////////////////////////////////////////////
 
 Output::~Output()

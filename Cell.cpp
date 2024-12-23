@@ -38,6 +38,13 @@ bool Cell::SetGameObject(GameObject * pGObj)
 	return true;
 }
 
+void Cell::deleteGameObj() {
+	if (pGameObject != NULL) {
+		delete pGameObject;
+		pGameObject = nullptr;
+	}
+}
+
 GameObject * Cell::GetGameObject() const
 {
 	return pGameObject;

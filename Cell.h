@@ -29,7 +29,7 @@ public:
 	CellPosition GetCellPosition() const;   // A getter for the "position" data member
 	
 	bool SetGameObject(GameObject * pGObj);	// A setter for pGameObject of the cell
-	                                        // It does NOT add the object and returns false if the cell already contains one
+	void deleteGameObj();                                // It does NOT add the object and returns false if the cell already contains one
 	GameObject * GetGameObject() const;     // A getter for pGameObject of the cell
 		
 	Ladder * HasLadder() const;	// Checks if pGameObject is a Ladder Then returns it if a ladder or returns NULL if not ladder
